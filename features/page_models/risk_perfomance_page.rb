@@ -54,5 +54,19 @@ class RiskPerfomancePage
   end
   def renamefield
     $driver.find_element(:xpath, "//input[@class = 'rename-input']")
-   end
+  end
+  def  myprofile_menu_row subsection
+    puts subsection
+    puts name
+    $driver.find_element(:xpath, "//h3[text() = '#{subsection}']").click
+    for row in name.hashes() do
+      element = $driver.find_elements(:xpath,"//td[text() = '#{row['subsections']}']")
+      if element.count == 0
+        fail "Couldn't find subsection  #{row}"
+      end
+    end
+
+  end
+
+
   end
