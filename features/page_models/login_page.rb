@@ -175,5 +175,4 @@ def disclaimers disclaimerslist
 end
 
 
-
-  end
+end

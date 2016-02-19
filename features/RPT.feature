@@ -1,10 +1,11 @@
-
-Feature: Account
+Feature: Risk & Performance Page
 
   Background:
     Given Open the Man Group site
     Given Enter "Testing112123123@gmail.com" password "0ChangeMe0!$$" and pin "9876" and click "Login" button
-#1
+#    Then Click "Profile" icon
+#    Then Tap "Reset" button
+1
   Scenario:  Reset profile settings
     Then Click "Profile" icon
     Then Tap "Reset" button
@@ -27,7 +28,8 @@ Feature: Account
     Then Enter "Test Automation" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then "Test Automation" tab should exists
-    ## WORK SPACE DUPLICATE-REMOVE-RENAME FUNCTIONS
+
+   ## WORK SPACE DUPLICATE-REMOVE-RENAME FUNCTIONS
 #5
   Scenario: Checking the Work Space - Duplicate  functionality
     Then Tap on "plus" button
@@ -36,8 +38,6 @@ Feature: Account
     Then Move mouse to "Duplicate"
     Then Click "Duplicate" in menu
     Then "copy of Duplicate" tab should exists
-
-
 #6
   Scenario: Checking the Work Space - Rename functionality
     Then Tap on "plus" button
@@ -55,7 +55,6 @@ Feature: Account
     Then Move mouse to "Remove me"
     Then Click "Remove" in menu
     Then WorkSpace "Remove me" should not be displayed
-
 #8
   Scenario: My Profile - Verify  that My Profile overlay contains Contact information, Change Password, Language selector, Preference
     Then Click "Profile" icon
@@ -64,33 +63,37 @@ Feature: Account
       |Contact Information |
       |Change Password     |
       |Language Selector   |
-      |Preferences         |
-# #9
-#  Scenario:  My Profile - Verify  subsections in Contact Information required subsections
-#    Then Click "Profile" icon
-#    Then Verify subsections in Contact Information:
-#      |subsections|
-#      |Name       |
-#      |Email      |
-#      |Company   |
-# #10
-#  Scenario: My Profile - Change Password contains required links
-#    Then Verify Change Password contains links:
-#      |links|
-#      |Click here to reset your password|
-#      |Click here to reset your pin     |
-# #11
-#  Scenario: My Profile - Verify  Language Selector contains required languages
-#    Then Verify Language Selector contains languages:
-#      |languages|
-#      |English  |
-# #12
-#  Scenario:My Profile - Verify  subsections in Preferences required Theme Styles
-#    Then Verify Preferences contains Theme Styles:
-#      |themes|
-#      |Day   |
-#      |Night  |
-#    Then Tap "close"
+      |Preferences        |
+
+ #9
+  Scenario:  My Profile - Verify  subsections in Contact Information required subsections
+    Then Click "Profile" icon
+    Then Verify subsections in Contact Information:
+      |subsections|
+      |Name       |
+      |Email      |
+      |Company   |
+ #10
+  Scenario: My Profile - Change Password contains required links
+    Then Click "Profile" icon
+    Then Verify Change Password contains links:
+      |links|
+      |Click here to reset your password|
+      |Click here to reset your pin     |
+ #11
+  Scenario: My Profile - Verify  Language Selector contains required languages
+    Then Click "Profile" icon
+    Then Verify Language Selector contains languages:
+      |languages|
+      |English  |
+ #12
+  Scenario:My Profile - Verify  subsections in Preferences required Theme Styles
+    Then Click "Profile" icon
+    Then Verify Preferences contains Theme Styles:
+      |themes|
+      |Day   |
+      |Night  |
+
 #    Then Verify that "My Profile" overlay was closed
 #
 ## "CREATE NEW SPACE" OVERLAY

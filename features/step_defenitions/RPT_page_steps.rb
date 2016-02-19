@@ -71,7 +71,65 @@ Then /^Enter new name "([^"]*)" of workspace and press enter button$/ do |new_ws
   risk_perfomance_page.renamefield.send_keys new_ws_name
   risk_perfomance_page.renamefield.send_keys :enter
 end
-Then /^WorkSpace "([^"]*)" should not be displayed$/ do |wsname|
-  risk_perfomance_page.work_space_tab_name
+Then /^WorkSpace "([^"]*)" should not be displayed$/ do |workspace_name|
+  sleep 4
+  if risk_perfomance_page.work_space_tab_name(workspace_name).count > 0
+    fail "Bug!!!'#{workspace_name}' exists"
+  end
+end
+Then /^Verify "([^"]*)" overlay contains subsections:$/ do |overlay, subsection|
+  puts overlay
+  puts subsection
+  for row in subsection.hashes() do
+    element = $driver.find_elements(:xpath, "//h3[text() = '#{row['subsections']}']")
+    if element.count == 0
+      raise  "Couldn't find subsection  #{row}"
+    end
+  end
+end
+Then /^Verify subsections in ([^"]*):$/ do |subsection, name|
+  puts subsection
+  puts name
+  $driver.find_element(:xpath, "//h3[text() = '#{subsection}']").click
+  for row in name.hashes() do
+    element = $driver.find_elements(:xpath,"//td[text() = '#{row['subsections']}']")
+    if element.count == 0
+      raise  "Couldn't find subsection  #{row}"
+    end
+  end
+end
 
+Then /^Verify ([^"]*) contains links:$/ do |subsection, linkname|
+  puts subsection
+  puts linkname
+  $driver.find_element(:xpath, "//h3[text() = '#{subsection}']").click
+  for row in linkname.hashes() do
+    element = $driver.find_elements(:xpath,"//span[text() = '#{row['links']}']")
+    if element.count == 0
+      raise  "Couldn't find link name #{row}"
+    end
+  end
+end
+Then /^Verify ([^"]*) contains languages:$/ do|subsection, language|
+  puts subsection
+  puts language
+  $driver.find_element(:xpath, "//h3[contains(.,'#{subsection}')]").click
+  for row in language.hashes() do
+    element = $driver.find_elements(:xpath,"//tr[contains(.,'Language')]//span[contains(.,'#{row['languages']}')]")
+    if element.count == 0
+      raise  "Couldn't find language #{row}"
+    end
+  end
+end
+Then /^Verify ([^"]*) contains Theme Styles:$/ do |subsection, theme|
+
+  puts subsection
+  puts theme
+  $driver.find_element(:xpath, "//h3[text() = '#{subsection}']").click
+  for row in theme.hashes() do
+    element = $driver.find_elements(:xpath,"//div[contains(@class,'content clearfix')][./p[contains(.,'Choose a theme style')]]//label[text() = '#{row['themes']}']")
+    if element.count == 0
+      raise  "Couldn't find Theme #{row}"
+    end
+  end
 end
