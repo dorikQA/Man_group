@@ -120,9 +120,10 @@ Scenario: Login Page - Forgot password link
   Scenario: Login with valid credentials- Verify that user  is successfully login
     Given Open the Man Group site
     Then Input email address "Testing112123123@gmail.com"
-    Then Enter password "0ChangeMe0!"
+    Then Enter password "0ChangeMe0!$$"
     Then Enter pin "9876"
     Then Click "Login" button
+
 
 
 

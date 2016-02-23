@@ -16,7 +16,7 @@ def pinfield
     $driver.find_element(:xpath, "//input[@id = 'txtUserPin']")
 end
 
-def loginbutton button
+def loginbutton(button)
   buton = $driver.find_element(:xpath, "//*[contains(text(),'#{button}')]")
   if buton.displayed?
     buton.click
@@ -25,7 +25,7 @@ def loginbutton button
   end
 end
 
-def warningmessage message
+def warningmessage(message)
   warningMessage = $driver.find_elements(:xpath, "//*[contains(text(),'#{message}')]")
   # if warningMessage.count == 0
   #   fail "FAILED!'#{message}' message was not occurred"
@@ -41,16 +41,16 @@ end
 #
 # end
 
-def password message
+def password(message)
     if $driver.find_elements(:xpath, "//div[@class = 'em-body-text' and text() = '#{message}' ]").count == 0
        fail "FAILED!'#{message}' message was not occurred"
     end
 end
 
-def forgotlinks  linkname
+def forgotlinks(linkname)
   $driver.find_element(:xpath, "//div[@class = 'forgot-pass']//*[contains(text(),'#{linkname}')]")
 end
-def forgotpassword_1 message1
+def forgotpassword_1(message1)
   begin
    $driver.find_element(:xpath, "//*[contains(text(),'#{message1}')]").displayed?
   rescue
@@ -58,7 +58,7 @@ def forgotpassword_1 message1
   end
 end
 
-def forgotpassword_2 message2
+def forgotpassword_2(message2)
    #forgotpassword2 = $driver.find_elements(:xpath, "//*[contains(text(),  \"#{message2}\")]")
    if $driver.find_elements(:xpath, "//div[@class = 'fp-message']//*[contains(text(), \"#{message2}\")]").count == 0
      fail "FAILED!\"#{message2}\" message was not occurred"
@@ -76,36 +76,36 @@ def reset_pass_email_field
 end
 
 
-def message_sentemail_mg_1 message1
+def message_sentemail_mg_1(message1)
   if $driver.find_elements(:xpath, "// div[@class = 'message']//h2[contains(text(), '#{message1}')]").count == 0
     fail "Check message '#{message1}'"
   end
 end
-def message_sentemail_mg_2 message2
+def message_sentemail_mg_2(message2)
    if  $driver.find_elements(:xpath, "// div[@class = 'message']//div[contains(text(), '#{message2}')]").count == 0
      fail "Check message '#{message2}'"
    end
 end
 
-def message_sentemail_mg_3 message3
+def message_sentemail_mg_3(message3)
  if  $driver.find_elements(:xpath, "// div[@class = 'message']//b[text() = '#{message3}']").count == 0
    fail "Check message '#{message3}'"
  end
 end
 
-def message_sentemail_mg_4 message4
+def message_sentemail_mg_4(message4)
   if  $driver.find_elements(:xpath, "// div[@class = 'message']//div[contains(text(), '#{message4}')]").count == 0
   fail "Check message '#{message4}'"
   end
 end
 
-def forgot_pin_sent_email_mg1 mg1
+def forgot_pin_sent_email_mg1(mg1)
   if  $driver.find_elements(:xpath, "// div[@class = 'fpin-message']//h2[text() = \"#{mg1}\"]").count == 0
     fail "Check message '#{mg1}'"
   end
 
 end
- def forgot_pin_sent_email_mg2 mg2
+ def forgot_pin_sent_email_mg2(mg2)
    if  $driver.find_elements(:xpath, "// div[@class = 'fpin-message']/div[contains(text(),\"#{mg2}\")]").count == 0
      fail "Check message '#{mg2}'"
    end
@@ -132,7 +132,7 @@ end
 #   end
 # end
 
-  def overlaybutton overlay
+  def overlaybutton(overlay)
     sendpasswordoverlays = $driver.find_elements(:xpath,"//div[contains(@class, 'login-ui-icon login-icon-cross')]")
     for i in sendpasswordoverlays
       if i.displayed?
@@ -146,7 +146,7 @@ end
 
 
 
-def pagesumodles submodules
+def pagesumodles(submodules)
   for row in submodules.hashes()
     elements = $driver.find_elements(:xpath,"//div[@class = 'content-features']//h2[@class = 'title' and contains(text(), '#{row['subsections']}')]")
     if elements.count == 0
@@ -160,7 +160,7 @@ def pagesumodles submodules
 end
 
 end
-def disclaimers disclaimerslist
+def disclaimers(disclaimerslist)
     for row in disclaimerslist.hashes()
       elements = $driver.find_elements(:xpath,"//ul[@class = 'footer-nav']//a[contains(text(), '#{row['disclaimers']}')]")
       if elements.count == 0

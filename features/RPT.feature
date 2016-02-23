@@ -98,6 +98,7 @@ Feature: Risk & Performance Page
       |Performance|
       |Risk       |
       |Admin      |
+
 # CREATE NEW SPACE OVERLAY-VERIFYING MODULES
 #14
 Scenario: Create New Space overlay - General contains required submodules
@@ -120,20 +121,85 @@ Scenario: Create New Space overlay - General contains required submodules
       |Sensitivity        |
       |VaR Return Envelope|
       |Exposure           |
+      |Risk vs. Return    |
  #16
 Scenario: Create New Space overlay - Perfomance contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Performance"
     Then  Verify module "Performance" contains submodules:
-      |Performance Decomposition     |
-      |Performance Snapshot          |
-      |Statistics                    |
-      |Style                         |
-      |Benchmark Up/Down             |
+      |Performance Decomposition        |
+      |Performance Snapshot             |
+      |Statistics                       |
+      |Style                            |
+      |Benchmark Up/Down                |
+      |Monthly Performance Distribution |
   #17
-  @test
-    Scenario: Create New Space overlay - Admin contains required submodules
+Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Admin"
     Then  Verify module "Admin" contains submodules:
       |Data Monitor     |
+
+  ## Verifying elements after success login
+#18
+ Scenario: Login with valid credentials- All required elements should be displayed
+    Then "Company" logo should be displayed
+    Then "Plus" button to create new work should be displayed
+    Then "My Profile" icon should be displayed
+    Then 'ADD MODULE' button should be displayed
+    Then 'DOWNLOAD PDF' button should be displayed
+#    Then An icon in blue color should be displayed on right side of portal for my alerts -??
+#    Then Welcome,[User Name] string should be displayed on right side of portal-??
+#19
+## "ADD MODULE "  overlay
+  Scenario: Validate Add module contains required columns
+    Then Click on 'ADD MODULE' button
+    Then "ADD MODULE" overlay should display columns:
+      |01. MODULE|
+      |02. ADD MODULE(S)|
+      |03. YOUR MODULE QUEUE|
+#20
+  Scenario: Validate Add module MODULE column contains
+    Then Click on 'ADD MODULE' button
+    Then "MODULE" column should contains submodules:
+      |General    |
+      |Performance|
+      |Risk       |
+      |Admin      |
+
+#21
+  Scenario:  Validate Add module - MODULE column - General - contains required submodules
+    Then Click on 'ADD MODULE' button
+    Then In 'ADD MODULE' click on submodule "General"
+    Then Module "General" contains submodules:
+    |Documents          |
+    |Fund Summary       |
+    |Fund Ratings       |
+    |Commentary         |
+
+ #22
+  Scenario:  Validate Add module - MODULE - Risk - column contains required submodules
+    Then Click on 'ADD MODULE' button
+    Then In 'ADD MODULE' click on submodule "Risk"
+    Then Module "Risk" contains submodules:
+      |Risk Snapshot      |
+      |VaR                |
+      |Stress & Scenario  |
+      |Sensitivity        |
+      |VaR Return Envelope|
+      |Exposure           |
+      |Risk vs. Return    |
+
+ #23
+ Scenario:  Validate Add module - MODULE - Performance - column contains required submodules
+   Then Click on 'ADD MODULE' button
+   Then In 'ADD MODULE' click on submodule "Performance"
+   Then Module "Performance" contains submodules:
+     |Performance Decomposition        |
+     |Performance Snapshot             |
+     |Statistics                       |
+     |Style                            |
+     |Benchmark Up/Down                |
+     |Monthly Performance Distribution |
+
+

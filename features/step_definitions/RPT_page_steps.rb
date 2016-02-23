@@ -151,11 +151,11 @@ Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modu
   puts modules
   array = submodules.raw.flatten
   array.each do |module_name|
-    $driver.mouse.move_to risk_perfomance_page.new_space_column(module_name)
+    $driver.mouse.move_to risk_perfomance_page.newspace_module_column(module_name)
     puts module_name
   end
   end
-# 14
+# 14-17
 Then /^In "Create a New Space" click on submodule "([^"]*)"$/ do |modules|
   risk_perfomance_page.create_space_submodule_name(modules).click
 end
@@ -171,85 +171,78 @@ Then /^Verify module "([^"]*)" contains submodules:$/ do |modules, submodules|
     end
   end
 end
+#18
+Then /^"Company" logo should be displayed$/ do
+  if risk_perfomance_page.company_logo.displayed? == false
+    fail "LOGO is not displayed"
+  end
+end
+ Then /^"Plus" button to create new work should be displayed$/ do
+   if risk_perfomance_page.plus_workspace_button.displayed? == false
+     fail "Plus button to create new work space is not displayed"
+   end
+ end
+  Then /^"My Profile" icon should be displayed$/ do
+    if risk_perfomance_page.profile_icon.displayed? == false
+      fail "My Profile icon is not displayed"
+    end
+  end
+ Then /^'ADD MODULE' button should be displayed$/ do
+  if risk_perfomance_page.add_module_button.displayed? == false
+    fail "'ADD MODULE' icon is not displayed"
+  end
+ end
 
-#
-#
-# Then /^Add 1 random preference from each module$/ do
-#   elements = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//ul[@class = 'nav-options']//a")
-#   for i in elements
-#     i.click
-#     sleep 3
-#     preferences = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//ul[@class = 'app-options appSourceList']//a")
-#     sleep 3
-#     pref = []
-#     for x in preferences
-#       if x.displayed?
-#         pref.push(x)
-#       end
-#     end
-#     pref[0].click
-#   end
-#   choosentext = []
-#   choosen =  $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//ul[@class = 'chosen-app-options chosenModules']//a")
-#   for choose in  choosen
-#     choosentext.push(choose.text)
-#   end
-#   wsname = $driver.find_element(:xpath, "//input[@class = 'workspace-name']")
-#   wsname.send_keys "Test Automation WS"
-#   sleep 3
-#   $driver.find_element(:xpath,"//span[@class = 'ui-button-text' and text() = 'Create Space']").click
-#   sleep 5
-#   puts choosentext
-#   displayedchoosentext = []
-#   displayedchoosen =  $driver.find_elements(:xpath,"//div[@ class= 'app-header clearfix']//div[@class = 'pull-left touch-drag']")
-#   for choose2 in  displayedchoosen
-#     displayedchoosentext.push(choose2.text)
-#   end
-#   if  choosentext == displayedchoosentext
-#     puts 'TC passed. All good'
-#   else fail "Check text"
-#   end
-#
-# end
-# Then /^Verify "Add Module" overlay "([^"]*)" column contains:$/ do |modules, submodules|
-#   puts modules
-#   puts submodules
-#   #element1 = $driver.find_element(:xpath, "//div[@class = 'newSpaceStepTwo']//h5[contains(.,'#{modules}')]")
-#   for row in submodules.hashes()
-#     element2 = $driver.find_elements(:xpath,"//div[@class = 'newModules']//a[text() = '#{row['submodule']}']")
-#     if element2.count == 0
-#       fail  "Couldn't find module #{row}"
-#     else
-#       for i in element2
-#         i.click
-#         sleep 2
-#       end
-#     end
-#   end
-# end
-#
-# Then /^Verify overlay "Add Module" module "([^"]*)" contains:$/ do |modules, submodules|
-#   puts modules
-#   puts submodules
-#   element = $driver.find_element(:xpath,"//div[@class = 'newModules']//a[text() = '#{modules}']").click
-#   for row in submodules.hashes()
-#     elements =  $driver.find_elements(:xpath,"//div[@class = 'newModules']//a[text() = '#{row['submodule']}']")
-#     if elements.count == 0
-#       fail "BUG! Couldn't find submodule '#{row}']}'"
-#     end
-#     for i in elements
-#       if i.displayed?
-#         begin
-#           $driver.mouse.move_to i
-#         rescue
-#           puts "Can't move mouse to '#{modules}' - '#{row['submodule']}' , probably it's unvisible for user"
-#         end
-#       else
-#         fail "#{row} is not visible"
-#       end
-#     end
-#   end
-# end
+Then /^'DOWNLOAD PDF' button should be displayed$/ do
+  if risk_perfomance_page.download_pdf_button.displayed? == false
+    fail "'DOWNLOAD PDF' icon is not displayed"
+  end
+end
+Then /^Click on 'ADD MODULE' button$/ do
+ risk_perfomance_page.add_module_button.click
+end
+Then /^"([^"]*)" overlay should display columns:$/ do |overlay, columns|
+  puts overlay
+  array = columns.raw.flatten
+  array.each do |column_name|
+      risk_perfomance_page.addmodule_overlay_column_name(column_name)
+      puts column_name
+  end
+end
+Then /^In 'ADD MODULE' click on submodule "([^"]*)"$/ do |submodule__name|
+ puts submodule__name
+ risk_perfomance_page.addmodule_modulecolumn_submodule(modulecolumn_submodule_name).click
+end
+
+Then /^"([^"]*)" column should contains submodules:$/ do |column_mame, module_table|
+  puts column_mame
+  array = module_table.raw.flatten
+  array.each do |submodule_name|
+      x = risk_perfomance_page.addmodule_modulecolumn_submodule(submodule_name)
+      if x.displayed?
+        $driver.mouse.move_to x
+        puts submodule_name
+      else fail " #{submodule_name} is not displayed"
+      end
+  end
+end
+
+Then /^Module "([^"]*)" contains submodules:$/ do |module_submodule, addmodule_table|
+  puts module_submodule
+  array = addmodule_table.raw.flatten
+  array.each do |submodule_name|
+    x = risk_perfomance_page.addmodule_addmodules_submodule(submodule_name)
+    if x.displayed?
+      $driver.mouse.move_to x
+      puts submodule_name
+    else fail " #{submodule_name} is not displayed"
+    end
+  end
+
+end
+
+
+
 #
 # Then /^Add moodule - add preferences and verify that preferences added and displayed in the created ws$/ do
 #   elements = $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'nav-options']//a")
