@@ -91,54 +91,49 @@ Feature: Risk & Performance Page
 
 # "CREATE NEW SPACE" OVERLAY
 #13
-  Scenario: Create New Space overlay - Verifying that General, Performance, Risk, Admin exist
+ Scenario: Create New Space overlay - Verifying that General, Performance, Risk, Admin exist
     Then Tap on "plus" button
     Then Verify "Create a New Space" overlay "01. MODULE" column contains:
-      |submodule  |
       |General    |
       |Performance|
       |Risk       |
       |Admin      |
-
-## CREATE NEW SPACE OVERLAY-VERIFYING MODULES
-##14
-#  Scenario: Create New Space overlay - General contains required submodules
-#    Then Tap on "plus" button
-#    Then In "Create a New Space" click on submodule "General"
-#    Then Verify overlay "Create a New Space" module "General" contains:
-#      |submodule          |
-#      |Documents          |
-#      |Fund Summary       |
-#      |Fund Ratings       |
-#      |Commentary         |
-## CREATE NEW SPACE OVERLAY-VERIFYING SUBMODULES-USER PREFERENCES
-# #15
-#  Scenario: Create New Space overlay - Risk contains required submodules
-#    Then Tap on "plus" button
-#    Then In "Create a New Space" click on submodule "Risk"
-#    Then Verify overlay "Create a New Space" module "Risk" contains:
-#      |submodule          |
-#      |Risk Snapshot      |
-#      |VaR                |
-#      |Stress & Scenario  |
-#      |Sensitivity        |
-#      |VaR Return Envelope|
-#      |Exposure           |
-# #16
-#  Scenario: Create New Space overlay - Perfomance contains required submodules
-#    Then Tap on "plus" button
-#    Then In "Create a New Space" click on submodule "Performance"
-#    Then Verify overlay "Create a New Space" module "Performance" contains:
-#      |submodule                     |
-#      |Performance Decomposition     |
-#      |Performance Snapshot          |
-#      |Statistics                    |
-#      |Style                         |
-#      |Benchmark Up/Down             |
-#  #17
-#  Scenario: Create New Space overlay - Admin contains required submodules
-#    Then Tap on "plus" button
-#    Then In "Create a New Space" click on submodule "Admin"
-#    Then Verify overlay "Create a New Space" module "Admin" contains:
-#      |submodule          |
-#      |Data Monitor     |
+# CREATE NEW SPACE OVERLAY-VERIFYING MODULES
+#14
+Scenario: Create New Space overlay - General contains required submodules
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "General"
+    Then Verify module "General" contains submodules:
+      |Documents          |
+      |Fund Summary       |
+      |Fund Ratings       |
+      |Commentary         |
+# CREATE NEW SPACE OVERLAY-VERIFYING SUBMODULES-USER PREFERENCES
+ #15
+ Scenario: Create New Space overlay - Risk contains required submodules
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "Risk"
+    Then Verify module "Risk" contains submodules:
+      |Risk Snapshot      |
+      |VaR                |
+      |Stress & Scenario  |
+      |Sensitivity        |
+      |VaR Return Envelope|
+      |Exposure           |
+ #16
+Scenario: Create New Space overlay - Perfomance contains required submodules
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "Performance"
+    Then  Verify module "Performance" contains submodules:
+      |Performance Decomposition     |
+      |Performance Snapshot          |
+      |Statistics                    |
+      |Style                         |
+      |Benchmark Up/Down             |
+  #17
+  @test
+    Scenario: Create New Space overlay - Admin contains required submodules
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "Admin"
+    Then  Verify module "Admin" contains submodules:
+      |Data Monitor     |

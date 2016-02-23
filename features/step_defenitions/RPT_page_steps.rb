@@ -147,52 +147,31 @@ Then /^Verify ([^"]*) contains Theme Styles:$/ do |submodule_text, theme_name|
   end
 end
 #13
-# Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modules, submodules|
-#   puts modules
-#   risk_perfomance_page.new_space_column
-# end
-#
-#
-#
-#   for row in submodules.hashes()
-#     element2 = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{row['submodule']}']")
-#     if element2.count == 0
-#       fail  "Couldn't find module #{row}"
-#     else
-#       for i in element2
-#
-#         i.click
-#         sleep 2
-#       end
-#     end
-#   end
+Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modules, submodules|
+  puts modules
+  array = submodules.raw.flatten
+  array.each do |module_name|
+    $driver.mouse.move_to risk_perfomance_page.new_space_column(module_name)
+    puts module_name
+  end
+  end
+# 14
+Then /^In "Create a New Space" click on submodule "([^"]*)"$/ do |modules|
+  risk_perfomance_page.create_space_submodule_name(modules).click
+end
+Then /^Verify module "([^"]*)" contains submodules:$/ do |modules, submodules|
+  puts modules
+  array = submodules.raw.flatten
+  array.each do |module_name|
+    x = risk_perfomance_page.newspace_addmodule_column(module_name)
+    if x.displayed?
+      $driver.mouse.move_to x
+      puts module_name
+    else fail " #{module_name} is not displayed"
+    end
+  end
+end
 
-#
-# Then /^In "Create a New Space" click on submodule "([^"]*)"$/ do |modules|
-#   risk_perfomance_page.create_space_submodule_name(modules).click
-# end
-# Then /^Verify overlay "Create a New Space" module "([^"]*)" contains:$/ do |modules, submodules|
-#   puts modules
-#   puts submodules
-#   $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']").click
-#   for row in submodules.hashes()
-#     elements =  $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{row['submodule']}']")
-#     if elements.count == 0
-#       fail "BUG! Couldn't find submodule '#{row}']}'"
-#     end
-#     for i in elements
-#       if i.displayed?
-#         begin
-#           $driver.mouse.move_to i
-#         rescue
-#           fail "Can't move mouse to '#{modules}' - '#{row['submodule']}' , probably it's hidden from user"
-#         end
-#       else
-#         fail "#{row} is not visible"
-#       end
-#     end
-#   end
-# end
 #
 #
 # Then /^Add 1 random preference from each module$/ do

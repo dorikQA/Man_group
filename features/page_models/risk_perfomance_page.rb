@@ -2,6 +2,7 @@ class RiskPerfomancePage
   def profile_icon
     $driver.find_element(:xpath, "//span[@id = 'UserProfileButton']")
   end
+
   def reset_button button
     $driver.find_element(:xpath, "//button[@type = 'button' and text() = '#{button}']")
   end
@@ -24,7 +25,6 @@ class RiskPerfomancePage
       end
     end
   end
-
   def work_space_tab_name workspace_name
     workspaces = $driver.find_elements(:xpath,"//a[@class = 'nav-tab' and contains(text(), '#{workspace_name}')]")
   end
@@ -35,7 +35,6 @@ class RiskPerfomancePage
     else raise "TC Failed. WS was not created or it's not active"
     end
   end
-
   def enter_spacename_field
     $driver.find_element(:xpath, "//input[@class = 'workspace-name']")
   end
@@ -49,7 +48,8 @@ class RiskPerfomancePage
     $driver.find_element(:xpath, "//input[@class = 'rename-input']")
   end
   def create_space_submodule_name modules
-   $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+   $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+
   end
   def my_profile_submenu(submodule_text)
     $driver.find_element(:xpath, "//h3[text() = '#{submodule_text}']")
@@ -82,13 +82,20 @@ class RiskPerfomancePage
     else return array[0]
     end
   end
- def new_space_column(column_name)
+  def newspace_module_column(column_name)
    array = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{column_name}']")
    if array.size == 0
      fail "Can't find  #{column_name}"
    else return array[0]
    end
- end
+  end
+  def newspace_addmodule_column(module_name)
+   array = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{module_name}']")
+   if array.size == 0
+     fail "Can't find  #{module_name}"
+   else return array[0]
+   end
+  end
 
 
 
