@@ -48,7 +48,51 @@ class RiskPerfomancePage
   def renamefield
     $driver.find_element(:xpath, "//input[@class = 'rename-input']")
   end
+  def create_space_submodule_name modules
+   $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+  end
+  def my_profile_submenu(submodule_text)
+    $driver.find_element(:xpath, "//h3[text() = '#{submodule_text}']")
+  end
+  def my_profile_section_content(content_text)
+  array = $driver.find_elements(:xpath,"//td[text() = '#{content_text}']")
+  if array.size == 0
+    fail "Can't find  #{content_text}"
+  else return array[0]
+  end
+  end
+  def my_profile_changepassword(link_name)
+    array = $driver.find_elements(:xpath,"//span[text() = '#{link_name}']")
+    if array.size == 0
+      fail "Can't find  #{link_name}"
+    else return array[0]
+    end
+  end
+  def my_profile_languageselector(language)
+    array = $driver.find_elements(:xpath,"//tr[contains(.,'Language')]//span[contains(.,'#{language}')]")
+    if array.size == 0
+      fail "Can't find  #{language}"
+    else return array[0]
+    end
+  end
+  def my_profile_theme(theme)
+    array = $driver.find_elements(:xpath,"//div[contains(@class,'content clearfix')][./p[contains(.,'Choose a theme style')]]//label[text() = '#{theme}']")
+    if array.size == 0
+      fail "Can't find  #{theme}"
+    else return array[0]
+    end
+  end
+ def new_space_column(column_name)
+   array = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{column_name}']")
+   if array.size == 0
+     fail "Can't find  #{column_name}"
+   else return array[0]
+   end
+ end
+
+
 
 
 
 end
+

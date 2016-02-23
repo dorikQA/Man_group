@@ -3,9 +3,9 @@ Feature: Login Page
   Scenario: Login Page -Incorrect or incomplete email address
     Given Open the Man Group site
     #wrong or incomplete email
-    And Input email address "Testing"
-    Then Click "Login" button
-    Then Warning message "Invalid Email Address" should be displayed
+#    And Input email address "Testing"
+#    Then Click "Login" button
+#    Then Warning message "Invalid Email Address" should be displayed
 
   Scenario: Login Page -  the correct email address but keep the rest of the fields empty
     Given Open the Man Group site

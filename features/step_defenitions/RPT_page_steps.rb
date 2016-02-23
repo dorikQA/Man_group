@@ -77,59 +77,238 @@ Then /^WorkSpace "([^"]*)" should not be displayed$/ do |workspace_name|
     fail "Bug!!!'#{workspace_name}' exists"
   end
 end
-Then /^Verify "([^"]*)" overlay contains subsections:$/ do |overlay, subsection|
+#8
+Then /^Verify "([^"]*)" overlay contains subsections:$/ do |overlay, submenu_name|
   puts overlay
-  puts subsection
-  for row in subsection.hashes() do
-    element = $driver.find_elements(:xpath, "//h3[text() = '#{row['subsections']}']")
-    if element.count == 0
-      raise  "Couldn't find subsection  #{row}"
-    end
+  risk_perfomance_page.profile_icon.click
+  sleep 2
+  array = submenu_name.raw.flatten
+  array.each  do |submodule_text|
+    risk_perfomance_page.my_profile_submenu(submodule_text).click
+    puts submodule_text
   end
 end
-Then /^Verify subsections in ([^"]*):$/ do |subsection, name|
-  puts subsection
-  puts name
-  $driver.find_element(:xpath, "//h3[text() = '#{subsection}']").click
-  for row in name.hashes() do
-    element = $driver.find_elements(:xpath,"//td[text() = '#{row['subsections']}']")
-    if element.count == 0
-      raise  "Couldn't find subsection  #{row}"
+#9
+Then /^Verify subsections in ([^"]*):$/ do |submodule_text, submenu_content|
+  puts submodule_text
+  risk_perfomance_page.my_profile_submenu(submodule_text).click
+  array = submenu_content.raw.flatten
+  array.each do |content_text|
+  if risk_perfomance_page.my_profile_section_content(content_text).displayed == false
+  fail " #{content_text} is not displayed"
+  else
+  puts content_text
+  end
+  end
+end
+
+#10
+Then /^Verify ([^"]*) contains links:$/ do |submodule_text, linkname|
+  puts submodule_text
+  risk_perfomance_page.my_profile_submenu(submodule_text).click
+  array = linkname.raw.flatten
+  array.each do |link_name|
+    puts
+    if risk_perfomance_page.my_profile_changepassword(link_name).displayed? == false
+      fail "#{link_name} is not displayed"
+    else
+      puts link_name
+
+    end
+   end
+end
+#11
+Then /^Verify ([^"]*) contains languages:$/ do|submodule_text, language_name|
+  puts submodule_text
+  risk_perfomance_page.my_profile_submenu(submodule_text).click
+  sleep 2
+  array = language_name.raw.flatten
+  array.each do |language|
+   if risk_perfomance_page.my_profile_languageselector(language).displayed? == false
+     fail " #{language} is not displayed"
+   else
+     puts language
+   end
+  end
+end
+#12
+Then /^Verify ([^"]*) contains Theme Styles:$/ do |submodule_text, theme_name|
+  puts submodule_text
+
+  risk_perfomance_page.my_profile_submenu(submodule_text).click
+  sleep 2
+  array = theme_name.raw.flatten
+  array.each do |theme|
+    if risk_perfomance_page.my_profile_theme(theme).displayed? == false
+      fail " #{theme} is not displayed"
+    else
+      puts theme
     end
   end
 end
 
-Then /^Verify ([^"]*) contains links:$/ do |subsection, linkname|
-  puts subsection
-  puts linkname
-  $driver.find_element(:xpath, "//h3[text() = '#{subsection}']").click
-  for row in linkname.hashes() do
-    element = $driver.find_elements(:xpath,"//span[text() = '#{row['links']}']")
-    if element.count == 0
-      raise  "Couldn't find link name #{row}"
-    end
-  end
-end
-Then /^Verify ([^"]*) contains languages:$/ do|subsection, language|
-  puts subsection
-  puts language
-  $driver.find_element(:xpath, "//h3[contains(.,'#{subsection}')]").click
-  for row in language.hashes() do
-    element = $driver.find_elements(:xpath,"//tr[contains(.,'Language')]//span[contains(.,'#{row['languages']}')]")
-    if element.count == 0
-      raise  "Couldn't find language #{row}"
-    end
-  end
-end
-Then /^Verify ([^"]*) contains Theme Styles:$/ do |subsection, theme|
 
-  puts subsection
-  puts theme
-  $driver.find_element(:xpath, "//h3[text() = '#{subsection}']").click
-  for row in theme.hashes() do
-    element = $driver.find_elements(:xpath,"//div[contains(@class,'content clearfix')][./p[contains(.,'Choose a theme style')]]//label[text() = '#{row['themes']}']")
-    if element.count == 0
-      raise  "Couldn't find Theme #{row}"
-    end
-  end
-end
+# #13
+# Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modules, submodules|
+#   puts modules
+#   risk_perfomance_page.new_space_column
+# end
+
+
+
+  # for row in submodules.hashes()
+  #   element2 = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{row['submodule']}']")
+  #   if element2.count == 0
+  #     fail  "Couldn't find module #{row}"
+  #   else
+  #     for i in element2
+  #
+  #       i.click
+  #       sleep 2
+  #     end
+  #   end
+  # end
+
+#
+# Then /^In "Create a New Space" click on submodule "([^"]*)"$/ do |modules|
+#   risk_perfomance_page.create_space_submodule_name(modules).click
+# end
+# Then /^Verify overlay "Create a New Space" module "([^"]*)" contains:$/ do |modules, submodules|
+#   puts modules
+#   puts submodules
+#   $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']").click
+#   for row in submodules.hashes()
+#     elements =  $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{row['submodule']}']")
+#     if elements.count == 0
+#       fail "BUG! Couldn't find submodule '#{row}']}'"
+#     end
+#     for i in elements
+#       if i.displayed?
+#         begin
+#           $driver.mouse.move_to i
+#         rescue
+#           fail "Can't move mouse to '#{modules}' - '#{row['submodule']}' , probably it's hidden from user"
+#         end
+#       else
+#         fail "#{row} is not visible"
+#       end
+#     end
+#   end
+# end
+#
+#
+# Then /^Add 1 random preference from each module$/ do
+#   elements = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//ul[@class = 'nav-options']//a")
+#   for i in elements
+#     i.click
+#     sleep 3
+#     preferences = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//ul[@class = 'app-options appSourceList']//a")
+#     sleep 3
+#     pref = []
+#     for x in preferences
+#       if x.displayed?
+#         pref.push(x)
+#       end
+#     end
+#     pref[0].click
+#   end
+#   choosentext = []
+#   choosen =  $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//ul[@class = 'chosen-app-options chosenModules']//a")
+#   for choose in  choosen
+#     choosentext.push(choose.text)
+#   end
+#   wsname = $driver.find_element(:xpath, "//input[@class = 'workspace-name']")
+#   wsname.send_keys "Test Automation WS"
+#   sleep 3
+#   $driver.find_element(:xpath,"//span[@class = 'ui-button-text' and text() = 'Create Space']").click
+#   sleep 5
+#   puts choosentext
+#   displayedchoosentext = []
+#   displayedchoosen =  $driver.find_elements(:xpath,"//div[@ class= 'app-header clearfix']//div[@class = 'pull-left touch-drag']")
+#   for choose2 in  displayedchoosen
+#     displayedchoosentext.push(choose2.text)
+#   end
+#   if  choosentext == displayedchoosentext
+#     puts 'TC passed. All good'
+#   else fail "Check text"
+#   end
+#
+# end
+# Then /^Verify "Add Module" overlay "([^"]*)" column contains:$/ do |modules, submodules|
+#   puts modules
+#   puts submodules
+#   #element1 = $driver.find_element(:xpath, "//div[@class = 'newSpaceStepTwo']//h5[contains(.,'#{modules}')]")
+#   for row in submodules.hashes()
+#     element2 = $driver.find_elements(:xpath,"//div[@class = 'newModules']//a[text() = '#{row['submodule']}']")
+#     if element2.count == 0
+#       fail  "Couldn't find module #{row}"
+#     else
+#       for i in element2
+#         i.click
+#         sleep 2
+#       end
+#     end
+#   end
+# end
+#
+# Then /^Verify overlay "Add Module" module "([^"]*)" contains:$/ do |modules, submodules|
+#   puts modules
+#   puts submodules
+#   element = $driver.find_element(:xpath,"//div[@class = 'newModules']//a[text() = '#{modules}']").click
+#   for row in submodules.hashes()
+#     elements =  $driver.find_elements(:xpath,"//div[@class = 'newModules']//a[text() = '#{row['submodule']}']")
+#     if elements.count == 0
+#       fail "BUG! Couldn't find submodule '#{row}']}'"
+#     end
+#     for i in elements
+#       if i.displayed?
+#         begin
+#           $driver.mouse.move_to i
+#         rescue
+#           puts "Can't move mouse to '#{modules}' - '#{row['submodule']}' , probably it's unvisible for user"
+#         end
+#       else
+#         fail "#{row} is not visible"
+#       end
+#     end
+#   end
+# end
+#
+# Then /^Add moodule - add preferences and verify that preferences added and displayed in the created ws$/ do
+#   elements = $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'nav-options']//a")
+#   modules = []
+#   for i in elements
+#     if i.displayed?
+#       modules.push(i)
+#     end
+#   end
+#   for y in modules
+#     preferences = $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'app-options appSourceList']//a")
+#     sleep 1
+#     pref = []
+#     for x in preferences
+#       if x.displayed?
+#         pref.push(x)
+#       end
+#     end
+#     pref[0].click
+#   end
+#   choosentext = []
+#   choosen =  $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'chosen-app-options chosenModules']//a")
+#   for choose in  choosen
+#     choosentext.push(choose.text)
+#   end
+#   $driver.find_element(:xpath,"//span[@class = 'ui-button-text' and text() = 'Add to Space']").click
+#   sleep 3
+#   puts choosentext
+#   displayedchoosentext = []
+#   displayedchoosen =  $driver.find_elements(:xpath,"//div[@ class= 'app-header clearfix']//div[@class = 'pull-left touch-drag']")
+#   for choose2 in  displayedchoosen
+#     displayedchoosentext.push(choose2.text)
+#   end
+#   puts displayedchoosentext
+#   if  choosentext == displayedchoosentext
+#     puts 'PASSED. Preferences were added and displayed in WorkSpace'
+#   else fail "BUG! Not all prefrences are displayed. Also check text or sorting"
+#   end
+# end
