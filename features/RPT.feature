@@ -89,16 +89,16 @@ Feature: Risk & Performance Page
       |Day   |
       |Night  |
 
-## "CREATE NEW SPACE" OVERLAY
-
-#  Scenario: Create New Space overlay - Verifying that General, Performance, Risk, Admin exist
-#    Then Tap on "plus" button
-#    Then Verify "Create a New Space" overlay "01. MODULE" column contains:
-#      |submodule  |
-#      |General    |
-#      |Performance|
-#      |Risk       |
-#      |Admin      |
+# "CREATE NEW SPACE" OVERLAY
+#13
+  Scenario: Create New Space overlay - Verifying that General, Performance, Risk, Admin exist
+    Then Tap on "plus" button
+    Then Verify "Create a New Space" overlay "01. MODULE" column contains:
+      |submodule  |
+      |General    |
+      |Performance|
+      |Risk       |
+      |Admin      |
 
 ## CREATE NEW SPACE OVERLAY-VERIFYING MODULES
 ##14

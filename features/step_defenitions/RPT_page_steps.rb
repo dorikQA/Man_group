@@ -131,10 +131,10 @@ Then /^Verify ([^"]*) contains languages:$/ do|submodule_text, language_name|
    end
   end
 end
+
 #12
 Then /^Verify ([^"]*) contains Theme Styles:$/ do |submodule_text, theme_name|
   puts submodule_text
-
   risk_perfomance_page.my_profile_submenu(submodule_text).click
   sleep 2
   array = theme_name.raw.flatten
@@ -146,28 +146,26 @@ Then /^Verify ([^"]*) contains Theme Styles:$/ do |submodule_text, theme_name|
     end
   end
 end
-
-
-# #13
+#13
 # Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modules, submodules|
 #   puts modules
 #   risk_perfomance_page.new_space_column
 # end
-
-
-
-  # for row in submodules.hashes()
-  #   element2 = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{row['submodule']}']")
-  #   if element2.count == 0
-  #     fail  "Couldn't find module #{row}"
-  #   else
-  #     for i in element2
-  #
-  #       i.click
-  #       sleep 2
-  #     end
-  #   end
-  # end
+#
+#
+#
+#   for row in submodules.hashes()
+#     element2 = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{row['submodule']}']")
+#     if element2.count == 0
+#       fail  "Couldn't find module #{row}"
+#     else
+#       for i in element2
+#
+#         i.click
+#         sleep 2
+#       end
+#     end
+#   end
 
 #
 # Then /^In "Create a New Space" click on submodule "([^"]*)"$/ do |modules|
