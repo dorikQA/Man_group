@@ -15,7 +15,8 @@ Then (/^Tap "([^"]*)" button$/) do |button|
 
 end
 Then /^Tap on "plus" button$/ do
-  risk_perfomance_page.plus_workspace_button.click
+   risk_perfomance_page.plus_workspace_button.click
+   sleep 3
 end
 
 Then /^Verify "([^"]*)" overlay opens$/ do |create_newspace_overlay|
@@ -94,7 +95,7 @@ Then /^Verify subsections in ([^"]*):$/ do |submodule_text, submenu_content|
   risk_perfomance_page.my_profile_submenu(submodule_text).click
   array = submenu_content.raw.flatten
   array.each do |content_text|
-  if risk_perfomance_page.my_profile_section_content(content_text).displayed == false
+  if risk_perfomance_page.my_profile_section_content(content_text).displayed? == false
   fail " #{content_text} is not displayed"
   else
   puts content_text
@@ -249,13 +250,13 @@ Then /^"([^"]*)" overlay should have columns:$/ do |overlay, columns|
     puts column_name
   end
 end
-Then /^Then "([^"]*)" column should contains submodules:$/ do  |module_submodule, pdf_table|
+Then /^"([^"]*)" should contains submodules:$/ do  |module_submodule, pdf_table|
   puts module_submodule
   array = pdf_table.raw.flatten
   array.each do |reporttype|
     x = risk_perfomance_page.pdf_modulecolumn_submodule(reporttype)
     if x.displayed?
-      $driver.mouse.move_to x
+      x.click
       puts reporttype
     else fail " #{reporttype} is not displayed"
     end

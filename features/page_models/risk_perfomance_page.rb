@@ -138,7 +138,7 @@ class RiskPerfomancePage
    end
 
   def pdf_modulecolumn_submodule(reporttype)
-  array = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//ul[@class = 'nav-options']//a[contains(text(), '#{reporttype}')]")
+  array = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//ul[@class = 'nav-options']//*[contains(text(), '#{reporttype}')]")
   if array.size == 0
     fail "Can't find  #{reporttype}"
   else return array[0]
