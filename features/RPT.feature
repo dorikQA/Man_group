@@ -55,6 +55,7 @@ Feature: Risk & Performance Page
     Then Click "Remove" in menu
     Then WorkSpace "Remove me" should not be displayed
 #8
+  @myportfolio
   Scenario: My Profile - Verify  that My Profile overlay contains Contact information, Change Password, Language selector, Preference
     Then Click "Profile" icon
     Then Verify "My Profile" overlay contains subsections:
@@ -63,6 +64,7 @@ Feature: Risk & Performance Page
       |Language Selector   |
       |Preferences        |
 #9
+  @myportfolio
   Scenario:  My Profile - Verify  subsections in Contact Information required subsections
     Then Click "Profile" icon
     Then Verify subsections in Contact Information:
@@ -70,6 +72,7 @@ Feature: Risk & Performance Page
       |Email      |
       |Company    |
 #10
+  @myportfolio
   Scenario: My Profile - Change Password contains required links
     Then Click "Profile" icon
     Then Verify Change Password contains links:
@@ -77,12 +80,14 @@ Feature: Risk & Performance Page
       |Click here to reset your pin     |
 
 #11
+  @myportfolio
   Scenario: My Profile - Verify  Language Selector contains required languages
     Then Click "Profile" icon
     Then Verify Language Selector contains languages:
       |English  |
 
  #12
+  @myportfolio
   Scenario:My Profile - Verify  subsections in Preferences required Theme Styles
     Then Click "Profile" icon
     Then Verify Preferences contains Theme Styles:
@@ -91,6 +96,7 @@ Feature: Risk & Performance Page
 
 # "CREATE NEW SPACE" OVERLAY
 #13
+  @createnewspace
  Scenario: Create New Space overlay - Verifying that General, Performance, Risk, Admin exist
     Then Tap on "plus" button
     Then Verify "Create a New Space" overlay "01. MODULE" column contains:
@@ -101,7 +107,8 @@ Feature: Risk & Performance Page
 
 # CREATE NEW SPACE OVERLAY-VERIFYING MODULES
 #14
-Scenario: Create New Space overlay - General contains required submodules
+  @createnewspace
+ Scenario: Create New Space overlay - General contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "General"
     Then Verify module "General" contains submodules:
@@ -111,6 +118,7 @@ Scenario: Create New Space overlay - General contains required submodules
       |Commentary         |
 # CREATE NEW SPACE OVERLAY-VERIFYING SUBMODULES-USER PREFERENCES
  #15
+  @createnewspace
  Scenario: Create New Space overlay - Risk contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Risk"
@@ -123,7 +131,8 @@ Scenario: Create New Space overlay - General contains required submodules
       |Exposure           |
       |Risk vs. Return    |
  #16
-Scenario: Create New Space overlay - Perfomance contains required submodules
+  @createnewspace
+  Scenario: Create New Space overlay - Perfomance contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Performance"
     Then Verify module "Performance" contains submodules:
@@ -134,14 +143,15 @@ Scenario: Create New Space overlay - Perfomance contains required submodules
       |Benchmark Up/Down                |
       |Monthly Performance Distribution |
   #17
+  @createnewspace
 Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Admin"
     Then Verify module "Admin" contains submodules:
       |Data Monitor     |
-
   ## Verifying elements after success login
 #18
+  @pdf
  Scenario: Login with valid credentials- All required elements should be displayed
     Then "Company" logo should be displayed
     Then "Plus" button to create new work should be displayed
@@ -152,6 +162,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #    Then Welcome,[User Name] string should be displayed on right side of portal-??
 #19
 ## "ADD MODULE "  overlay
+  @addmodule
   Scenario: Validate Add module contains required columns
     Then Click on 'ADD MODULE' button
     Then "ADD MODULE" overlay should display columns:
@@ -159,6 +170,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |02. ADD MODULE(S)|
       |03. YOUR MODULE QUEUE|
 #20
+  @addmodule
   Scenario: Validate Add module MODULE column contains
     Then Click on 'ADD MODULE' button
     Then "MODULE" column should contains submodules:
@@ -168,6 +180,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |Admin      |
 
 #21
+  @addmodule
   Scenario:  Validate Add module - MODULE column - General - contains required submodules
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' click on submodule "General"
@@ -178,6 +191,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     |Commentary         |
 
  #22
+  @addmodule
   Scenario:  Validate Add module - MODULE - Risk - column contains required submodules
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' click on submodule "Risk"
@@ -191,6 +205,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |Risk vs. Return    |
 
  #23
+  @addmodule
  Scenario:  Validate Add module - MODULE - Performance - column contains required submodules
    Then Click on 'ADD MODULE' button
    Then In 'ADD MODULE' click on submodule "Performance"
@@ -202,19 +217,23 @@ Scenario: Create New Space overlay - Admin contains required submodules
      |Benchmark Up/Down                |
      |Monthly Performance Distribution |
   #24
-  Scenario: Validate PDF download contains required columns
+  @pdf
+  Scenario: Validate PDF download contains required columns and close button functionality
     Then Click on 'PDF download' button
     Then "Download PDF" overlay should have columns:
       |01. REPORT TYPE      |
       |02. PORTFOLIO / FUNDS|
       |03. YOUR LIST        |
+    #Then Close 'PDF download' overlay
+
   #25
+  @pdf
    Scenario: Validate PDF download - Report types
-     Then Click on 'ADD MODULE' button
-     Then "REPORT TYPE" column should contains submodules:
-       |Standard Report    |
-       |Basic Report       |
-       |Standard HPC       |
-       |Limit Report       |
-       |Custom Report      |
+     Then Click on 'PDF download' button
+     Then "REPORT TYPE" should contains submodules:
+       |Standard Report  |
+       |Basic Report     |
+       |Standard HPC     |
+       |Limit Report     |
+       |Custom Report    |
 
