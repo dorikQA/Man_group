@@ -201,5 +201,20 @@ Scenario: Create New Space overlay - Admin contains required submodules
      |Style                            |
      |Benchmark Up/Down                |
      |Monthly Performance Distribution |
-
+  #24
+  Scenario: Validate PDF download contains required columns
+    Then Click on 'PDF download' button
+    Then "Download PDF" overlay should have columns:
+      |01. REPORT TYPE      |
+      |02. PORTFOLIO / FUNDS|
+      |03. YOUR LIST        |
+  #25
+   Scenario: Validate PDF download - Report types
+     Then Click on 'ADD MODULE' button
+     Then "REPORT TYPE" column should contains submodules:
+       |Standard Report    |
+       |Basic Report       |
+       |Standard HPC       |
+       |Limit Report       |
+       |Custom Report      |
 

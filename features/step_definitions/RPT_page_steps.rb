@@ -213,8 +213,6 @@ Then /^In 'ADD MODULE' click on submodule "([^"]*)"$/ do |submodule__name|
  puts submodule__name
  risk_perfomance_page.modulecolumn_submodule_name(submodule__name).click
 end
-
-
 Then /^"([^"]*)" column should contains submodules:$/ do |column_mame, module_table|
   puts column_mame
   array = module_table.raw.flatten
@@ -227,7 +225,6 @@ Then /^"([^"]*)" column should contains submodules:$/ do |column_mame, module_ta
       end
   end
 end
-
 Then /^Module "([^"]*)" contains submodules:$/ do |module_submodule, addmodule_table|
   puts module_submodule
   array = addmodule_table.raw.flatten
@@ -240,6 +237,31 @@ Then /^Module "([^"]*)" contains submodules:$/ do |module_submodule, addmodule_t
     end
   end
 end
+##PDF download Overlay
+Then /^Click on 'PDF download' button$/ do
+  risk_perfomance_page.download_pdf_button.click
+end
+Then /^"([^"]*)" overlay should have columns:$/ do |overlay, columns|
+  puts overlay
+  array = columns.raw.flatten
+  array.each do |column_name|
+    risk_perfomance_page.pdf_overlay_column_name(column_name)
+    puts column_name
+  end
+end
+Then /^Then "([^"]*)" column should contains submodules:$/ do  |module_submodule, pdf_table|
+  puts module_submodule
+  array = pdf_table.raw.flatten
+  array.each do |reporttype|
+    x = risk_perfomance_page.pdf_modulecolumn_submodule(reporttype)
+    if x.displayed?
+      $driver.mouse.move_to x
+      puts reporttype
+    else fail " #{reporttype} is not displayed"
+    end
+  end
+end
+
 
 
 

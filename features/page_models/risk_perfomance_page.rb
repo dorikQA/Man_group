@@ -120,7 +120,7 @@ class RiskPerfomancePage
      fail "Can't find  #{modulecolumn_submodule_name}"
    else return array[0]
    end
-  end
+   end
 
   def addmodule_addmodules_submodule(submodule_name)
     array = $driver.find_elements(:xpath, "//div[@id = 'AddModuleModal']//ul[@class = 'app-options appSourceList']//a[text() = '#{submodule_name}']")
@@ -129,5 +129,21 @@ class RiskPerfomancePage
     else return array[0]
     end
   end
+   def pdf_overlay_column_name(column_name)
+     array = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//h5[text() = '#{column_name}']")
+     if array.size == 0
+       fail "Can't find  #{column_name}"
+     else  return array[0]
+     end
+   end
+
+  def pdf_modulecolumn_submodule(reporttype)
+  array = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//ul[@class = 'nav-options']//a[contains(text(), '#{reporttype}')]")
+  if array.size == 0
+    fail "Can't find  #{reporttype}"
+  else return array[0]
+  end
+  end
+
 end
 
