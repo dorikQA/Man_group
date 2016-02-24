@@ -110,6 +110,10 @@ class RiskPerfomancePage
       fail "Can't find  #{column_name}"
     end
   end
+  def modulecolumn_submodule_name(modulecolumn_submodule_name)
+    $driver.find_element(:xpath, "//div[@id = 'AddModuleModal']//ul[@class = 'nav-options']//a[text() = '#{modulecolumn_submodule_name}']")
+  end
+
   def addmodule_modulecolumn_submodule(modulecolumn_submodule_name)
    array = $driver.find_elements(:xpath, "//div[@id = 'AddModuleModal']//ul[@class = 'nav-options']//a[text() = '#{modulecolumn_submodule_name}']")
    if array.size == 0

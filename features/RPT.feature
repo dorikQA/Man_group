@@ -126,7 +126,7 @@ Scenario: Create New Space overlay - General contains required submodules
 Scenario: Create New Space overlay - Perfomance contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Performance"
-    Then  Verify module "Performance" contains submodules:
+    Then Verify module "Performance" contains submodules:
       |Performance Decomposition        |
       |Performance Snapshot             |
       |Statistics                       |
@@ -137,7 +137,7 @@ Scenario: Create New Space overlay - Perfomance contains required submodules
 Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Admin"
-    Then  Verify module "Admin" contains submodules:
+    Then Verify module "Admin" contains submodules:
       |Data Monitor     |
 
   ## Verifying elements after success login

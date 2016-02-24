@@ -211,8 +211,9 @@ Then /^"([^"]*)" overlay should display columns:$/ do |overlay, columns|
 end
 Then /^In 'ADD MODULE' click on submodule "([^"]*)"$/ do |submodule__name|
  puts submodule__name
- risk_perfomance_page.addmodule_modulecolumn_submodule(modulecolumn_submodule_name).click
+ risk_perfomance_page.modulecolumn_submodule_name(submodule__name).click
 end
+
 
 Then /^"([^"]*)" column should contains submodules:$/ do |column_mame, module_table|
   puts column_mame
@@ -238,7 +239,6 @@ Then /^Module "([^"]*)" contains submodules:$/ do |module_submodule, addmodule_t
     else fail " #{submodule_name} is not displayed"
     end
   end
-
 end
 
 
