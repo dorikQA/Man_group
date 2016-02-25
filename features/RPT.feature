@@ -3,8 +3,8 @@ Feature: Risk & Performance Page
   Background:
     Given Open the Man Group site
     Given Enter "Testing112123123@gmail.com" password "0ChangeMe0!$$" and pin "9876" and click "Login" button
-#    Then Click "Profile" icon
-#    Then Tap "Reset" button
+    Then Click "Profile" icon
+    Then Tap "Reset" button
 #1
   Scenario:  Reset profile settings
     Then Click "Profile" icon
@@ -169,6 +169,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |01. MODULE|
       |02. ADD MODULE(S)|
       |03. YOUR MODULE QUEUE|
+     Then Close Add module overlay
 #20
   @addmodule
   Scenario: Validate Add module MODULE column contains
@@ -224,7 +225,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |01. REPORT TYPE      |
       |02. PORTFOLIO / FUNDS|
       |03. YOUR LIST        |
-    #Then Close 'PDF download' overlay
+    Then Close 'PDF download' overlay
 
   #25
   @pdf
@@ -236,4 +237,15 @@ Scenario: Create New Space overlay - Admin contains required submodules
        |Standard HPC     |
        |Limit Report     |
        |Custom Report    |
+
+  Scenario: Create new space - General  - add preferences
+     Then Tap on "plus" button
+     Then Enter "Test1" workspace name
+     Then In "Create a New Space" click on submodule "General"
+     Then Click on all items from "ADD MODULE" column
+     Then Verify all added submodules displayed in YOUR MODULE QUEUE
+     Then Tap "Create Space" button on the "Create a new space" overlay
+     Then Verify that all added modals displayed
+
+
 

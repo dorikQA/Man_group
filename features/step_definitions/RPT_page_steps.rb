@@ -28,23 +28,22 @@ Then /^Verify "([^"]*)" overlay opens$/ do |create_newspace_overlay|
   end
 end
 
-Then (/^Tap "([^"]*)" button on the "Create a new space" overlay$/) do |button_name|
+ Then (/^Tap "([^"]*)" button on the "Create a new space" overlay$/) do |button_name|
   risk_perfomance_page.create_space_buttons(button_name)
 end
-Then /^"([^"]*)" overlay should be closed$/ do |create_newspace_overlay|
+ Then /^"([^"]*)" overlay should be closed$/ do |create_newspace_overlay|
   if risk_perfomance_page.workspace_overlay(create_newspace_overlay).displayed?
     fail "BUG! '#{create_newspace_overlay}' still displayed"
   end
 end
-
-Then /^"([^"]*)" tab should exists$/ do |workspace_name|
+ Then /^"([^"]*)" tab should exists$/ do |workspace_name|
   risk_perfomance_page.work_space_tab_name workspace_name
 
 end
-Then /^Just created "([^"]*)" tab should be active$/ do |workspace_name|
+ Then /^Just created "([^"]*)" tab should be active$/ do |workspace_name|
   risk_perfomance_page.active_work_space_tab workspace_name
 end
-Then /^Enter "([^"]*)" workspace name$/ do |workspacename|
+ Then /^Enter "([^"]*)" workspace name$/ do |workspacename|
   risk_perfomance_page.enter_spacename_field.click
   risk_perfomance_page.enter_spacename_field.clear
   sleep 3
@@ -55,11 +54,11 @@ Then /^Enter "([^"]*)" workspace name$/ do |workspacename|
   # # risk_perfomance_page.enter_spacename_field.clear
   # risk_perfomance_page.enter_spacename_field.send_keys "#{workspacename}"
 end
-Then /^Move mouse to "([^"]*)"/ do |ws|
+ Then /^Move mouse to "([^"]*)"/ do |ws|
   workspace = risk_perfomance_page.workspace ws
   $driver.mouse.move_to workspace
 end
-Then /^Click "([^"]*)" in menu$/ do |action|
+ Then /^Click "([^"]*)" in menu$/ do |action|
   actions = risk_perfomance_page.actions action
   sleep 4
   for i in actions
@@ -68,18 +67,18 @@ Then /^Click "([^"]*)" in menu$/ do |action|
     end
   end
 end
-Then /^Enter new name "([^"]*)" of workspace and press enter button$/ do |new_ws_name|
+ Then /^Enter new name "([^"]*)" of workspace and press enter button$/ do |new_ws_name|
   risk_perfomance_page.renamefield.send_keys new_ws_name
   risk_perfomance_page.renamefield.send_keys :enter
 end
-Then /^WorkSpace "([^"]*)" should not be displayed$/ do |workspace_name|
+ Then /^WorkSpace "([^"]*)" should not be displayed$/ do |workspace_name|
   sleep 4
   if risk_perfomance_page.work_space_tab_name(workspace_name).count > 0
     fail "Bug!!!'#{workspace_name}' exists"
   end
 end
 #8
-Then /^Verify "([^"]*)" overlay contains subsections:$/ do |overlay, submenu_name|
+ Then /^Verify "([^"]*)" overlay contains subsections:$/ do |overlay, submenu_name|
   puts overlay
   risk_perfomance_page.profile_icon.click
   sleep 2
@@ -90,7 +89,7 @@ Then /^Verify "([^"]*)" overlay contains subsections:$/ do |overlay, submenu_nam
   end
 end
 #9
-Then /^Verify subsections in ([^"]*):$/ do |submodule_text, submenu_content|
+ Then /^Verify subsections in ([^"]*):$/ do |submodule_text, submenu_content|
   puts submodule_text
   risk_perfomance_page.my_profile_submenu(submodule_text).click
   array = submenu_content.raw.flatten
@@ -104,7 +103,7 @@ Then /^Verify subsections in ([^"]*):$/ do |submodule_text, submenu_content|
 end
 
 #10
-Then /^Verify ([^"]*) contains links:$/ do |submodule_text, linkname|
+ Then /^Verify ([^"]*) contains links:$/ do |submodule_text, linkname|
   puts submodule_text
   risk_perfomance_page.my_profile_submenu(submodule_text).click
   array = linkname.raw.flatten
@@ -119,7 +118,7 @@ Then /^Verify ([^"]*) contains links:$/ do |submodule_text, linkname|
    end
 end
 #11
-Then /^Verify ([^"]*) contains languages:$/ do|submodule_text, language_name|
+ Then /^Verify ([^"]*) contains languages:$/ do|submodule_text, language_name|
   puts submodule_text
   risk_perfomance_page.my_profile_submenu(submodule_text).click
   sleep 2
@@ -134,7 +133,7 @@ Then /^Verify ([^"]*) contains languages:$/ do|submodule_text, language_name|
 end
 
 #12
-Then /^Verify ([^"]*) contains Theme Styles:$/ do |submodule_text, theme_name|
+ Then /^Verify ([^"]*) contains Theme Styles:$/ do |submodule_text, theme_name|
   puts submodule_text
   risk_perfomance_page.my_profile_submenu(submodule_text).click
   sleep 2
@@ -148,7 +147,7 @@ Then /^Verify ([^"]*) contains Theme Styles:$/ do |submodule_text, theme_name|
   end
 end
 #13
-Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modules, submodules|
+ Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modules, submodules|
   puts modules
   array = submodules.raw.flatten
   array.each do |module_name|
@@ -157,10 +156,10 @@ Then /^Verify "Create a New Space" overlay "([^"]*)" column contains:$/ do |modu
   end
   end
 # 14-17
-Then /^In "Create a New Space" click on submodule "([^"]*)"$/ do |modules|
+ Then /^In "Create a New Space" click on submodule "([^"]*)"$/ do |modules|
   risk_perfomance_page.create_space_submodule_name(modules).click
 end
-Then /^Verify module "([^"]*)" contains submodules:$/ do |modules, submodules|
+ Then /^Verify module "([^"]*)" contains submodules:$/ do |modules, submodules|
   puts modules
   array = submodules.raw.flatten
   array.each do |module_name|
@@ -173,7 +172,7 @@ Then /^Verify module "([^"]*)" contains submodules:$/ do |modules, submodules|
   end
 end
 #18
-Then /^"Company" logo should be displayed$/ do
+ Then /^"Company" logo should be displayed$/ do
   if risk_perfomance_page.company_logo.displayed? == false
     fail "LOGO is not displayed"
   end
@@ -183,7 +182,7 @@ end
      fail "Plus button to create new work space is not displayed"
    end
  end
-  Then /^"My Profile" icon should be displayed$/ do
+ Then /^"My Profile" icon should be displayed$/ do
     if risk_perfomance_page.profile_icon.displayed? == false
       fail "My Profile icon is not displayed"
     end
@@ -194,15 +193,18 @@ end
   end
  end
 
-Then /^'DOWNLOAD PDF' button should be displayed$/ do
+ Then /^'DOWNLOAD PDF' button should be displayed$/ do
   if risk_perfomance_page.download_pdf_button.displayed? == false
     fail "'DOWNLOAD PDF' icon is not displayed"
   end
 end
-Then /^Click on 'ADD MODULE' button$/ do
+ Then /^Click on 'ADD MODULE' button$/ do
  risk_perfomance_page.add_module_button.click
 end
-Then /^"([^"]*)" overlay should display columns:$/ do |overlay, columns|
+ Then /^Close Add module overlay$/ do
+ risk_perfomance_page.addmodule_close.click
+end
+ Then /^"([^"]*)" overlay should display columns:$/ do |overlay, columns|
   puts overlay
   array = columns.raw.flatten
   array.each do |column_name|
@@ -210,11 +212,11 @@ Then /^"([^"]*)" overlay should display columns:$/ do |overlay, columns|
       puts column_name
   end
 end
-Then /^In 'ADD MODULE' click on submodule "([^"]*)"$/ do |submodule__name|
+ Then /^In 'ADD MODULE' click on submodule "([^"]*)"$/ do |submodule__name|
  puts submodule__name
  risk_perfomance_page.modulecolumn_submodule_name(submodule__name).click
 end
-Then /^"([^"]*)" column should contains submodules:$/ do |column_mame, module_table|
+ Then /^"([^"]*)" column should contains submodules:$/ do |column_mame, module_table|
   puts column_mame
   array = module_table.raw.flatten
   array.each do |submodule_name|
@@ -262,9 +264,68 @@ Then /^"([^"]*)" should contains submodules:$/ do  |module_submodule, pdf_table|
     end
   end
 end
+Then /^Close 'PDF download' overlay$/ do
+  sleep 3
+  button = risk_perfomance_page.pdfoverlay_close_button
+ if button.displayed?
+   button.click
+ else
+   fail "Close button is not displayed"
+ end
+end
+
+Then /^Click on all items from "ADD MODULE" column$/ do
+  items  = risk_perfomance_page.ws_addmodules
+ for i in items
+    if i.displayed?
+    # puts i.text
+     i.click
+    end
+ end
+end
+Then /^Verify all added submodules displayed in YOUR MODULE QUEUE$/ do
+  items  = risk_perfomance_page.ws_addmodules
+  itemname = []
+  for i in items
+    if i.displayed?
+      itemname.push(i.text)
+    end
+  end
+  puts itemname
+  selcteditems= risk_perfomance_page.ws_queue
+  selcteditemstext = []
+  for i in selcteditems
+    selcteditemstext.push(i.text)
+  end
+  puts selcteditemstext
+
+  if itemname != selcteditemstext
+  fail "BUG!!! Not all prefrences are displayed. Also check item text or sorting"
+  end
+  @array1 = selcteditemstext
+end
+
+Then /^Verify that all added modals displayed$/ do
+  displayed_moduls = risk_perfomance_page.displayed_moduls
+  displayed_moduls_text = []
+  for i in displayed_moduls
+    displayed_moduls_text.push(i.text)
+  end
+  puts displayed_moduls_text
+  @array2 = displayed_moduls_text
+   if @array1 !=  @array2
+    fail "bug!"
+   else puts "all cool"
+
+   end
 
 
+end
 
+
+# Then /^/ do
+#
+# end
 
 #
 # Then /^Add moodule - add preferences and verify that preferences added and displayed in the created ws$/ do

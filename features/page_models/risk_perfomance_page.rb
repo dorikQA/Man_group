@@ -1,4 +1,5 @@
 class RiskPerfomancePage
+
   def profile_icon
     $driver.find_element(:xpath, "//span[@id = 'UserProfileButton']")
   end
@@ -46,10 +47,9 @@ class RiskPerfomancePage
   def renamefield
     $driver.find_element(:xpath, "//input[@class = 'rename-input']")
   end
-  def create_space_submodule_name(modules)
-   $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
-
-  end
+  # def create_space_submodule_name(modules)
+  #  $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+  # end
   def my_profile_submenu(submodule_text)
     $driver.find_element(:xpath, "//h3[text() = '#{submodule_text}']")
   end
@@ -89,7 +89,7 @@ class RiskPerfomancePage
    end
   end
   def newspace_addmodule_column(module_name)
-   array = $driver.find_elements(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{module_name}']")
+   array = $driver.find_elements(:xpath,"//div[@id = 'AddWorkspaceModal']//ul[@class = 'app-options appSourceList']//a[text() = '#{module_name}']")
    if array.size == 0
      fail "Can't find  #{module_name}"
    else return array[0]
@@ -113,7 +113,6 @@ class RiskPerfomancePage
   def modulecolumn_submodule_name(modulecolumn_submodule_name)
     $driver.find_element(:xpath, "//div[@id = 'AddModuleModal']//ul[@class = 'nav-options']//a[text() = '#{modulecolumn_submodule_name}']")
   end
-
   def addmodule_modulecolumn_submodule(modulecolumn_submodule_name)
    array = $driver.find_elements(:xpath, "//div[@id = 'AddModuleModal']//ul[@class = 'nav-options']//a[text() = '#{modulecolumn_submodule_name}']")
    if array.size == 0
@@ -121,7 +120,6 @@ class RiskPerfomancePage
    else return array[0]
    end
    end
-
   def addmodule_addmodules_submodule(submodule_name)
     array = $driver.find_elements(:xpath, "//div[@id = 'AddModuleModal']//ul[@class = 'app-options appSourceList']//a[text() = '#{submodule_name}']")
     if array.size == 0
@@ -129,21 +127,41 @@ class RiskPerfomancePage
     else return array[0]
     end
   end
-   def pdf_overlay_column_name(column_name)
+  def pdf_overlay_column_name(column_name)
      array = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//h5[text() = '#{column_name}']")
      if array.size == 0
        fail "Can't find  #{column_name}"
      else  return array[0]
      end
    end
-
   def pdf_modulecolumn_submodule(reporttype)
+    sleep 3
   array = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//ul[@class = 'nav-options']//*[contains(text(), '#{reporttype}')]")
   if array.size == 0
     fail "Can't find  #{reporttype}"
   else return array[0]
   end
   end
+  def pdfoverlay_close_button
+    $driver.find_element(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')][.//span[@id = 'ui-id-24']]//button[@title = 'close']")
+  end
+  def addmodule_close
+    $driver.find_element(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')][.//span[@id = 'ui-id-23']]//button[@title = 'close']")
+  end
+  def create_space_submodule_name(modules)
+    $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+  end
+  def ws_addmodules
+    $driver.find_elements(:xpath, "//div[@id = 'AddWorkspaceModal']//div[@class = 'app-options-container clearfix']//a")
+  end
+  def ws_queue
+    $driver.find_elements(:xpath, "//div[@id = 'AddWorkspaceModal']//div[@class = 'chosen-app-options-container']//a")
+  end
+  def displayed_moduls
+    $driver.find_elements(:xpath,"//div[@ class= 'app-header clearfix']//div[@class = 'pull-left touch-drag']")
+  end
+
+
 
 end
 
