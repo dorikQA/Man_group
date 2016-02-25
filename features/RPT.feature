@@ -2,9 +2,9 @@ Feature: Risk & Performance Page
 
   Background:
     Given Open the Man Group site
-    Given Enter "Testing112123123@gmail.com" password "0ChangeMe0!$$" and pin "9876" and click "Login" button
-    Then Click "Profile" icon
-    Then Tap "Reset" button
+    Given Enter "InternalBasicAutomationMG@gmail.com" password "0ChangeMe0!1" and pin "9876" and click "Login" button
+#    Then Click "Profile" icon
+#    Then Tap "Reset" button
 #1
   Scenario:  Reset profile settings
     Then Click "Profile" icon
@@ -179,7 +179,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |Performance|
       |Risk       |
       |Admin      |
-
 #21
   @addmodule
   Scenario:  Validate Add module - MODULE column - General - contains required submodules
@@ -190,7 +189,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
     |Fund Summary       |
     |Fund Ratings       |
     |Commentary         |
-
  #22
   @addmodule
   Scenario:  Validate Add module - MODULE - Risk - column contains required submodules
@@ -204,7 +202,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |VaR Return Envelope|
       |Exposure           |
       |Risk vs. Return    |
-
  #23
   @addmodule
  Scenario:  Validate Add module - MODULE - Performance - column contains required submodules
@@ -237,15 +234,55 @@ Scenario: Create New Space overlay - Admin contains required submodules
        |Standard HPC     |
        |Limit Report     |
        |Custom Report    |
-
+#26
   Scenario: Create new space - General  - add preferences
      Then Tap on "plus" button
-     Then Enter "Test1" workspace name
+     Then Enter "Test General Preference" workspace name
      Then In "Create a New Space" click on submodule "General"
      Then Click on all items from "ADD MODULE" column
      Then Verify all added submodules displayed in YOUR MODULE QUEUE
      Then Tap "Create Space" button on the "Create a new space" overlay
      Then Verify that all added modals displayed
+#27
+  Scenario: Create new space - Perfomance  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test Performance Preference" workspace name
+    Then In "Create a New Space" click on submodule "Performance"
+    Then Click on all items from "ADD MODULE" column
+    Then Verify all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all added modals displayed
+#28
+  Scenario: Create new space - Risk  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test Risk Preference" workspace name
+    Then In "Create a New Space" click on submodule "Risk"
+    Then Click on all items from "ADD MODULE" column
+    Then Verify all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all added modals displayed
+#29
+  Scenario: Create new space - Admin  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test Admin Preference" workspace name
+    Then In "Create a New Space" click on submodule "Admin"
+    Then Click on all items from "ADD MODULE" column
+    Then Verify all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all added modals displayed
+ # 30
+  Scenario: Create new space - Adding Random Preferences from all modules
+    Then Tap on "plus" button
+    Then Add random one preference from each module
+    Then Enter "Random Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all added modals displayed
+    Then Click on 'ADD MODULE' button
 
-
+  #31
+  Scenario: Add module- Add random preference
+    Then Tap on "plus" button
+    Then Enter "AddModule Random Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
 

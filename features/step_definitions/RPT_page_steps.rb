@@ -276,58 +276,61 @@ end
 
 Then /^Click on all items from "ADD MODULE" column$/ do
   items  = risk_perfomance_page.ws_addmodules
+  itemstext = []
  for i in items
     if i.displayed?
-    # puts i.text
-     i.click
+    itemstext.push(i.text)
+    i.click
     end
  end
+  @array1 =  itemstext
+  # puts @array1
 end
+
+
 Then /^Verify all added submodules displayed in YOUR MODULE QUEUE$/ do
-  items  = risk_perfomance_page.ws_addmodules
-  itemname = []
-  for i in items
-    if i.displayed?
-      itemname.push(i.text)
-    end
-  end
-  puts itemname
   selcteditems= risk_perfomance_page.ws_queue
   selcteditemstext = []
   for i in selcteditems
     selcteditemstext.push(i.text)
   end
-  puts selcteditemstext
-
-  if itemname != selcteditemstext
-  fail "BUG!!! Not all prefrences are displayed. Also check item text or sorting"
+  @array2 = selcteditemstext
+  # puts @array2
+  if @array1 != @array2
+  fail "BUG!!! Not all added  prefrences are displayed in QUEUE"
   end
-  @array1 = selcteditemstext
+  # puts @array1
+  # puts  @array2
+
 end
+Then /^Verify that randomly added preferences displayed$/ do
+  sleep 7
+  @array3 = risk_perfomance_page.displyed_modules_list
+  if @array3 !=  @array2
+    fail "Bug! Not all modules are displayed user added something different"
+  else puts "all cool"
+  end
+
+ end
+
+Then /^Add random one preference from each module$/ do
+  risk_perfomance_page.random_click_preference
+  @queuelist =  risk_perfomance_page.queue_item_list
+end
+
 
 Then /^Verify that all added modals displayed$/ do
-  displayed_moduls = risk_perfomance_page.displayed_moduls
-  displayed_moduls_text = []
-  for i in displayed_moduls
-    displayed_moduls_text.push(i.text)
+  if risk_perfomance_page.displyed_modules_list != @queuelist
+  elsif @array3 !=  @array2
+    puts "Bug"
+  else puts "All good"
   end
-  puts displayed_moduls_text
-  @array2 = displayed_moduls_text
-   if @array1 !=  @array2
-    fail "bug!"
-   else puts "all cool"
-
-   end
-
-
+  puts risk_perfomance_page.displyed_modules_list
+  puts @queuelist
 end
 
 
-# Then /^/ do
-#
-# end
 
-#
 # Then /^Add moodule - add preferences and verify that preferences added and displayed in the created ws$/ do
 #   elements = $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'nav-options']//a")
 #   modules = []

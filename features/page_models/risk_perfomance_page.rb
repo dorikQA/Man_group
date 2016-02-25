@@ -160,8 +160,49 @@ class RiskPerfomancePage
   def displayed_moduls
     $driver.find_elements(:xpath,"//div[@ class= 'app-header clearfix']//div[@class = 'pull-left touch-drag']")
   end
+  def module_modulename
+    $driver.find_elements(:xpath,"//div[@id = 'AddWorkspaceModal']//div[@class  = 'nav-options-container clearfix']//a")
+
+  end
+  def queue_item_list
+    selcteditems= risk_perfomance_page.ws_queue
+    selcteditemstext = []
+    for i in selcteditems
+      selcteditemstext.push(i.text)
+    end
+    return selcteditemstext
+  end
+  def displyed_modules_list
+    sleep 5
+    displayed_moduls = risk_perfomance_page.displayed_moduls
+    displayed_moduls_text = []
+    for i in displayed_moduls
+      displayed_moduls_text.push(i.text)
+    end
+    return displayed_moduls_text
+  end
+
+  def random_click_preference
+    modules = risk_perfomance_page.module_modulename
+    modules.each do |x|
+      x.click
+      items  = risk_perfomance_page.ws_addmodules
+      itemstext = []
+      for i in items
+        if i.displayed?
+          itemstext.push(i)
+          # i.click
+        end
+      end
+      itemstext.sample.click
+    end
+
+  end
+
+
 
 
 
 end
+
 
