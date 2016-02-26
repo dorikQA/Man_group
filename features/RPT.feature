@@ -288,4 +288,44 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then In 'ADD MODULE' add random one preference from each module
     Then Tap "Add to Space" button on the "Create a new space" overlay
     Then Verify that preference from 'ADD MODULE' displayed
+  #32
+  Scenario: Verify Terms & conditions items at the bottom of RP page
+    Then At the bottom of page list of terms should be displayed
+    |Terms and Conditions|
+    |Privacy Policy      |
+    |Security            |
+
+  Scenario: Verify content of disclaimers
+    Then Click on "Terms and Conditions"
+    Then Close "Terms and Conditions" via "close" button
+    Then Click on "Terms and Conditions"
+    Then Tap 'x' to close "Terms and Conditions"
+   # And Header terms shoud be:
+   # |Terms and Conditions of Use |
+#    And Content should has:
+#    |1. General                                 |
+#    |2. Restricted Access                       |
+#    |3. No Offer                                |
+#    |4. Monitoring by MSL                       |
+#    |5. No Commercial Exploitation              |
+#    |6. Responsibilities of User                |
+#    |7. Confidentiality                         |
+#    |8. No Warranties and Exclusion of Liability|
+#    |9. Portfolio Construction Tool             |
+#    |10. Investment Performance                 |
+#    |11. No Reliance                            |
+#    |12. Miscellaneous                          |
+#    |13. Jurisdiction                           |
+#    |14. Viruses, Hacking and other offences    |
+#    |15. Changes to the Site                    |
+
+#    Then Close "Terms and Conditions"
+#    Then Close disclaimer content
+#    Then Click on "Terms and Conditions"
+#    Then Close disclaimer content
+
+
+
+
+
 

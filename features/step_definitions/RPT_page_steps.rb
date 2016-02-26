@@ -343,43 +343,21 @@ Then /^Verify that preference from 'ADD MODULE' displayed$/ do
 
 end
 
-
-
-# Then /^Add moodule - add preferences and verify that preferences added and displayed in the created ws$/ do
-#   elements = $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'nav-options']//a")
-#   modules = []
-#   for i in elements
-#     if i.displayed?
-#       modules.push(i)
-#     end
-#   end
-#   for y in modules
-#     preferences = $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'app-options appSourceList']//a")
-#     sleep 1
-#     pref = []
-#     for x in preferences
-#       if x.displayed?
-#         pref.push(x)
-#       end
-#     end
-#     pref[0].click
-#   end
-#   choosentext = []
-#   choosen =  $driver.find_elements(:xpath,"//div[@class = 'newModules']//ul[@class = 'chosen-app-options chosenModules']//a")
-#   for choose in  choosen
-#     choosentext.push(choose.text)
-#   end
-#   $driver.find_element(:xpath,"//span[@class = 'ui-button-text' and text() = 'Add to Space']").click
-#   sleep 3
-#   puts choosentext
-#   displayedchoosentext = []
-#   displayedchoosen =  $driver.find_elements(:xpath,"//div[@ class= 'app-header clearfix']//div[@class = 'pull-left touch-drag']")
-#   for choose2 in  displayedchoosen
-#     displayedchoosentext.push(choose2.text)
-#   end
-#   puts displayedchoosentext
-#   if  choosentext == displayedchoosentext
-#     puts 'PASSED. Preferences were added and displayed in WorkSpace'
-#   else fail "BUG! Not all prefrences are displayed. Also check text or sorting"
-#   end
-# end
+Then /^At the bottom of page list of terms should be displayed$/ do |disclaimers_table|
+  disclaimers_table.raw.flatten.each do |disclaimer_name|
+    x = risk_perfomance_page.disclaimers(disclaimer_name )
+    if x.displayed? == false
+     fail "#{disclaimer_name} is not displayed "
+    else puts disclaimer_name
+    end
+  end
+end
+Then /^Click on "([^"]*)"$/ do |disclaimer_name|
+  risk_perfomance_page.disclaimer(disclaimer_name).click
+end
+Then /^Close "Terms and Conditions" via "close" button$/ do
+  risk_perfomance_page.close_disclaimer_button.click
+end
+Then /^Tap 'x' to close "Terms and Conditions"$/ do
+  risk_perfomance_page.close_disclaimer_top_button.click
+end

@@ -227,7 +227,30 @@ class RiskPerfomancePage
     end
     return selcteditemstext
   end
+  def disclaimers(disclaimer_name)
+    begin
+    $driver.find_element(:xpath, "//a[contains(@class, 'disclaimer') and text() = '#{disclaimer_name}']")
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+    raise "'#{disclaimer_name}' was not found"
+    end
+  end
+  def disclaimer(disclaimer_name)
+    $driver.find_element(:xpath, "//a[contains(@class, 'disclaimer') and text() = '#{disclaimer_name}']")
+  end
+  def close_disclaimer_button
+    $driver.find_element(:xpath,"//div[@class = 'ui-dialog-buttonset']/button")
+  end
+  def disclaimer_name_content_header
+    $driver.find_element(:xpath,"//div[@class = 'disclaimer-content']//h1")
 
+  end
+  def disclaimer_name_content_boolets
+    $driver.find_element(:xpath,"//div[@class = 'disclaimer-content']//h2")
+  end
+  def close_disclaimer_top_button
+    sleep 5
+    $driver.find_element(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')]//button[@title = 'Close']")
+  end
 
 
 end
