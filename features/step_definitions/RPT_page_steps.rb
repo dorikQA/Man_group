@@ -166,12 +166,17 @@ end
   array.each do |module_name|
     x = risk_perfomance_page.newspace_addmodule_column(module_name)
     if x.displayed?
+      begin
       $driver.mouse.move_to x
       puts module_name
-    else fail " #{module_name} is not displayed"
+      rescue Selenium::WebDriver::Error::MoveTargetOutOfBoundsError
+          raise "#{module_name} is not displayed"
+   # else fail " #{module_name} is not displayed"
+      end
     end
   end
-end
+ end
+
 #18
  Then /^"Company" logo should be displayed$/ do
   if risk_perfomance_page.company_logo.displayed? == false
@@ -203,8 +208,8 @@ end
  risk_perfomance_page.add_module_button.click
 end
  Then /^Close Add module overlay$/ do
- risk_perfomance_page.addmodule_close.click
-end
+ risk_perfomance_page.close_button.click
+ end
  Then /^"([^"]*)" overlay should display columns:$/ do |overlay, columns|
   puts overlay
   array = columns.raw.flatten
@@ -267,7 +272,7 @@ Then /^"([^"]*)" should contains submodules:$/ do  |module_submodule, pdf_table|
 end
 Then /^Close 'PDF download' overlay$/ do
   sleep 3
-  button = risk_perfomance_page.pdfoverlay_close_button
+  button = risk_perfomance_page.close_button
  if button.displayed?
    button.click
  else
@@ -353,6 +358,7 @@ Then /^At the bottom of page list of terms should be displayed$/ do |disclaimers
   end
 end
 Then /^Click on "([^"]*)"$/ do |disclaimer_name|
+  sleep 5
   risk_perfomance_page.disclaimer(disclaimer_name).click
 end
 Then /^Close "Terms and Conditions" via "close" button$/ do
@@ -360,4 +366,22 @@ Then /^Close "Terms and Conditions" via "close" button$/ do
 end
 Then /^Tap 'x' to close "Terms and Conditions"$/ do
   risk_perfomance_page.close_disclaimer_top_button.click
+end
+
+And /^Disclaimer header should be '([^"]*)'$/ do |disclaimer_header|
+    risk_perfomance_page.disclaimer_name_content_header(disclaimer_header)
+    puts disclaimer_header
+end
+
+And /^Disclaimer document should have bullets:$/ do |bullets|
+  bullets.raw.flatten.each do |disclaimer_bullets|
+    risk_perfomance_page.disclaimer__boolets(disclaimer_bullets)
+    puts disclaimer_bullets
+  end
+end
+And /^List of official following websites should be:$/ do |links|
+  links.raw.flatten.each do |disclaimer_links|
+    risk_perfomance_page.disclaimer_link(disclaimer_links)
+    puts disclaimer_links
+  end
 end

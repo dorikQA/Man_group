@@ -20,11 +20,13 @@ class RiskPerfomancePage
     for i in buttons
       if i.displayed?
         i.click
+        break
       else
         raise "Can't find this button '#{button_name}' visible"
       end
     end
   end
+
   def work_space_tab_name(workspace_name)
     $driver.find_elements(:xpath,"//a[@class = 'nav-tab' and contains(text(), '#{workspace_name}')]")
   end
@@ -48,7 +50,11 @@ class RiskPerfomancePage
     $driver.find_element(:xpath, "//input[@class = 'rename-input']")
   end
   def create_space_submodule_name(modules)
-   $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+    begin
+    $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+    raise "Element #{modules} is not displayed"
+    end
   end
   def my_profile_submenu(submodule_text)
     $driver.find_element(:xpath, "//h3[text() = '#{submodule_text}']")
@@ -142,12 +148,18 @@ class RiskPerfomancePage
   else return array[0]
   end
   end
-  def pdfoverlay_close_button
-    $driver.find_element(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')][.//span[@id = 'ui-id-24']]//button[@title = 'close']")
+
+  def close_button
+    close_buttons = $driver.find_elements(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')]//button[@title = 'close']")
+    close_buttons_active = []
+    close_buttons.each do |button|
+      if button.displayed?
+        close_buttons_active.push(button)
+      end
+    end
+    return close_buttons_active[0]
   end
-  def addmodule_close
-    $driver.find_element(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')][.//span[@id = 'ui-id-23']]//button[@title = 'close']")
-  end
+
   def ws_addmodules
     $driver.find_elements(:xpath, "//div[@id = 'AddWorkspaceModal']//div[@class = 'app-options-container clearfix']//a")
   end
@@ -240,16 +252,30 @@ class RiskPerfomancePage
   def close_disclaimer_button
     $driver.find_element(:xpath,"//div[@class = 'ui-dialog-buttonset']/button")
   end
-  def disclaimer_name_content_header
-    $driver.find_element(:xpath,"//div[@class = 'disclaimer-content']//h1")
-
-  end
-  def disclaimer_name_content_boolets
-    $driver.find_element(:xpath,"//div[@class = 'disclaimer-content']//h2")
-  end
   def close_disclaimer_top_button
     sleep 5
     $driver.find_element(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')]//button[@title = 'Close']")
+  end
+  def disclaimer_name_content_header(disclaimer_header)
+    begin
+    $driver.find_element(:xpath,"//div[@class = 'disclaimer-content']/h1[text() = '#{disclaimer_header}']")
+    rescue Selenium::WebDriver::Error::NoSuchElementError || Selenium::WebDriver::Error::InvalidSelectorError
+     raise "'#{disclaimer_header}' was not found"
+   end
+  end
+  def disclaimer__boolets(disclaimer_bullets)
+    begin
+    $driver.find_element(:xpath,"//div[@class = 'disclaimer-content']/h2[contains(text(),  '#{disclaimer_bullets}')]")
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+    raise "'#{disclaimer_bullets}' was not found"
+    end
+  end
+  def disclaimer_link(disclaimer_links)
+    begin
+    $driver.find_element(:xpath,"//div[@class = 'disclaimer-content']//a[text() = '#{disclaimer_links}']")
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+      raise "'#{disclaimer_links}' was not found"
+     end
   end
 
 

@@ -3,8 +3,8 @@ Feature: Risk & Performance Page
   Background:
     Given Open the Man Group site
     Given Enter "InternalBasicAutomationMG@gmail.com" password "0ChangeMe0!1" and pin "9876" and click "Login" button
-#    Then Click "Profile" icon
-#    Then Tap "Reset" button
+    Then Click "Profile" icon
+    Then Tap "Reset" button
 #1
   Scenario:  Reset profile settings
     Then Click "Profile" icon
@@ -191,6 +191,18 @@ Scenario: Create New Space overlay - Admin contains required submodules
     |Commentary         |
  #22
   @addmodule
+  Scenario:  Validate Add module - MODULE - Performance - column contains required submodules
+    Then Click on 'ADD MODULE' button
+    Then In 'ADD MODULE' click on submodule "Performance"
+    Then Module "Performance" contains submodules:
+      |Performance Decomposition        |
+      |Performance Snapshot             |
+      |Statistics                       |
+      |Style                            |
+      |Benchmark Up/Down                |
+      |Monthly Performance Distribution |
+ #23
+  @addmodule
   Scenario:  Validate Add module - MODULE - Risk - column contains required submodules
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' click on submodule "Risk"
@@ -202,18 +214,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |VaR Return Envelope|
       |Exposure           |
       |Risk vs. Return    |
- #23
-  @addmodule
- Scenario:  Validate Add module - MODULE - Performance - column contains required submodules
-   Then Click on 'ADD MODULE' button
-   Then In 'ADD MODULE' click on submodule "Performance"
-   Then Module "Performance" contains submodules:
-     |Performance Decomposition        |
-     |Performance Snapshot             |
-     |Statistics                       |
-     |Style                            |
-     |Benchmark Up/Down                |
-     |Monthly Performance Distribution |
+
   #24
   @pdf
   Scenario: Validate PDF download contains required columns and close button functionality
@@ -234,7 +235,9 @@ Scenario: Create New Space overlay - Admin contains required submodules
        |Standard HPC     |
        |Limit Report     |
        |Custom Report    |
+
 #26
+  @new_space_pref
   Scenario: Create new space - General  - add preferences
      Then Tap on "plus" button
      Then Enter "Test General Preference" workspace name
@@ -244,6 +247,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
      Then Tap "Create Space" button on the "Create a new space" overlay
      Then Verify that all added modals displayed
 #27
+  @new_space_pref
   Scenario: Create new space - Perfomance  - add preferences
     Then Tap on "plus" button
     Then Enter "Test Performance Preference" workspace name
@@ -253,6 +257,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all added modals displayed
 #28
+  @new_space_pref
   Scenario: Create new space - Risk  - add preferences
     Then Tap on "plus" button
     Then Enter "Test Risk Preference" workspace name
@@ -262,6 +267,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all added modals displayed
 #29
+  @new_space_pref
   Scenario: Create new space - Admin  - add preferences
     Then Tap on "plus" button
     Then Enter "Test Admin Preference" workspace name
@@ -271,6 +277,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all added modals displayed
  # 30
+  @new_space_pref
   Scenario: Create new space - Adding Random Preferences from all modules
     Then Tap on "plus" button
     Then Add random one preference from each module
@@ -280,6 +287,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Click on 'ADD MODULE' button
 
   #31
+  @add_module_pref
   Scenario: Add module- Add random preference
     Then Tap on "plus" button
     Then Enter "AddModule Random Preferences" workspace name
@@ -289,43 +297,165 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Add to Space" button on the "Create a new space" overlay
     Then Verify that preference from 'ADD MODULE' displayed
   #32
+  @disclaimers
   Scenario: Verify Terms & conditions items at the bottom of RP page
     Then At the bottom of page list of terms should be displayed
     |Terms and Conditions|
     |Privacy Policy      |
     |Security            |
-
-  Scenario: Verify content of disclaimers
-    Then Click on "Terms and Conditions"
-    Then Close "Terms and Conditions" via "close" button
+ #33
+  @disclaimers
+  Scenario: Verify content of disclaimers Terms and Conditions
     Then Click on "Terms and Conditions"
     Then Tap 'x' to close "Terms and Conditions"
-   # And Header terms shoud be:
-   # |Terms and Conditions of Use |
-#    And Content should has:
-#    |1. General                                 |
-#    |2. Restricted Access                       |
-#    |3. No Offer                                |
-#    |4. Monitoring by MSL                       |
-#    |5. No Commercial Exploitation              |
-#    |6. Responsibilities of User                |
-#    |7. Confidentiality                         |
-#    |8. No Warranties and Exclusion of Liability|
-#    |9. Portfolio Construction Tool             |
-#    |10. Investment Performance                 |
-#    |11. No Reliance                            |
-#    |12. Miscellaneous                          |
-#    |13. Jurisdiction                           |
-#    |14. Viruses, Hacking and other offences    |
-#    |15. Changes to the Site                    |
-
-#    Then Close "Terms and Conditions"
-#    Then Close disclaimer content
-#    Then Click on "Terms and Conditions"
-#    Then Close disclaimer content
+    Then Click on "Terms and Conditions"
+    And Disclaimer header should be 'Terms and Conditions of Use '
+    And Disclaimer document should have bullets:
+    |1. General                                 |
+    |2. Restricted Access                       |
+    |3. No Offer                                |
+    |4. Monitoring by MSL                       |
+    |5. No Commercial Exploitation              |
+    |6. Responsibilities of User                |
+    |7. Confidentiality                         |
+    |8. No Warranties and Exclusion of Liability|
+    |9. Portfolio Construction Tool             |
+    |10. Investment Performance                 |
+    |11. No Reliance                            |
+    |12. Miscellaneous                          |
+    |13. Jurisdiction                           |
+    |14. Viruses, Hacking and other offences    |
+    |15. Changes to the Site                    |
+    Then Close "Terms and Conditions" via "close" button
 
 
+#34
+  @disclaimers
+  Scenario: Verify content of disclaimers Privacy Policy
+    Then Click on "Privacy Policy"
+    Then Close "Terms and Conditions" via "close" button
+    Then Click on "Privacy Policy"
+    Then Tap 'x' to close "Terms and Conditions"
+    And Disclaimer header should be '16. Privacy and Data Protection'
+    And Disclaimer document should have bullets:
+     |Data protection|
+     |Cookies|
+
+#35
+  @disclaimers
+  Scenario: Verify content of disclaimers Security
+    Then Click on "Security"
+#    Then Close "Terms and Conditions" via "close" button
+#    Then Click on "Security"
+    #Then Tap 'x' to close "Terms and Conditions"
+    And Disclaimer header should be 'Security'
+    And Disclaimer document should have bullets:
+    |Scam e-mails and fake websites|
+    And List of official following websites should be:
+      |https://clarus.man.com       |
+      |www.ahl.com                 |
+      |www.frmhedge.com             |
+      |www.glgpartners.com          |
+      |www.man.com                  |
+      |www.mangroupplc.com          |
+      |www.maninvestments.com       |
+      |www.maninvestments.com.au    |
+      |www.pembacreditadvisers.com  |
+
+#
+#   1 Scenario: PDF Report - Check the 02.PORTFOLIO/FUNDS (Any available)
+#
+#   2 Scenario: PDF Report - Select fund in Check the 02.PORTFOLIO/FUNDS  verify that fund in 03. YOUR LIST
+#
+#   3 Scenario: PDF Report - PDF Download functionality
+#
+#   4  Scenario: Theme verification > Daybvs Night (My Profile>Preferences)
+#
+#   5  Scenario: Admin >  Left Rail > Embargoed Portfolios/Funds and Non-Embargoed Portfolios/Funds dropdown menu
+##              Embargoed Portfolios/Funds
+#               Non-Embargoed Portfolios/Funds
+#   6  Scenario: Left Rail > Settings > Verification
+#
+#   7  Scenario: Admin > Dipslay Embargoed Date checkbox available
+#
+#   8  Scenario: Admin > Vehicle selection dropdown > check for present items >0
+#
+#   9   Scenario: General Multiselection verification - check the all selected modules on the work space
+#  General - Documents - 4
+#  General - Fund Summary - 4
+#  General - Fund Raitings - 4
+#  General - Commentary - 4
+#
+#   10 Scenario: Performance Multiselection verification - check the all selected modules on the work space
+#       |Performance Decomposition        |					4
+#       |Performance Snapshot             |					4
+#       |Statistics                       |					4
+#       |Style                            |					4
+#       |Benchmark Up/Down                |					4
+#       |Monthly Performance Distribution |					4
+#
+#   11 Scenario: Risk Multiselection verification - check the all selected modules on the work space
+#        |Risk Snapshot      |				4
+#        |VaR                |				4
+#        |Stress & Scenario  |				4
+#        |Sensitivity        |				4
+#        |VaR Return Envelope|				4
+#        |Exposure           |				4
+#        |Risk vs. Return    |				4
+#    12
+#  Scenario: Create new space - General  - add preferences
+#    Then Tap on "plus" button
+#    Then Enter "Test General Preference" workspace name
+#    Then In "Create a New Space" click on submodule "General"
+#    Then Click on all items from "ADD MODULE" column
+#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
+#    Then Tap "Create Space" button on the "Create a new space" overlay
+#    Then Verify that all added modals displayed
+##13
+#  @new_space_pref
+#  Scenario: Create new space - Perfomance  - add preferences
+#    Then Tap on "plus" button
+#    Then Enter "Test Performance Preference" workspace name
+#    Then In "Create a New Space" click on submodule "Performance"
+#    Then Click on all items from "ADD MODULE" column
+#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
+#    Then Tap "Create Space" button on the "Create a new space" overlay
+#    Then Verify that all added modals displayed
+##14
+#  @new_space_pref
+#  Scenario: Create new space - Risk  - add preferences
+#    Then Tap on "plus" button
+#    Then Enter "Test Risk Preference" workspace name
+#    Then In "Create a New Space" click on submodule "Risk"
+#    Then Click on all items from "ADD MODULE" column
+#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
+#    Then Tap "Create Space" button on the "Create a new space" overlay
+#    Then Verify that all added modals displayed
+##15
+#  @new_space_pref
+#  Scenario: Create new space - Admin  - add preferences
+#    Then Tap on "plus" button
+#    Then Enter "Test Admin Preference" workspace name
+#    Then In "Create a New Space" click on submodule "Admin"
+#    Then Click on all items from "ADD MODULE" column
+#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
+#    Then Tap "Create Space" button on the "Create a new space" overlay
+#    Then Verify that all added modals displayed
+#
+#   16 Dropdown Items Actions (Export Data- Duplicate_ Remove) -Module size (MEDIUM -LARGE)
+#  17  Functionality Export Data
+#  18 Functionality Duplicate
+#   19 Functionality  Remove
+#   20 User sign out functionality
+#
+#  # 21  Scenario: Man Group Logo in bottom right corner - redirection
+#                 Check the redirection on Man Group Page
+#
 
 
-
-
+#
+#
+#
+#
+#
+#
