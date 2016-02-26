@@ -285,4 +285,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Enter "AddModule Random Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
+    Then In 'ADD MODULE' add random one preference from each module
+    Then Tap "Add to Space" button on the "Create a new space" overlay
+    Then Verify that preference from 'ADD MODULE' displayed
 

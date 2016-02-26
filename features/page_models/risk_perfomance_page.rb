@@ -47,9 +47,9 @@ class RiskPerfomancePage
   def renamefield
     $driver.find_element(:xpath, "//input[@class = 'rename-input']")
   end
-  # def create_space_submodule_name(modules)
-  #  $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
-  # end
+  def create_space_submodule_name(modules)
+   $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
+  end
   def my_profile_submenu(submodule_text)
     $driver.find_element(:xpath, "//h3[text() = '#{submodule_text}']")
   end
@@ -148,9 +148,6 @@ class RiskPerfomancePage
   def addmodule_close
     $driver.find_element(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')][.//span[@id = 'ui-id-23']]//button[@title = 'close']")
   end
-  def create_space_submodule_name(modules)
-    $driver.find_element(:xpath,"//div[@class = 'newSpaceStepTwo']//a[text() = '#{modules}']")
-  end
   def ws_addmodules
     $driver.find_elements(:xpath, "//div[@id = 'AddWorkspaceModal']//div[@class = 'app-options-container clearfix']//a")
   end
@@ -181,7 +178,6 @@ class RiskPerfomancePage
     end
     return displayed_moduls_text
   end
-
   def random_click_preference
     modules = risk_perfomance_page.module_modulename
     modules.each do |x|
@@ -198,8 +194,39 @@ class RiskPerfomancePage
     end
 
   end
-
-
+  def am_module_module_name
+    $driver.find_elements(:xpath,"//div[@id = 'AddModuleModal']//div[@class  = 'nav-options-container clearfix']//a")
+  end
+  def am_addmodules
+    $driver.find_elements(:xpath, "//div[@id = 'AddModuleModal']//div[@class = 'app-options-container clearfix']//a")
+  end
+  def am_random_click_preference
+    sleep 5
+    modules = risk_perfomance_page.am_module_module_name
+    modules.each do |x|
+      x.click
+      items  = risk_perfomance_page.am_addmodules
+      itemstext = []
+      for i in items
+        if i.displayed?
+          itemstext.push(i)
+          # i.click
+        end
+      end
+      itemstext.sample.click
+    end
+  end
+  def am_queue
+    $driver.find_elements(:xpath, "//div[@id = 'AddModuleModal']//div[@class = 'chosen-app-options-container']//a")
+  end
+  def am_queue_item_list
+    selcteditems= risk_perfomance_page.am_queue
+    selcteditemstext = []
+    for i in selcteditems
+      selcteditemstext.push(i.text)
+    end
+    return selcteditemstext
+  end
 
 
 

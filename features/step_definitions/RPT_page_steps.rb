@@ -30,6 +30,7 @@ end
 
  Then (/^Tap "([^"]*)" button on the "Create a new space" overlay$/) do |button_name|
   risk_perfomance_page.create_space_buttons(button_name)
+   sleep 7
 end
  Then /^"([^"]*)" overlay should be closed$/ do |create_newspace_overlay|
   if risk_perfomance_page.workspace_overlay(create_newspace_overlay).displayed?
@@ -327,6 +328,19 @@ Then /^Verify that all added modals displayed$/ do
   end
   puts risk_perfomance_page.displyed_modules_list
   puts @queuelist
+end
+
+Then /^In 'ADD MODULE' add random one preference from each module$/ do
+  risk_perfomance_page.am_random_click_preference
+ @queueamlist =  risk_perfomance_page.am_queue_item_list
+end
+Then /^Verify that preference from 'ADD MODULE' displayed$/ do
+  if risk_perfomance_page.displyed_modules_list != @queueamlist
+    fail "BUG"
+  end
+  puts @queueamlist
+  puts risk_perfomance_page.displyed_modules_list
+
 end
 
 
