@@ -1,35 +1,38 @@
+@risk_performanse_smoke
 Feature: Risk & Performance Page
-
-  Background:
+Background:
     Given Open the Man Group site
-    Given Enter "InternalBasicAutomationMG@gmail.com" password "0ChangeMe0!1" and pin "9876" and click "Login" button
-    Then Click "Profile" icon
-    Then Tap "Reset" button
-#1
+    Given Enter "modtestinternaloperationssuppo@gmail.com" password "Wsodtest1!" and pin "9876" and click "Login" button
+#    Then Click "Profile" icon
+#    Then Tap "Reset" button
+@myportfolio_overlay
   Scenario:  Reset profile settings
     Then Click "Profile" icon
     Then Tap "Reset" button
-#2
+#  CREATE NEW SPACE
+@createnewspace_overlay
   Scenario: Creating the Work Space - Open Create new Space dialog - Close dialog
     Then Tap on "plus" button
     Then Verify "Create a New Space" overlay opens
     Then Tap "close" button on the "Create a new space" overlay
     Then "Create a New Space" overlay should be closed
 #3
+@createnewspace_overlay
   Scenario: Creating the Work Space - Create Space WITHOUT the name check the name
     Then Tap on "plus" button
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then "Name your space" tab should exists
     Then Just created "Name your space" tab should be active
 #4
+@createnewspace_overlay
   Scenario: Creating the Work Space - Create Space WITH the name check the name
     Then Tap on "plus" button
     Then Enter "Test Automation" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then "Test Automation" tab should exists
-
-   ## WORK SPACE DUPLICATE-REMOVE-RENAME FUNCTIONS
-#5
+ ## WORK SPACE DUPLICATE-REMOVE-RENAME FUNCTIONS
+  #5
+@ws_tabs
   Scenario: Checking the Work Space - Duplicate  functionality
     Then Tap on "plus" button
     Then Enter "Duplicate" workspace name
@@ -38,6 +41,7 @@ Feature: Risk & Performance Page
     Then Click "Duplicate" in menu
     Then "copy of Duplicate" tab should exists
 #6
+  @ws_tabs
   Scenario: Checking the Work Space - Rename functionality
     Then Tap on "plus" button
     Then Enter "Rename me" workspace name
@@ -46,7 +50,8 @@ Feature: Risk & Performance Page
     Then Click "Rename" in menu
     Then Enter new name "Renamed WS" of workspace and press enter button
     Then "Renamed WS" tab should exists
-#7
+ #7
+@ws_tabs
   Scenario: Checking the Work Space - Remove functionality
     Then Tap on "plus" button
     Then Enter "Remove me" workspace name
@@ -54,8 +59,8 @@ Feature: Risk & Performance Page
     Then Move mouse to "Remove me"
     Then Click "Remove" in menu
     Then WorkSpace "Remove me" should not be displayed
-#8
-  @myportfolio
+#8 #MY PORTFOLIO
+@myportfolio_overlay
   Scenario: My Profile - Verify  that My Profile overlay contains Contact information, Change Password, Language selector, Preference
     Then Click "Profile" icon
     Then Verify "My Profile" overlay contains subsections:
@@ -64,7 +69,7 @@ Feature: Risk & Performance Page
       |Language Selector   |
       |Preferences        |
 #9
-  @myportfolio
+@myportfolio_overlay
   Scenario:  My Profile - Verify  subsections in Contact Information required subsections
     Then Click "Profile" icon
     Then Verify subsections in Contact Information:
@@ -72,7 +77,7 @@ Feature: Risk & Performance Page
       |Email      |
       |Company    |
 #10
-  @myportfolio
+@myportfolio_overlay
   Scenario: My Profile - Change Password contains required links
     Then Click "Profile" icon
     Then Verify Change Password contains links:
@@ -80,14 +85,14 @@ Feature: Risk & Performance Page
       |Click here to reset your pin     |
 
 #11
-  @myportfolio
+@myportfolio_overlay
   Scenario: My Profile - Verify  Language Selector contains required languages
     Then Click "Profile" icon
     Then Verify Language Selector contains languages:
       |English  |
 
  #12
-  @myportfolio
+@myportfolio_overlay
   Scenario:My Profile - Verify  subsections in Preferences required Theme Styles
     Then Click "Profile" icon
     Then Verify Preferences contains Theme Styles:
@@ -96,7 +101,7 @@ Feature: Risk & Performance Page
 
 # "CREATE NEW SPACE" OVERLAY
 #13
-  @createnewspace
+@createnewspace
  Scenario: Create New Space overlay - Verifying that General, Performance, Risk, Admin exist
     Then Tap on "plus" button
     Then Verify "Create a New Space" overlay "01. MODULE" column contains:
@@ -107,7 +112,7 @@ Feature: Risk & Performance Page
 
 # CREATE NEW SPACE OVERLAY-VERIFYING MODULES
 #14
-  @createnewspace
+@createnewspace
  Scenario: Create New Space overlay - General contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "General"
@@ -118,7 +123,7 @@ Feature: Risk & Performance Page
       |Commentary         |
 # CREATE NEW SPACE OVERLAY-VERIFYING SUBMODULES-USER PREFERENCES
  #15
-  @createnewspace
+@createnewspace
  Scenario: Create New Space overlay - Risk contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Risk"
@@ -131,7 +136,7 @@ Feature: Risk & Performance Page
       |Exposure           |
       |Risk vs. Return    |
  #16
-  @createnewspace
+@createnewspace
   Scenario: Create New Space overlay - Perfomance contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Performance"
@@ -143,7 +148,7 @@ Feature: Risk & Performance Page
       |Benchmark Up/Down                |
       |Monthly Performance Distribution |
   #17
-  @createnewspace
+@createnewspace
 Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Admin"
@@ -151,7 +156,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |Data Monitor     |
   ## Verifying elements after success login
 #18
-  @pdf
+@pdf_overlay
  Scenario: Login with valid credentials- All required elements should be displayed
     Then "Company" logo should be displayed
     Then "Plus" button to create new work should be displayed
@@ -162,7 +167,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #    Then Welcome,[User Name] string should be displayed on right side of portal-??
 #19
 ## "ADD MODULE "  overlay
-  @addmodule
+@addmodule_overlay
   Scenario: Validate Add module contains required columns
     Then Click on 'ADD MODULE' button
     Then "ADD MODULE" overlay should display columns:
@@ -171,7 +176,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |03. YOUR MODULE QUEUE|
      Then Close Add module overlay
 #20
-  @addmodule
+@addmodule_overlay
   Scenario: Validate Add module MODULE column contains
     Then Click on 'ADD MODULE' button
     Then "MODULE" column should contains submodules:
@@ -180,7 +185,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |Risk       |
       |Admin      |
 #21
-  @addmodule
+@addmodule_overlay
   Scenario:  Validate Add module - MODULE column - General - contains required submodules
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' click on submodule "General"
@@ -190,7 +195,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     |Fund Ratings       |
     |Commentary         |
  #22
-  @addmodule
+  @addmodule_overlay
   Scenario:  Validate Add module - MODULE - Performance - column contains required submodules
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' click on submodule "Performance"
@@ -202,7 +207,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |Benchmark Up/Down                |
       |Monthly Performance Distribution |
  #23
-  @addmodule
+@addmodule_overlay
   Scenario:  Validate Add module - MODULE - Risk - column contains required submodules
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' click on submodule "Risk"
@@ -216,7 +221,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |Risk vs. Return    |
 
   #24
-  @pdf
+@pdf_overlay
   Scenario: Validate PDF download contains required columns and close button functionality
     Then Click on 'PDF download' button
     Then "Download PDF" overlay should have columns:
@@ -226,7 +231,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Close 'PDF download' overlay
 
   #25
-  @pdf
+@pdf_overlay
    Scenario: Validate PDF download - Report types
      Then Click on 'PDF download' button
      Then "REPORT TYPE" should contains submodules:
@@ -237,7 +242,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
        |Custom Report    |
 
 #26
-  @new_space_pref
+@createnewspace_pref
   Scenario: Create new space - General  - add preferences
      Then Tap on "plus" button
      Then Enter "Test General Preference" workspace name
@@ -247,7 +252,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
      Then Tap "Create Space" button on the "Create a new space" overlay
      Then Verify that all added modals displayed
 #27
-  @new_space_pref
+ @createnewspace_pref
   Scenario: Create new space - Perfomance  - add preferences
     Then Tap on "plus" button
     Then Enter "Test Performance Preference" workspace name
@@ -257,7 +262,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all added modals displayed
 #28
-  @new_space_pref
+@createnewspace_pref
   Scenario: Create new space - Risk  - add preferences
     Then Tap on "plus" button
     Then Enter "Test Risk Preference" workspace name
@@ -266,8 +271,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Verify all added submodules displayed in YOUR MODULE QUEUE
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all added modals displayed
-#29
-  @new_space_pref
+ @createnewspace_pref
   Scenario: Create new space - Admin  - add preferences
     Then Tap on "plus" button
     Then Enter "Test Admin Preference" workspace name
@@ -277,7 +281,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all added modals displayed
  # 30
-  @new_space_pref
+#  @createnewspace_pref
   Scenario: Create new space - Adding Random Preferences from all modules
     Then Tap on "plus" button
     Then Add random one preference from each module
@@ -345,9 +349,9 @@ Scenario: Create New Space overlay - Admin contains required submodules
   @disclaimers
   Scenario: Verify content of disclaimers Security
     Then Click on "Security"
-#    Then Close "Terms and Conditions" via "close" button
-#    Then Click on "Security"
-    #Then Tap 'x' to close "Terms and Conditions"
+    Then Close "Terms and Conditions" via "close" button
+    Then Click on "Security"
+    Then Tap 'x' to close "Terms and Conditions"
     And Disclaimer header should be 'Security'
     And Disclaimer document should have bullets:
     |Scam e-mails and fake websites|
@@ -362,48 +366,82 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |www.maninvestments.com.au    |
       |www.pembacreditadvisers.com  |
 
+
 #
-#   1 Scenario: PDF Report - Check the 02.PORTFOLIO/FUNDS (Any available)
+#  @others
+#   1 Scenario: Man Group Logo in bottom right corner - redirection
+#   2 Scenario: User able to sign out
+
 #
-#   2 Scenario: PDF Report - Select fund in Check the 02.PORTFOLIO/FUNDS  verify that fund in 03. YOUR LIST
+#     @pdf_overlay 1-9
+#   1 Scenario: Download PDF Report - Standard report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+#   2 Scenario: Download PDF Report - Basic report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+#   3 Scenario: Download PDF Report - Standard HPC  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+#   4 Scenario: Download PDF Report - Limit  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+#   5 Scenario: Download PDF Report - Custom  report- Available Portfolio Funds - verify list of funds available (Any available)
+#   6 Scenario: Download PDF Report - Select funds from PORTFOLIO/FUNDS - verify that same funds become displayed  in 03. YOUR LIST
+#   7 Scenario: Download PDF Report - CUSTOM REPORT - select from - Available Portfolio Funds - verify that same funds become displayed  in YOUR LIST
+#   8  Scenario: Download PDF Report -PDF Download functionality -verify that user can download report and it saved in PC folder
+#   9  Scenario: Theme verification > Daybvs Night (My Profile>Preferences)
 #
-#   3 Scenario: PDF Report - PDF Download functionality
 #
-#   4  Scenario: Theme verification > Daybvs Night (My Profile>Preferences)
+#  @left_rail 1-7
+#   1 Scenario: Verify user can open - close left rail - user should see settings button, funds dropdown
+#   2 Scenario: Left Rail > List of fund should be available in dropdown menu (check for present items >0)
+#   3 Scenario: Left Rail > User can select any Fund>  Verify that same Fund bis displayed in dropdown title field and in
+#   4 Scenario: Left rail > User select SHOW ALL FUNDS in drop down > List of all funds from dropdown list  are displayed
+#   5 Scenario: Left Rail > Settings > Verify following options are  displayed :  Sort by (sorting options) -Show (show options) - Data(select ip to 4)(Data options) ) Save button-
+#   6 Scenario: Left Rail > Setting > User can Select - Unselect options
+#   7 Scenario: Left Rail > Setting > Save button closes settings
 #
-#   5  Scenario: Admin >  Left Rail > Embargoed Portfolios/Funds and Non-Embargoed Portfolios/Funds dropdown menu
-##              Embargoed Portfolios/Funds
-#               Non-Embargoed Portfolios/Funds
-#   6  Scenario: Left Rail > Settings > Verification
+#  @ createnewspace_ MULTISELECTION 1 -3
+#   1 Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
+#              General - Documents - 4
+#              General - Fund Summary - 4
+#              General - Fund Raitings - 4
+#              General - Commentary - 4
 #
-#   7  Scenario: Admin > Dipslay Embargoed Date checkbox available
+#    2 Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
+#       |Performance Decomposition        |					4|
+#       |Performance Snapshot             |					4|
+#       |Statistics                       |					4|
+#       |Style                            |					4|
+#       |Benchmark Up/Down                |					4|
+#       |Monthly Performance Distribution |					4|
 #
-#   8  Scenario: Admin > Vehicle selection dropdown > check for present items >0
+#   3 Scenario: RISK - Multiselection verification - check the all selected modules on the work space
+#        |Risk Snapshot      |				4|
+#        |VaR                |				4|
+#        |Stress & Scenario  |				4|
+#        |Sensitivity        |				4|
+#        |VaR Return Envelope|				4|
+#        |Risk vs. Return    |				4|
 #
-#   9   Scenario: General Multiselection verification - check the all selected modules on the work space
-#  General - Documents - 4
-#  General - Fund Summary - 4
-#  General - Fund Raitings - 4
-#  General - Commentary - 4
+# @addmodule_overlay_MULTISELECTION 1-3
+#   1 Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
+#              General - Documents - 4
+#              General - Fund Summary - 4
+#              General - Fund Raitings - 4
+#              General - Commentary - 4
 #
-#   10 Scenario: Performance Multiselection verification - check the all selected modules on the work space
-#       |Performance Decomposition        |					4
-#       |Performance Snapshot             |					4
-#       |Statistics                       |					4
-#       |Style                            |					4
-#       |Benchmark Up/Down                |					4
-#       |Monthly Performance Distribution |					4
+#   2 Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
+#       |Performance Decomposition        |					4|
+#       |Performance Snapshot             |					4|
+#       |Statistics                       |					4|
+#       |Style                            |					4|
+#       |Benchmark Up/Down                |					4|
+#       |Monthly Performance Distribution |					4|
 #
-#   11 Scenario: Risk Multiselection verification - check the all selected modules on the work space
-#        |Risk Snapshot      |				4
-#        |VaR                |				4
-#        |Stress & Scenario  |				4
-#        |Sensitivity        |				4
-#        |VaR Return Envelope|				4
-#        |Exposure           |				4
-#        |Risk vs. Return    |				4
-#    12
-#  Scenario: Create new space - General  - add preferences
+#   3 Scenario: RISK - Multiselection verification - check the all selected modules on the work space
+#        |Risk Snapshot      |				4|
+#        |VaR                |				4|
+#        |Stress & Scenario  |				4|
+#        |Sensitivity        |				4|
+#        |VaR Return Envelope|				4|
+#        |Risk vs. Return    |				4|
+#
+# @addmodule_overlay_PREFERENCE 1-4
+#   1 Scenario: ADD MODULE  - General  - add preferences
 #    Then Tap on "plus" button
 #    Then Enter "Test General Preference" workspace name
 #    Then In "Create a New Space" click on submodule "General"
@@ -411,9 +449,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #    Then Verify all added submodules displayed in YOUR MODULE QUEUE
 #    Then Tap "Create Space" button on the "Create a new space" overlay
 #    Then Verify that all added modals displayed
-##13
-#  @new_space_pref
-#  Scenario: Create new space - Perfomance  - add preferences
+#
+#   2 Scenario:  ADD MODULE  - Perfomance  - add preferences
 #    Then Tap on "plus" button
 #    Then Enter "Test Performance Preference" workspace name
 #    Then In "Create a New Space" click on submodule "Performance"
@@ -421,9 +458,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #    Then Verify all added submodules displayed in YOUR MODULE QUEUE
 #    Then Tap "Create Space" button on the "Create a new space" overlay
 #    Then Verify that all added modals displayed
-##14
-#  @new_space_pref
-#  Scenario: Create new space - Risk  - add preferences
+#
+#  3 Scenario: ADD MODULE  - Risk  - add preferences
 #    Then Tap on "plus" button
 #    Then Enter "Test Risk Preference" workspace name
 #    Then In "Create a New Space" click on submodule "Risk"
@@ -431,9 +467,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #    Then Verify all added submodules displayed in YOUR MODULE QUEUE
 #    Then Tap "Create Space" button on the "Create a new space" overlay
 #    Then Verify that all added modals displayed
-##15
-#  @new_space_pref
-#  Scenario: Create new space - Admin  - add preferences
+#
+#  4 Scenario: ADD MODULE - Admin  - add preferences
 #    Then Tap on "plus" button
 #    Then Enter "Test Admin Preference" workspace name
 #    Then In "Create a New Space" click on submodule "Admin"
@@ -442,20 +477,29 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #    Then Tap "Create Space" button on the "Create a new space" overlay
 #    Then Verify that all added modals displayed
 #
-#   16 Dropdown Items Actions (Export Data- Duplicate_ Remove) -Module size (MEDIUM -LARGE)
-#  17  Functionality Export Data
-#  18 Functionality Duplicate
-#   19 Functionality  Remove
-#   20 User sign out functionality
+#  fund_module
 #
-#  # 21  Scenario: Man Group Logo in bottom right corner - redirection
-#                 Check the redirection on Man Group Page
+# @ fund_module_FUNCTIONALITY 1-12
 #
-
-
+#   1 Scenario:  Verify that following preferences contains  ACTIONS  (Export Data - Duplicate Module - Remove Module ) -Module size (MEDIUM -LARGE)
+#              |List of preferences with Export Data - Duplicate Module - Remove Module |
 #
 #
+#   2 Scenario:  Verify that following preferences contains ACTIONS  (REMOVE)
+#              |List of preferences with just Remove Module |
 #
+#   3 Scenario:  Verify that following preferences contains ACTIONS  ( Duplicate Module - Remove Module )
+#              |List of preferences with just Duplicate Module Remove Module |
 #
-#
-#
+#   4 Scenario: Verify that following preferences contains MODULE SIZE (Small Medium)
+#              |List of preferences Small Medium                     |
+#   5 Scenario: Verify that following preferences contains MODULE SIZE ( Medium Large )
+#              |List of preferences Medium Large                    |
+#   6 Scenario: Verify that following preferences contains MODULE SIZE (None)
+#               | List of preferences without Module size options                         |
+#   7 Scenario:   Functionality Export Data
+#   8 Scenario:  Functionality Duplicate
+#   9 Scenario:  Functionality  Remove
+#   10 Scenario:  User sign out functionality
+#   11 Scenario: Actions - Verify user can creates via Duplicate Module
+#   12 Scenario: Actions - Verify user can creates via Remove Module

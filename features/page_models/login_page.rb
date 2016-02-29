@@ -26,7 +26,7 @@ def loginbutton(button)
 end
 
 def warningmessage(message)
-  warningMessage = $driver.find_elements(:xpath, "//*[contains(text(),'#{message}')]")
+  warningMessage = $driver.find_elements(:xpath, "//div[contains(text(),'#{message}')]")
   # if warningMessage.count == 0
   #   fail "FAILED!'#{message}' message was not occurred"
   # end
