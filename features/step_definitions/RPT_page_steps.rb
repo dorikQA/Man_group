@@ -401,6 +401,7 @@ Then /^In "Add Module" overlay click on all items from "ADD MODULE" column$/ do
     if i.displayed?
       itemstext.push(i.text)
       i.click
+
     end
   end
   @array1_am =  itemstext
@@ -426,4 +427,32 @@ Then (/^Tap "([^"]*)" button on the "Add Module" overlay$/) do |button_name|
   risk_perfomance_page.addtospace_buttons(button_name)
   sleep 7
 end
+Then /^Add click on oll items in add modules column  4 times$/ do
+items  = risk_perfomance_page.am_addmodules
+itemstext = []
+ for i in items
+  if i.displayed?
+    itemstext.push(i.text)
+    4.times  do |x|
+      x = i.click
+    end
+  end
+ end
+queue_list = risk_perfomance_page.am_queue_item_list.sort
 
+ if (itemstext*4).sort != queue_list.sort
+   fail  "Bug! Something wrong!"
+ end
+@am_pref_list = itemstext
+@multiadding = queue_list.sort
+end
+
+Then /^Verify that all modules were created  4 times$/ do
+  pref_displayed = risk_perfomance_page.displyed_modules_list
+  if pref_displayed.sort != @multiadding
+    fail "Bug! Added preferences and displayed preferences are diffrent"
+  else puts pref_displayed.sort
+    puts @multiadding
+    puts (@am_pref_list*4).sort
+   end
+end

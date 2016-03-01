@@ -288,7 +288,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Enter "Random Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all added modals displayed
-    Then Click on 'ADD MODULE' button
+    #Then Click on 'ADD MODULE' button
 
   #31
   @add_module_pref
@@ -365,7 +365,106 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |www.maninvestments.com       |
       |www.maninvestments.com.au    |
       |www.pembacreditadvisers.com  |
+# @ @add_module_pref 1-4
+#   1
+  @add_module_pref
+  Scenario: ADD MODULE  - General  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test2 General Preference" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "General"
+    Then In "Add Module" overlay click on all items from "ADD MODULE" column
+    Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all added modals displayed
+##
+#   2
+  @add_module_pref
+  Scenario:  ADD MODULE  - Perfomance  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test2 Performance Preference" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "Performance"
+    Then In "Add Module" overlay click on all items from "ADD MODULE" column
+    Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all added modals displayed
 
+#
+#  3
+  @add_module_pref
+  Scenario: ADD MODULE  - Risk  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test2 Risk Preference" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "Risk"
+    Then In "Add Module" overlay click on all items from "ADD MODULE" column
+    Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all added modals displayed
+
+#  4
+  @add_module_pref
+  Scenario: ADD MODULE - Admin  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test2 Admin Preference" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "Admin"
+    Then In "Add Module" overlay click on all items from "ADD MODULE" column
+    Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all added modals displayed
+# @addmodule_overlay_MULTISELECTION 1-3
+   #1
+  Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then Enter "Multi General Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "General"
+    And  Add click on oll items in add modules column  4 times
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all modules were created  4 times
+#    |Documents   |
+#    |Fund Summary|
+#    |Fund Rating |
+#    |Commentary  |
+#2
+  Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then Enter "Multi Performace Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "Performance"
+    And  Add click on oll items in add modules column  4 times
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all modules were created  4 times
+#       |Performance Decomposition        |
+#       |Performance Snapshot             |
+#       |Statistics                       |
+#       |Style                            |
+#       |Benchmark Up/Down                |
+#       |Monthly Performance Distribution |
+#  # 3
+  Scenario: RISK - Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then Enter "Multi Risk Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "Performance"
+    And  Add click on oll items in add modules column  4 times
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all modules were created  4 times
+#        |Risk Snapshot      |
+#        |VaR                |
+#        |Stress & Scenario  |
+#        |Sensitivity        |
+#        |VaR Return Envelope|
+#        |Risk vs. Return    |
 
 #
 #  @others
@@ -416,96 +515,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #        |Sensitivity        |				4|
 #        |VaR Return Envelope|				4|
 #        |Risk vs. Return    |				4|
-#
-# @addmodule_overlay_MULTISELECTION 1-3
-   #1
-#  Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
-#              General - Documents - 4
-#              General - Fund Summary - 4
-#              General - Fund Raitings - 4
-#              General - Commentary - 4
-#
-#   #2
-#  Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
-#       |Performance Decomposition        |					4|
-#       |Performance Snapshot             |					4|
-#       |Statistics                       |					4|
-#       |Style                            |					4|
-#       |Benchmark Up/Down                |					4|
-#       |Monthly Performance Distribution |					4|
-#
-#  # 3
-#  Scenario: RISK - Multiselection verification - check the all selected modules on the work space
-#        |Risk Snapshot      |				4|
-#        |VaR                |				4|
-#        |Stress & Scenario  |				4|
-#        |Sensitivity        |				4|
-#        |VaR Return Envelope|				4|
-#        |Risk vs. Return    |				4|
-#  Scenario: Create new space - General  - add preferences
-#    Then Tap on "plus" button
-#    Then Enter "Test General Preference" workspace name
-#    Then In overlay click on submodule "General"
-#    Then Click on all items from "ADD MODULE" column
-#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
-#    Then Tap "Create Space" button on the "Create a new space" overlay
-#    Then Verify that all added modals displayed
-#
-
-# @ @add_module_pref 1-4
-#   1
-  @add_module_pref
-Scenario: ADD MODULE  - General  - add preferences
-    Then Tap on "plus" button
-    Then Enter "Test2 General Preference" workspace name
-    Then Tap "Create Space" button on the "Create a new space" overlay
-    Then Click on 'ADD MODULE' button
-    Then From "Add Module" click on submodule "General"
-    Then In "Add Module" overlay click on all items from "ADD MODULE" column
-    Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
-    Then Tap "Add to Space" button on the "Add Module" overlay
-    Then Verify that all added modals displayed
-##
-#   2
-  @add_module_pref
-  Scenario:  ADD MODULE  - Perfomance  - add preferences
-  Then Tap on "plus" button
-  Then Enter "Test2 Performance Preference" workspace name
-  Then Tap "Create Space" button on the "Create a new space" overlay
-  Then Click on 'ADD MODULE' button
-  Then From "Add Module" click on submodule "Performance"
-  Then In "Add Module" overlay click on all items from "ADD MODULE" column
-  Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
-  Then Tap "Add to Space" button on the "Add Module" overlay
-  Then Verify that all added modals displayed
-
-#
-#  3
-  @add_module_pref
-  Scenario: ADD MODULE  - Risk  - add preferences
-  Then Tap on "plus" button
-  Then Enter "Test2 Risk Preference" workspace name
-  Then Tap "Create Space" button on the "Create a new space" overlay
-  Then Click on 'ADD MODULE' button
-  Then From "Add Module" click on submodule "Risk"
-  Then In "Add Module" overlay click on all items from "ADD MODULE" column
-  Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
-  Then Tap "Add to Space" button on the "Add Module" overlay
-  Then Verify that all added modals displayed
-
-#  4
-  @add_module_pref
-  Scenario: ADD MODULE - Admin  - add preferences
-  Then Tap on "plus" button
-  Then Enter "Test2 Admin Preference" workspace name
-  Then Tap "Create Space" button on the "Create a new space" overlay
-  Then Click on 'ADD MODULE' button
-  Then From "Add Module" click on submodule "Admin"
-  Then In "Add Module" overlay click on all items from "ADD MODULE" column
-  Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
-  Then Tap "Add to Space" button on the "Add Module" overlay
-  Then Verify that all added modals displayed
-
 #
 #  fund_module
 #
