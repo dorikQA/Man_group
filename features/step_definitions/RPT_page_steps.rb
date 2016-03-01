@@ -447,12 +447,51 @@ queue_list = risk_perfomance_page.am_queue_item_list.sort
 @multiadding = queue_list.sort
 end
 
-Then /^Verify that all modules were created  4 times$/ do
+Then /^Verify that selected modules from "Add module" were created 4 times$/ do
   pref_displayed = risk_perfomance_page.displyed_modules_list
   if pref_displayed.sort != @multiadding
+    try @ws_multiadding
     fail "Bug! Added preferences and displayed preferences are diffrent"
   else puts pref_displayed.sort
     puts @multiadding
     puts (@am_pref_list*4).sort
    end
+end
+Then /^In "Create Space" overlay click all items from "ADD MODULE" column  4 times$/ do
+  items  = risk_perfomance_page.ws_addmodules
+  itemstext = []
+  for i in items
+    if i.displayed?
+      itemstext.push(i.text)
+      4.times  do |x|
+        x = i.click
+        sleep 2
+      end
+    end
+  end
+  queue_list = risk_perfomance_page.queue_item_list.sort
+  add_module4_sort = (itemstext*4).sort
+   if add_module4_sort != queue_list
+     puts add_module4_sort
+     puts queue_list
+    fail  "Bug! Something wrong!Check Columns"
+  end
+  @ws_multiadding = queue_list
+
+end
+
+Then /^Verify that all modules from "Create work space" modules were created 4 times$/ do
+  pref_displayed_sort = risk_perfomance_page.displyed_modules_list.sort
+  if pref_displayed_sort != @ws_multiadding
+    fail "Bug! Added preferences and displayed preferences are diffrent"
+    putspref_displayed_sort
+    puts  @ws_multiadding
+  else
+  puts pref_displayed_sort
+  puts @ws_multiadding
+  end
+
+
+
+
 end

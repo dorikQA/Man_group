@@ -365,6 +365,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |www.maninvestments.com       |
       |www.maninvestments.com.au    |
       |www.pembacreditadvisers.com  |
+
+    ##sprint 03/04
 # @ @add_module_pref 1-4
 #   1
   @add_module_pref
@@ -378,7 +380,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that all added modals displayed
-##
 #   2
   @add_module_pref
   Scenario:  ADD MODULE  - Perfomance  - add preferences
@@ -391,8 +392,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that all added modals displayed
-
-#
 #  3
   @add_module_pref
   Scenario: ADD MODULE  - Risk  - add preferences
@@ -405,7 +404,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that all added modals displayed
-
 #  4
   @add_module_pref
   Scenario: ADD MODULE - Admin  - add preferences
@@ -420,29 +418,29 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Verify that all added modals displayed
 # @addmodule_overlay_MULTISELECTION 1-3
    #1
-  Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
+  Scenario: ADD MODULE -GENERAL  Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
-    Then Enter "Multi General Preferences" workspace name
+    Then Enter "Multi2 General Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "General"
     And  Add click on oll items in add modules column  4 times
     Then Tap "Add to Space" button on the "Add Module" overlay
-    Then Verify that all modules were created  4 times
+    Then Verify that selected modules from "Add module" were created 4 times
 #    |Documents   |
 #    |Fund Summary|
 #    |Fund Rating |
 #    |Commentary  |
 #2
-  Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
+  Scenario: ADD MODULE- PERFORMANCE - Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
-    Then Enter "Multi Performace Preferences" workspace name
+    Then Enter "Multi2 Performace Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "Performance"
     And  Add click on oll items in add modules column  4 times
     Then Tap "Add to Space" button on the "Add Module" overlay
-    Then Verify that all modules were created  4 times
+    Then Verify that selected modules from "Add module" were created 4 times
 #       |Performance Decomposition        |
 #       |Performance Snapshot             |
 #       |Statistics                       |
@@ -450,22 +448,81 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #       |Benchmark Up/Down                |
 #       |Monthly Performance Distribution |
 #  # 3
-  Scenario: RISK - Multiselection verification - check the all selected modules on the work space
+  Scenario: ADD MODULE - RISK - Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
-    Then Enter "Multi Risk Preferences" workspace name
+    Then Enter "Multi2 Risk Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
-    Then From "Add Module" click on submodule "Performance"
+    Then From "Add Module" click on submodule "Risk"
     And  Add click on oll items in add modules column  4 times
     Then Tap "Add to Space" button on the "Add Module" overlay
-    Then Verify that all modules were created  4 times
+    Then Verify that selected modules from "Add module" were created 4 times
 #        |Risk Snapshot      |
 #        |VaR                |
 #        |Stress & Scenario  |
 #        |Sensitivity        |
 #        |VaR Return Envelope|
 #        |Risk vs. Return    |
-
+  #4
+  Scenario: ADD MODULE - Admin - Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then Enter "Multi2 Risk Preferences" workspace name
+    Then From "Add Module" click on submodule "Admin"
+    And  Add click on oll items in add modules column  4 times
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that selected modules from "Add module" were created 4 times
+  #      |Data Monitor|
+  #  @ createnewspace_ MULTISELECTION 1 -4
+#   1
+  Scenario: CREATE SPACE - GENERAL  Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "General"
+    And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
+    Then Enter "Multi General Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all modules from "Create work space" modules were created 4 times
+#    |Documents   |
+#    |Fund Summary|
+#    |Fund Rating |
+#    |Commentary  ||
+#2
+  Scenario: CREATE SPACE - PERFORMANCE  Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "Performance"
+    And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
+    Then Enter "Multi Performance Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all modules from "Create work space" modules were created 4 times
+#       |Performance Decomposition        |
+#       |Performance Snapshot             |
+#       |Statistics                       |
+#       |Style                            |
+#       |Benchmark Up/Down                |
+#       |Monthly Performance Distribution |
+#3
+  Scenario: CREATE SPACE - RISK -  Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "Risk"
+    And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
+    Then Enter "Multi Risk Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all modules from "Create work space" modules were created 4 times
+#        |Risk Snapshot      |
+#        |VaR                |
+#        |Stress & Scenario  |
+#        |Sensitivity        |
+#        |VaR Return Envelope|
+#        |Risk vs. Return    |
+#4
+  Scenario: CREATE SPACE - Admin -  Multiselection verification - check the all selected modules on the work space
+    Then Tap on "plus" button
+    Then In "Create a New Space" click on submodule "Admin"
+    And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
+    Then Enter "Multi Admin Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Verify that all modules from "Create work space" modules were created 4 times
+#         |Data Monitor|
 #
 #  @others
 #   1 Scenario: Man Group Logo in bottom right corner - redirection
@@ -493,29 +550,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #   6 Scenario: Left Rail > Setting > User can Select - Unselect options
 #   7 Scenario: Left Rail > Setting > Save button closes settings
 #
-#  @ createnewspace_ MULTISELECTION 1 -3
-#   1 Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
-#              General - Documents - 4
-#              General - Fund Summary - 4
-#              General - Fund Raitings - 4
-#              General - Commentary - 4
-#
-#    2 Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
-#       |Performance Decomposition        |					4|
-#       |Performance Snapshot             |					4|
-#       |Statistics                       |					4|
-#       |Style                            |					4|
-#       |Benchmark Up/Down                |					4|
-#       |Monthly Performance Distribution |					4|
-#
-#   3 Scenario: RISK - Multiselection verification - check the all selected modules on the work space
-#        |Risk Snapshot      |				4|
-#        |VaR                |				4|
-#        |Stress & Scenario  |				4|
-#        |Sensitivity        |				4|
-#        |VaR Return Envelope|				4|
-#        |Risk vs. Return    |				4|
-#
+
+
 #  fund_module
 #
 # @ fund_module_FUNCTIONALITY 1-12
