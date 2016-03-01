@@ -277,10 +277,25 @@ class RiskPerfomancePage
       raise "'#{disclaimer_links}' was not found"
      end
   end
-  # def
-  #
-  # end
-
+  def add_module_submodule_name(modules)
+    begin
+      $driver.find_element(:xpath,"//div[@id = 'AddModuleModal']//div[@class  = 'nav-options-container clearfix']//a[text() = '#{modules}']")
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+      raise "Element #{modules} is not displayed"
+    end
+  end
+  def addtospace_buttons(button_name)
+    buttons = $driver.find_elements(:xpath,"//span[@class = 'ui-button-text' and text() = '#{button_name}']")
+    sleep 2
+    for i in buttons
+      if i.displayed?
+        i.click
+        break
+      else
+        raise "Can't find this button '#{button_name}' visible"
+      end
+    end
+  end
 
 end
 

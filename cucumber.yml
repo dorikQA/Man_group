@@ -1,2 +1,5 @@
 login: --tags @login --format html --out loginpage_smoke_report.html --format pretty
-rpt: --tags @@risk_performanse_smoke --out RPT_smoke_loginreport.html --format pretty
+rpt: --tags @risk_performanse_smoke --out rpt_smoke_report.html --format pretty
+disclaimers: --tags @disclaimers --out disclaimers.html --format pretty
+
+addmodule: --tags @addmodule_overlay_PREFERENCE --out disclaimers.html --format pretty

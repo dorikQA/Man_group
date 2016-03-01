@@ -349,6 +349,7 @@ Then /^Verify that preference from 'ADD MODULE' displayed$/ do
 end
 
 Then /^At the bottom of page list of terms should be displayed$/ do |disclaimers_table|
+  sleep 6
   disclaimers_table.raw.flatten.each do |disclaimer_name|
     x = risk_perfomance_page.disclaimers(disclaimer_name )
     if x.displayed? == false
@@ -358,7 +359,7 @@ Then /^At the bottom of page list of terms should be displayed$/ do |disclaimers
   end
 end
 Then /^Click on "([^"]*)"$/ do |disclaimer_name|
-  sleep 5
+  sleep 10
   risk_perfomance_page.disclaimer(disclaimer_name).click
 end
 Then /^Close "Terms and Conditions" via "close" button$/ do
@@ -369,19 +370,60 @@ Then /^Tap 'x' to close "Terms and Conditions"$/ do
 end
 
 And /^Disclaimer header should be '([^"]*)'$/ do |disclaimer_header|
+  sleep 6
     risk_perfomance_page.disclaimer_name_content_header(disclaimer_header)
     puts disclaimer_header
 end
 
 And /^Disclaimer document should have bullets:$/ do |bullets|
+  sleep 6
   bullets.raw.flatten.each do |disclaimer_bullets|
     risk_perfomance_page.disclaimer__boolets(disclaimer_bullets)
     puts disclaimer_bullets
   end
 end
 And /^List of official following websites should be:$/ do |links|
+  sleep 6
   links.raw.flatten.each do |disclaimer_links|
     risk_perfomance_page.disclaimer_link(disclaimer_links)
     puts disclaimer_links
   end
 end
+
+Then /^From "Add Module" click on submodule "([^"]*)"$/ do |modules|
+  risk_perfomance_page.add_module_submodule_name(modules).click
+end
+
+Then /^In "Add Module" overlay click on all items from "ADD MODULE" column$/ do
+  items  = risk_perfomance_page.am_addmodules
+  itemstext = []
+  for i in items
+    if i.displayed?
+      itemstext.push(i.text)
+      i.click
+    end
+  end
+  @array1_am =  itemstext
+  puts @array1_am
+end
+
+Then /^Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE$/ do
+  selcteditems= risk_perfomance_page.am_queue
+  selcteditemstext = []
+  for i in selcteditems
+    selcteditemstext.push(i.text)
+  end
+  @array2_am = selcteditemstext
+  puts @array2_am
+  if @array1_am != @array2_am
+    fail "BUG!!! Not all added  prefrences are displayed in QUEUE"
+  end
+  puts @array1_am
+  puts  @array2_am
+end
+
+Then (/^Tap "([^"]*)" button on the "Add Module" overlay$/) do |button_name|
+  risk_perfomance_page.addtospace_buttons(button_name)
+  sleep 7
+end
+

@@ -34,7 +34,7 @@ Feature: Login Page
     #incorrect pin
     Then Enter pin "9999"
     Then Click "Login" button
-    Then Warning message "We are unable to match the username or password" should be displayed
+    Then Warning message "We are unable to match the username or pin" should be displayed
     Then Close "We are unable to match the username or pin" overlay
 
 Scenario: Login Page - Forgot password link

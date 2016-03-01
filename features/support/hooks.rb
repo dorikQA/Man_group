@@ -38,5 +38,5 @@ After do |scenario|
   #   $driver.save_screenshot(screenshot_file)
   #   embed("#{screenshot_file}", 'image/png')
   end
-  $driver.close
+  #$driver.close
 end

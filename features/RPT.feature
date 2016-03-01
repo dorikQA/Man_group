@@ -298,7 +298,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' add random one preference from each module
-    Then Tap "Add to Space" button on the "Create a new space" overlay
+    Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that preference from 'ADD MODULE' displayed
   #32
   @disclaimers
@@ -310,8 +310,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
  #33
   @disclaimers
   Scenario: Verify content of disclaimers Terms and Conditions
-    Then Click on "Terms and Conditions"
-    Then Tap 'x' to close "Terms and Conditions"
+#    Then Click on "Terms and Conditions"
+#    Then Tap 'x' to close "Terms and Conditions"
     Then Click on "Terms and Conditions"
     And Disclaimer header should be 'Terms and Conditions of Use '
     And Disclaimer document should have bullets:
@@ -336,8 +336,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #34
   @disclaimers
   Scenario: Verify content of disclaimers Privacy Policy
-    Then Click on "Privacy Policy"
-    Then Close "Terms and Conditions" via "close" button
+#    Then Click on "Privacy Policy"
+#    Then Close "Terms and Conditions" via "close" button
     Then Click on "Privacy Policy"
     Then Tap 'x' to close "Terms and Conditions"
     And Disclaimer header should be '16. Privacy and Data Protection'
@@ -348,8 +348,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #35
   @disclaimers
   Scenario: Verify content of disclaimers Security
-    Then Click on "Security"
-    Then Close "Terms and Conditions" via "close" button
+#    Then Click on "Security"
+#    Then Close "Terms and Conditions" via "close" button
     Then Click on "Security"
     Then Tap 'x' to close "Terms and Conditions"
     And Disclaimer header should be 'Security'
@@ -418,13 +418,15 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #        |Risk vs. Return    |				4|
 #
 # @addmodule_overlay_MULTISELECTION 1-3
-#   1 Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
+   #1
+#  Scenario: GENERAL  Multiselection verification - check the all selected modules on the work space
 #              General - Documents - 4
 #              General - Fund Summary - 4
 #              General - Fund Raitings - 4
 #              General - Commentary - 4
 #
-#   2 Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
+#   #2
+#  Scenario: PERFORMANCE - Multiselection verification - check the all selected modules on the work space
 #       |Performance Decomposition        |					4|
 #       |Performance Snapshot             |					4|
 #       |Statistics                       |					4|
@@ -432,50 +434,78 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #       |Benchmark Up/Down                |					4|
 #       |Monthly Performance Distribution |					4|
 #
-#   3 Scenario: RISK - Multiselection verification - check the all selected modules on the work space
+#  # 3
+#  Scenario: RISK - Multiselection verification - check the all selected modules on the work space
 #        |Risk Snapshot      |				4|
 #        |VaR                |				4|
 #        |Stress & Scenario  |				4|
 #        |Sensitivity        |				4|
 #        |VaR Return Envelope|				4|
 #        |Risk vs. Return    |				4|
-#
-# @addmodule_overlay_PREFERENCE 1-4
-#   1 Scenario: ADD MODULE  - General  - add preferences
+#  Scenario: Create new space - General  - add preferences
 #    Then Tap on "plus" button
 #    Then Enter "Test General Preference" workspace name
-#    Then In "Create a New Space" click on submodule "General"
+#    Then In overlay click on submodule "General"
 #    Then Click on all items from "ADD MODULE" column
 #    Then Verify all added submodules displayed in YOUR MODULE QUEUE
 #    Then Tap "Create Space" button on the "Create a new space" overlay
 #    Then Verify that all added modals displayed
 #
-#   2 Scenario:  ADD MODULE  - Perfomance  - add preferences
-#    Then Tap on "plus" button
-#    Then Enter "Test Performance Preference" workspace name
-#    Then In "Create a New Space" click on submodule "Performance"
-#    Then Click on all items from "ADD MODULE" column
-#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
-#    Then Tap "Create Space" button on the "Create a new space" overlay
-#    Then Verify that all added modals displayed
+
+# @ @add_module_pref 1-4
+#   1
+  @add_module_pref
+Scenario: ADD MODULE  - General  - add preferences
+    Then Tap on "plus" button
+    Then Enter "Test2 General Preference" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
+    Then From "Add Module" click on submodule "General"
+    Then In "Add Module" overlay click on all items from "ADD MODULE" column
+    Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+    Then Tap "Add to Space" button on the "Add Module" overlay
+    Then Verify that all added modals displayed
+##
+#   2
+  @add_module_pref
+  Scenario:  ADD MODULE  - Perfomance  - add preferences
+  Then Tap on "plus" button
+  Then Enter "Test2 Performance Preference" workspace name
+  Then Tap "Create Space" button on the "Create a new space" overlay
+  Then Click on 'ADD MODULE' button
+  Then From "Add Module" click on submodule "Performance"
+  Then In "Add Module" overlay click on all items from "ADD MODULE" column
+  Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+  Then Tap "Add to Space" button on the "Add Module" overlay
+  Then Verify that all added modals displayed
+
 #
-#  3 Scenario: ADD MODULE  - Risk  - add preferences
-#    Then Tap on "plus" button
-#    Then Enter "Test Risk Preference" workspace name
-#    Then In "Create a New Space" click on submodule "Risk"
-#    Then Click on all items from "ADD MODULE" column
-#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
-#    Then Tap "Create Space" button on the "Create a new space" overlay
-#    Then Verify that all added modals displayed
-#
-#  4 Scenario: ADD MODULE - Admin  - add preferences
-#    Then Tap on "plus" button
-#    Then Enter "Test Admin Preference" workspace name
-#    Then In "Create a New Space" click on submodule "Admin"
-#    Then Click on all items from "ADD MODULE" column
-#    Then Verify all added submodules displayed in YOUR MODULE QUEUE
-#    Then Tap "Create Space" button on the "Create a new space" overlay
-#    Then Verify that all added modals displayed
+#  3
+  @add_module_pref
+  Scenario: ADD MODULE  - Risk  - add preferences
+  Then Tap on "plus" button
+  Then Enter "Test2 Risk Preference" workspace name
+  Then Tap "Create Space" button on the "Create a new space" overlay
+  Then Click on 'ADD MODULE' button
+  Then From "Add Module" click on submodule "Risk"
+  Then In "Add Module" overlay click on all items from "ADD MODULE" column
+  Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+  Then Tap "Add to Space" button on the "Add Module" overlay
+  Then Verify that all added modals displayed
+
+#  4
+  @add_module_pref
+  Scenario: ADD MODULE - Admin  - add preferences
+  Then Tap on "plus" button
+  Then Enter "Test2 Admin Preference" workspace name
+  Then Tap "Create Space" button on the "Create a new space" overlay
+  Then Click on 'ADD MODULE' button
+  Then From "Add Module" click on submodule "Admin"
+  Then In "Add Module" overlay click on all items from "ADD MODULE" column
+  Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
+  Then Tap "Add to Space" button on the "Add Module" overlay
+  Then Verify that all added modals displayed
+
 #
 #  fund_module
 #
@@ -484,8 +514,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #   1 Scenario:  Verify that following preferences contains  ACTIONS  (Export Data - Duplicate Module - Remove Module ) -Module size (MEDIUM -LARGE)
 #              |List of preferences with Export Data - Duplicate Module - Remove Module |
 #
-#
-#   2 Scenario:  Verify that following preferences contains ACTIONS  (REMOVE)
+##   2 Scenario:  Verify that following preferences contains ACTIONS  (REMOVE)
 #              |List of preferences with just Remove Module |
 #
 #   3 Scenario:  Verify that following preferences contains ACTIONS  ( Duplicate Module - Remove Module )
