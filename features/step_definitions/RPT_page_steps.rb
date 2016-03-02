@@ -9,6 +9,7 @@ Given /^Enter "([^"]*)" password "([^"]*)" and pin "([^"]*)" and click "([^"]*)"
 end
 Then /^Click "Profile" icon$/ do
   risk_perfomance_page.profile_icon.click
+  sleep 2
 end
 Then (/^Tap "([^"]*)" button$/) do |button|
   risk_perfomance_page.reset_button(button).click
@@ -490,8 +491,34 @@ Then /^Verify that all modules from "Create work space" modules were created 4 t
   puts pref_displayed_sort
   puts @ws_multiadding
   end
-
-
-
-
 end
+
+Then /^Click on Man Group icon$/ do
+  risk_perfomance_page.man_group_logo.click
+  sleep 3
+end
+
+Then /^Verify that user redirected on the ManGroup site$/ do
+ if  risk_perfomance_page.man_group_site.count == 0
+   fail "Bug! Can not fint Man Group title"
+ else puts "Puts all good"
+ end
+end
+Then /^Click button "Sign out"$/ do
+  risk_perfomance_page.sign_out_button.click
+end
+Then /^Verify User is on login page$/ do
+  risk_perfomance_page.login_page_elements
+end
+Then /^From "Report type" click on "([^"]*)"$/ do |report|
+  risk_perfomance_page.pdf_reporttype_name(report).click
+end
+Then /^"([^"]*)" should have list of funds$/ do |reportname|
+  elements = risk_perfomance_page.pdf_displayed_portfolio_list.size
+ if elements == 0
+   fail "#{reportname} list of funds is empty"
+ else
+   puts "#{reportname} has "+ elements.to_s + " funds"
+ end
+end
+

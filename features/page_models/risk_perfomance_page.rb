@@ -26,7 +26,6 @@ class RiskPerfomancePage
       end
     end
   end
-
   def work_space_tab_name(workspace_name)
     $driver.find_elements(:xpath,"//a[@class = 'nav-tab' and contains(text(), '#{workspace_name}')]")
   end
@@ -68,7 +67,7 @@ class RiskPerfomancePage
   end
   def my_profile_changepassword(link_name)
     array = $driver.find_elements(:xpath,"//span[text() = '#{link_name}']")
-    if array.size == 0
+     if array.size == 0
       fail "Can't find  #{link_name}"
     else return array[0]
     end
@@ -148,7 +147,6 @@ class RiskPerfomancePage
   else return array[0]
   end
   end
-
   def close_button
     close_buttons = $driver.find_elements(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')]//button[@title = 'close']")
     close_buttons_active = []
@@ -159,7 +157,6 @@ class RiskPerfomancePage
     end
     return close_buttons_active[0]
   end
-
   def ws_addmodules
     $driver.find_elements(:xpath, "//div[@id = 'AddWorkspaceModal']//div[@class = 'app-options-container clearfix']//a")
   end
@@ -295,6 +292,42 @@ class RiskPerfomancePage
         raise "Can't find this button '#{button_name}' visible"
       end
     end
+  end
+  def man_group_logo
+    $driver.find_element(:xpath,"//div[@class = 'pull-right footer-logo-container']")
+  end
+  def man_group_site
+    $driver.find_elements(:xpath, "//title[contains(text(), 'Welcome to www.man.com')]")
+  end
+  def sign_out_button
+    $driver.find_element(:xpath, "//a[@class = 'ui-dialog-signout']")
+  end
+  def login_page_elements
+    if $driver.find_element(:xpath, "//div[@class = 'login-ui-icon MG_PageHeader']") && $driver.find_element(:xpath,"//button[@class = 'ui-button login-button']")
+      begin
+      rescue Selenium::WebDriver::Error::NoSuchElementError
+      raise "'User is not on login page' was not found"
+      end
+    puts "User was redirected on login page"
+    end
+  end
+  def pdf_reporttype_name(report)
+     begin
+      $driver.find_element(:xpath,"//div[@id = 'DownloadPDFModal']//ul[@class = 'nav-options']//*[contains(text(), '#{report}')]")
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+      raise "Element #{report} is not displayed"
+    end
+  end
+  def pdf_displayed_portfolio_list
+    pdf_list = []
+    elements = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//div[@class = 'app-options-container clearfix']//a[text()]")
+    sleep 3
+    for i in elements
+      if i.displayed?
+       pdf_list.push(i)
+      end
+    end
+    return  pdf_list
   end
 
 

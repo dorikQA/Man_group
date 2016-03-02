@@ -165,8 +165,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then 'DOWNLOAD PDF' button should be displayed
 #    Then An icon in blue color should be displayed on right side of portal for my alerts -??
 #    Then Welcome,[User Name] string should be displayed on right side of portal-??
-#19
 ## "ADD MODULE "  overlay
+  #19
 @addmodule_overlay
   Scenario: Validate Add module contains required columns
     Then Click on 'ADD MODULE' button
@@ -219,7 +219,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |VaR Return Envelope|
       |Exposure           |
       |Risk vs. Return    |
-
   #24
 @pdf_overlay
   Scenario: Validate PDF download contains required columns and close button functionality
@@ -229,7 +228,6 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |02. PORTFOLIO / FUNDS|
       |03. YOUR LIST        |
     Then Close 'PDF download' overlay
-
   #25
 @pdf_overlay
    Scenario: Validate PDF download - Report types
@@ -310,8 +308,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
  #33
   @disclaimers
   Scenario: Verify content of disclaimers Terms and Conditions
-#    Then Click on "Terms and Conditions"
-#    Then Tap 'x' to close "Terms and Conditions"
+    Then Click on "Terms and Conditions"
+    Then Tap 'x' to close "Terms and Conditions"
     Then Click on "Terms and Conditions"
     And Disclaimer header should be 'Terms and Conditions of Use '
     And Disclaimer document should have bullets:
@@ -331,27 +329,24 @@ Scenario: Create New Space overlay - Admin contains required submodules
     |14. Viruses, Hacking and other offences    |
     |15. Changes to the Site                    |
     Then Close "Terms and Conditions" via "close" button
-
-
 #34
   @disclaimers
   Scenario: Verify content of disclaimers Privacy Policy
-#    Then Click on "Privacy Policy"
-#    Then Close "Terms and Conditions" via "close" button
     Then Click on "Privacy Policy"
-    Then Tap 'x' to close "Terms and Conditions"
+    Then Close "Terms and Conditions" via "close" button
+    Then Click on "Privacy Policy"
     And Disclaimer header should be '16. Privacy and Data Protection'
     And Disclaimer document should have bullets:
      |Data protection|
      |Cookies|
+    Then Tap 'x' to close "Terms and Conditions"
 
 #35
   @disclaimers
   Scenario: Verify content of disclaimers Security
-#    Then Click on "Security"
-#    Then Close "Terms and Conditions" via "close" button
     Then Click on "Security"
-    Then Tap 'x' to close "Terms and Conditions"
+    Then Close "Terms and Conditions" via "close" button
+    Then Click on "Security"
     And Disclaimer header should be 'Security'
     And Disclaimer document should have bullets:
     |Scam e-mails and fake websites|
@@ -365,6 +360,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
       |www.maninvestments.com       |
       |www.maninvestments.com.au    |
       |www.pembacreditadvisers.com  |
+
+    Then Tap 'x' to close "Terms and Conditions"
 
     ##sprint 03/04
 # @ @add_module_pref 1-4
@@ -525,15 +522,39 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #         |Data Monitor|
 #
 #  @others
-#   1 Scenario: Man Group Logo in bottom right corner - redirection
-#   2 Scenario: User able to sign out
+  #1
+   Scenario: Man Group Logo in bottom right corner - redirection
+     Then Click on Man Group icon
+     Then Verify that user redirected on the ManGroup site
 
-#
+#   2
+   Scenario: User able to sign out
+     Then Click "Profile" icon
+     Then Click button "Sign out"
+     Then Verify User is on login page
+
 #     @pdf_overlay 1-9
-#   1 Scenario: Download PDF Report - Standard report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
-#   2 Scenario: Download PDF Report - Basic report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
-#   3 Scenario: Download PDF Report - Standard HPC  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
-#   4 Scenario: Download PDF Report - Limit  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+#1
+  Scenario: Download PDF Report - Standard report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+      Then Click on 'PDF download' button
+      Then From "Report type" click on "Standard Report"
+      Then "Standard Report" should have list of funds
+#2
+  Scenario: Download PDF Report - Basic report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Basic Report"
+    Then "Basic Report" should have list of funds
+#3
+  Scenario: Download PDF Report - Standard HPC  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Standard HPC"
+    Then "Standard HPC" should have list of funds
+#4
+  Scenario: Download PDF Report - Limit  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Limit Report"
+    Then "Limit Report" should have list of funds
+
 #   5 Scenario: Download PDF Report - Custom  report- Available Portfolio Funds - verify list of funds available (Any available)
 #   6 Scenario: Download PDF Report - Select funds from PORTFOLIO/FUNDS - verify that same funds become displayed  in 03. YOUR LIST
 #   7 Scenario: Download PDF Report - CUSTOM REPORT - select from - Available Portfolio Funds - verify that same funds become displayed  in YOUR LIST
