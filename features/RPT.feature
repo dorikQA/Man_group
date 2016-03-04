@@ -572,7 +572,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Click on 5 funds from FUNDS column
     Then Verify the same Fund were added to YOUR LIST column
 
-#   8 Doesn't work because cuctom overlay becomes smaller after Selenium click on Custom Report
+#   8 Doesn't work because custom overlay becomes smaller after Selenium click on Custom Report
 #  Scenario: Download PDF Report - CUSTOM REPORT - select from - Available Portfolio Funds - verify that same funds become displayed  in YOUR LIST
 #    Then Click on 'PDF download' button
 #    Then From "Report type" click on "Custom Report"
