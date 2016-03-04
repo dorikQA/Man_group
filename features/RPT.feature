@@ -2,7 +2,7 @@
 Feature: Risk & Performance Page
 Background:
     Given Open the Man Group site
-    Given Enter "modtestinternaloperationssuppo@gmail.com" password "Wsodtest1!" and pin "9876" and click "Login" button
+    Given Enter "pctusertests@gmail.com" password "0ChangeMe0!" and pin "9876" and click "Login" button
 #    Then Click "Profile" icon
 #    Then Tap "Reset" button
 @myportfolio_overlay
@@ -554,10 +554,33 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Click on 'PDF download' button
     Then From "Report type" click on "Limit Report"
     Then "Limit Report" should have list of funds
+#5
+  Scenario: Download PDF Report - Custom  report - SELECTED FUNDS - verify list of funds available (Any available)
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Custom Report"
+    Then SELECTED FUNDS section should have list of funds
 
-#   5 Scenario: Download PDF Report - Custom  report- Available Portfolio Funds - verify list of funds available (Any available)
-#   6 Scenario: Download PDF Report - Select funds from PORTFOLIO/FUNDS - verify that same funds become displayed  in 03. YOUR LIST
-#   7 Scenario: Download PDF Report - CUSTOM REPORT - select from - Available Portfolio Funds - verify that same funds become displayed  in YOUR LIST
+#   6 Fail because not all report contain list of Funds
+#  Scenario: Download PDF Report - Select funds from PORTFOLIO/FUNDS - verify that same funds become displayed  in 03. YOUR LIST
+#    Then Click on 'PDF download' button
+#    Then Add random fund from each report
+#     Then Verify the same Fund were added to YOUR LIST column
+#   7
+  Scenario: Download PDF Report - Select funds from PORTFOLIO/FUNDS - verify that same funds become displayed  in 03. YOUR LIST
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Standard Report"
+    Then Click on 5 funds from FUNDS column
+    Then Verify the same Fund were added to YOUR LIST column
+
+#   8 Doesn't work because cuctom overlay becomes smaller after Selenium click on Custom Report
+#  Scenario: Download PDF Report - CUSTOM REPORT - select from - Available Portfolio Funds - verify that same funds become displayed  in YOUR LIST
+#    Then Click on 'PDF download' button
+#    Then From "Report type" click on "Custom Report"
+    #Then Select 5 funds from SELECT FUNDS column
+    #Then Verify that custom YOUR list  displays selected funds
+
+
+
 #   8  Scenario: Download PDF Report -PDF Download functionality -verify that user can download report and it saved in PC folder
 #   9  Scenario: Theme verification > Daybvs Night (My Profile>Preferences)
 #

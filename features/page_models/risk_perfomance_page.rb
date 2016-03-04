@@ -318,7 +318,10 @@ class RiskPerfomancePage
       raise "Element #{report} is not displayed"
     end
   end
-  def pdf_displayed_portfolio_list
+def pdf_reporttype_list
+  $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//ul[@class = 'nav-options']//*[text()]")
+end
+  def pdf_displayed_funds_list
     pdf_list = []
     elements = $driver.find_elements(:xpath, "//div[@id = 'DownloadPDFModal']//div[@class = 'app-options-container clearfix']//a[text()]")
     sleep 3
@@ -329,8 +332,32 @@ class RiskPerfomancePage
     end
     return  pdf_list
   end
+  def pdf_custom_vehicles
+    $driver.find_elements(:xpath,"//ul[@class= 'custom-pdf-select-vehicles-list']//a")
+  end
+  def pdf_custom_added_fund
+    $driver.find_elements(:xpath,"//div[@class = 'custom-pdf-your-list-container']//a")
+  end
+
+   def random_click_report_fund
+    reports = risk_perfomance_page.pdf_reporttype_list
+    reports2 = reports.pop
+    reports.each do |a|
+      a.click
+      funds  = risk_perfomance_page.pdf_displayed_funds_list.sample.click
+    end
+  end
+  def pdf_selected_funds
+  $driver.find_elements(:xpath, "//li[@class = 'app-option touch-click app-option-added']//a")
+  end
+  def pdf_yourfunds_list
+    elements = $driver.find_elements(:xpath,"//div[@id = 'DownloadPDFModal']//li[@class = 'chosen-app']//a")
+ end
+
+
 
 
 end
+
 
 

@@ -512,13 +512,94 @@ Then /^Verify User is on login page$/ do
 end
 Then /^From "Report type" click on "([^"]*)"$/ do |report|
   risk_perfomance_page.pdf_reporttype_name(report).click
+  sleep 3
 end
+
 Then /^"([^"]*)" should have list of funds$/ do |reportname|
-  elements = risk_perfomance_page.pdf_displayed_portfolio_list.size
+  elements = risk_perfomance_page.pdf_displayed_funds_list.size
  if elements == 0
    fail "#{reportname} list of funds is empty"
  else
    puts "#{reportname} has "+ elements.to_s + " funds"
  end
 end
+Then /^SELECTED FUNDS section should have list of funds$/ do
+  elements = risk_perfomance_page.pdf_displayed_funds_list.size
+  if elements == 0
+    fail "Bug! Selected funds section is empty"
+  else puts "Custom report has " + elements.to_s + "funds in list"
+  end
+end
+
+
+Then /^Add random fund from each report$/ do
+  risk_perfomance_page.random_click_report_fund
+end
+Then /^Click on 5 funds from FUNDS column$/ do
+  for x in 0..4
+    funds = risk_perfomance_page.pdf_displayed_funds_list
+    funds[0].click
+    funds[1].click
+    funds[2].click
+    funds[3].click
+    funds[4].click
+  end
+    # arr = []
+    # for i in risk_perfomance_page.pdf_selected_funds
+    #   arr.push(i.text)
+    # end
+    # puts arr
+end
+Then /^Verify the same Fund were added to YOUR LIST column$/ do
+
+  selected_funds = risk_perfomance_page.pdf_selected_funds
+  selected_fund_text = []
+  for i in  selected_funds
+    selected_fund_text.push(i.text)
+  end
+  puts selected_fund_text
+
+  added_fund_text = []
+  for i in risk_perfomance_page.pdf_yourfunds_list
+  added_fund_text.push(i.text)
+  end
+  puts added_fund_text
+  if selected_fund_text != added_fund_text
+    fail "Bug"
+  else
+    puts "Cool"
+  end
+end
+Then /^Select 5 funds from SELECT FUNDS column$/ do
+    funds = risk_perfomance_page.pdf_custom_vehicles
+    funds[0].click
+    funds[1].click
+    funds[2].click
+    funds[3].click
+    funds[4].click
+end
+Then /Verify that custom YOUR list  displays selected funds$/ do
+  selected_funds = risk_perfomance_page.pdf_selected_funds
+  selected_fund_text = []
+  for i in  selected_funds
+    selected_fund_text.push(i.text)
+  end
+  puts selected_fund_text
+  added_fund_text = []
+  for i in risk_perfomance_page.pdf_custom_added_fund
+    added_fund_text.push(i.text)
+  end
+  puts added_fund_text
+  if selected_fund_text != added_fund_text
+
+    dif = added_fund_text - selected_fund_text
+    dif.each do |x|
+      puts x
+    end
+    fail "Bug"
+  else
+    puts "Cool"
+  end
+end
+
 
