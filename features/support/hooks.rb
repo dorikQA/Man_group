@@ -5,12 +5,12 @@ Before do
   $driver = Selenium::WebDriver.for(:firefox, :profile => profile)
   $dropdown = Selenium::WebDriver::Support::Select
   $driver.manage.window.maximize
-  #@wait = Selenium::WebDriver::Wait.new(:timeout => 15)
+  $wait = Selenium::WebDriver::Wait.new(:timeout => 15)
 
 end
 
 AfterStep do
-  $driver.manage.timeouts.implicit_wait = 10
+  $driver.manage.timeouts.implicit_wait = 12
 end
 After do |scenario|
   if scenario.failed?

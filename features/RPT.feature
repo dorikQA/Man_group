@@ -2,7 +2,7 @@
 Feature: Risk & Performance Page
 Background:
     Given Open the Man Group site
-    Given Enter "pctusertests@gmail.com" password "0ChangeMe0!" and pin "9876" and click "Login" button
+    Given Enter "Testing112123123@gmail.com" password "0ChangeMe0!2" and pin "9876" and click "Login" button
 #    Then Click "Profile" icon
 #    Then Tap "Reset" button
 @myportfolio_overlay
@@ -366,10 +366,10 @@ Scenario: Create New Space overlay - Admin contains required submodules
     ##sprint 03/04
 # @ @add_module_pref 1-4
 #   1
-  @add_module_pref
+  @addmodulepref
   Scenario: ADD MODULE  - General  - add preferences
     Then Tap on "plus" button
-    Then Enter "Test2 General Preference" workspace name
+    Then Enter "AM General Preference" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "General"
@@ -378,10 +378,10 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that all added modals displayed
 #   2
-  @add_module_pref
+  @addmodulepref
   Scenario:  ADD MODULE  - Perfomance  - add preferences
     Then Tap on "plus" button
-    Then Enter "Test2 Performance Preference" workspace name
+    Then Enter "AM Performance Preference" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "Performance"
@@ -390,10 +390,10 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that all added modals displayed
 #  3
-  @add_module_pref
+  @addmodulepref
   Scenario: ADD MODULE  - Risk  - add preferences
     Then Tap on "plus" button
-    Then Enter "Test2 Risk Preference" workspace name
+    Then Enter "AM Risk Preference" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "Risk"
@@ -402,10 +402,10 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that all added modals displayed
 #  4
-  @add_module_pref
+  @addmodulepref
   Scenario: ADD MODULE - Admin  - add preferences
     Then Tap on "plus" button
-    Then Enter "Test2 Admin Preference" workspace name
+    Then Enter "AM Admin Preference" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "Admin"
@@ -413,25 +413,28 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEUE
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that all added modals displayed
-# @addmodule_overlay_MULTISELECTION 1-3
+
+# add_module_overlay_MULTISELECTION 1-3
    #1
+  @addmodulepref
   Scenario: ADD MODULE -GENERAL  Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
-    Then Enter "Multi2 General Preferences" workspace name
+    Then Enter "AM General Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "General"
-    And  Add click on oll items in add modules column  4 times
+    And  Add click on oll items in add modules column  4 timesMultiselection verification - check the all selected modules on the work space
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that selected modules from "Add module" were created 4 times
 #    |Documents   |
 #    |Fund Summary|
 #    |Fund Rating |
 #    |Commentary  |
-#2
+#2 add_module_overlay_MULTISELECTION
+  @addmodulepref
   Scenario: ADD MODULE- PERFORMANCE - Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
-    Then Enter "Multi2 Performace Preferences" workspace name
+    Then Enter "AM Performace Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "Performance"
@@ -444,10 +447,11 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #       |Style                            |
 #       |Benchmark Up/Down                |
 #       |Monthly Performance Distribution |
-#  # 3
+#3 add_module_overlay_MULTISELECTION
+  @addmodulepref
   Scenario: ADD MODULE - RISK - Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
-    Then Enter "Multi2 Risk Preferences" workspace name
+    Then Enter "AM Risk Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "Risk"
@@ -460,35 +464,39 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #        |Sensitivity        |
 #        |VaR Return Envelope|
 #        |Risk vs. Return    |
-  #4
+#4 add_module_overlay_MULTISELECTION
+  @addmodulepref
   Scenario: ADD MODULE - Admin - Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
-    Then Enter "Multi2 Risk Preferences" workspace name
+    Then Enter "AM Multi Risk Preferences" workspace name
+    Then Tap "Create Space" button on the "Create a new space" overlay
+    Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "Admin"
     And  Add click on oll items in add modules column  4 times
     Then Tap "Add to Space" button on the "Add Module" overlay
-    Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that selected modules from "Add module" were created 4 times
   #      |Data Monitor|
   #  @ createnewspace_ MULTISELECTION 1 -4
 #   1
+  @createnewspace
   Scenario: CREATE SPACE - GENERAL  Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "General"
     And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
-    Then Enter "Multi General Preferences" workspace name
+    Then Enter "CS Multi General Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all modules from "Create work space" modules were created 4 times
 #    |Documents   |
 #    |Fund Summary|
 #    |Fund Rating |
 #    |Commentary  ||
-#2
+#2 createnewspace_ MULTISELECTION
+  @createnewspace
   Scenario: CREATE SPACE - PERFORMANCE  Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Performance"
     And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
-    Then Enter "Multi Performance Preferences" workspace name
+    Then Enter "CS Multi Performance Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all modules from "Create work space" modules were created 4 times
 #       |Performance Decomposition        |
@@ -497,12 +505,13 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #       |Style                            |
 #       |Benchmark Up/Down                |
 #       |Monthly Performance Distribution |
-#3
+#3 createnewspace_ MULTISELECTION
+  @createnewspace
   Scenario: CREATE SPACE - RISK -  Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Risk"
     And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
-    Then Enter "Multi Risk Preferences" workspace name
+    Then Enter "CS Multi Risk Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all modules from "Create work space" modules were created 4 times
 #        |Risk Snapshot      |
@@ -511,12 +520,13 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #        |Sensitivity        |
 #        |VaR Return Envelope|
 #        |Risk vs. Return    |
-#4
+#4 createnewspace_ MULTISELECTION
+  @createnewspace
   Scenario: CREATE SPACE - Admin -  Multiselection verification - check the all selected modules on the work space
     Then Tap on "plus" button
     Then In "Create a New Space" click on submodule "Admin"
     And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times
-    Then Enter "Multi Admin Preferences" workspace name
+    Then Enter "CS Admin Preferences" workspace name
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Verify that all modules from "Create work space" modules were created 4 times
 #         |Data Monitor|
@@ -533,60 +543,107 @@ Scenario: Create New Space overlay - Admin contains required submodules
      Then Click button "Sign out"
      Then Verify User is on login page
 
-#     @pdf_overlay 1-9
 #1
+  @pdfoverlay
   Scenario: Download PDF Report - Standard report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
       Then Click on 'PDF download' button
       Then From "Report type" click on "Standard Report"
       Then "Standard Report" should have list of funds
 #2
+  @pdfoverlay
   Scenario: Download PDF Report - Basic report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
     Then Click on 'PDF download' button
     Then From "Report type" click on "Basic Report"
     Then "Basic Report" should have list of funds
 #3
-  Scenario: Download PDF Report - Standard HPC  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+  @pdfoverlay
+  Scenario: Download PDF Report - Standard HPC report -  verify list of funds available (Any available)
     Then Click on 'PDF download' button
     Then From "Report type" click on "Standard HPC"
     Then "Standard HPC" should have list of funds
 #4
-  Scenario: Download PDF Report - Limit  report- PORTFOLIO/FUNDS - verify list of funds available (Any available)
+  @pdfoverlay
+  Scenario: Download PDF Report - Limit report - verify list of funds available (Any available)
     Then Click on 'PDF download' button
     Then From "Report type" click on "Limit Report"
     Then "Limit Report" should have list of funds
 #5
-  Scenario: Download PDF Report - Custom  report - SELECTED FUNDS - verify list of funds available (Any available)
+  @pdfoverlay
+  Scenario: Download PDF Report - Custom Report  - verify list of funds available (Any available)
     Then Click on 'PDF download' button
     Then From "Report type" click on "Custom Report"
     Then SELECTED FUNDS section should have list of funds
 
-#   6 Fail because not all report contain list of Funds
-#  Scenario: Download PDF Report - Select funds from PORTFOLIO/FUNDS - verify that same funds become displayed  in 03. YOUR LIST
-#    Then Click on 'PDF download' button
-#    Then Add random fund from each report
-#     Then Verify the same Fund were added to YOUR LIST column
-#   7
-  Scenario: Download PDF Report - Select funds from PORTFOLIO/FUNDS - verify that same funds become displayed  in 03. YOUR LIST
+# 6  # Fail because not all report contain list of Funds
+  @pdfoverlay
+  Scenario: Download PDF Report - Select RANDOM FUNDS FROM EACH REPORT  verify that same funds become displayed  in 03. YOUR LIST
+    Then Click on 'PDF download' button
+    Then Add random fund from each report
+     Then Verify the same Fund were added to YOUR LIST column
+# 7
+  @pdfoverlay
+  Scenario: Download PDF Report - Select funds from Standard Report - verify that same funds become displayed  in 03. YOUR LIST
     Then Click on 'PDF download' button
     Then From "Report type" click on "Standard Report"
     Then Click on 5 funds from FUNDS column
     Then Verify the same Fund were added to YOUR LIST column
+ #8
+  @pdfoverlay
+  Scenario: Download PDF Report - Select funds from Basic Report - verify that same funds become displayed  in 03. YOUR LIST
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Basic Report"
+    Then Click on 5 funds from FUNDS column
+    Then Verify the same Fund were added to YOUR LIST column
+ #9
+  @pdfoverlay
+  Scenario: Download PDF Report - Select funds from Standard Report - verify that same funds become displayed  in 03. YOUR LIST
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Standard HPC"
+    Then Click on 5 funds from FUNDS column
+    Then Verify the same Fund were added to YOUR LIST column
+  #10
+  @pdfoverlay
+  Scenario: Download PDF Report - Select funds from Limit Report - verify that same funds become displayed  in 03. YOUR LIST
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Limit Report"
+    Then Click 1 fund from FUNDS column
+    Then Verify the same Fund were added to YOUR LIST column
 
-#   8 Doesn't work because custom overlay becomes smaller after Selenium click on Custom Report
-#  Scenario: Download PDF Report - CUSTOM REPORT - select from - Available Portfolio Funds - verify that same funds become displayed  in YOUR LIST
-#    Then Click on 'PDF download' button
-#    Then From "Report type" click on "Custom Report"
-    #Then Select 5 funds from SELECT FUNDS column
-    #Then Verify that custom YOUR list  displays selected funds
+# 11  Doesn't work because custom overlay becomes smaller after Selenium click on Custom Report
+  @pdfoverlay
+  Scenario: Download PDF Report - Select funds from CUSTOM REPORT -- Available Portfolio Funds - verify that same funds become displayed  in YOUR LIST
+    Then Click on 'PDF download' button
+    Then From "Report type" click on "Custom Report"
+    #Then From "Report type" click on "Custom Report"
+    #Then Remove Funds that selected by default
+    Then Select 5 funds from SELECT FUNDS column
+    Then Verify that custom YOUR list  displays selected funds
 
 
+#   8   Scenario: Download PDF Report -PDF Download functionality -verify that user can download report and it saved in PC folder
 
-#   8  Scenario: Download PDF Report -PDF Download functionality -verify that user can download report and it saved in PC folder
+#@others
+
 #   9  Scenario: Theme verification > Daybvs Night (My Profile>Preferences)
-#
-#
+  @theme
+  Scenario:My Profile - Verify  Theme Styles
+    Then Click "Profile" icon
+    Then Open "Preferences" submenu
+    Then Click "Day" theme style
+    And  Verify Theme has "day" style
+    Then Click "Profile" icon
+    Then Open "Preferences" submenu
+    Then Click "Night" theme style
+    And  Verify Theme has "night" style
+
+
 #  @left_rail 1-7
-#   1 Scenario: Verify user can open - close left rail - user should see settings button, funds dropdown
+#   1
+Scenario: Verify user can open - close left rail - user should see settings button, funds dropdown
+  Then Open left rail menu
+  Then Verify settings button, funds dropdown, preference menu are visible
+  Then Close left rail menu
+
 #   2 Scenario: Left Rail > List of fund should be available in dropdown menu (check for present items >0)
 #   3 Scenario: Left Rail > User can select any Fund>  Verify that same Fund bis displayed in dropdown title field and in
 #   4 Scenario: Left rail > User select SHOW ALL FUNDS in drop down > List of all funds from dropdown list  are displayed
@@ -615,9 +672,9 @@ Scenario: Create New Space overlay - Admin contains required submodules
 #              |List of preferences Medium Large                    |
 #   6 Scenario: Verify that following preferences contains MODULE SIZE (None)
 #               | List of preferences without Module size options                         |
-#   7 Scenario:   Functionality Export Data
+#   7 Scenario:  Functionality Export Data
 #   8 Scenario:  Functionality Duplicate
 #   9 Scenario:  Functionality  Remove
-#   10 Scenario:  User sign out functionality
+#   10 Scenario: User sign out functionality
 #   11 Scenario: Actions - Verify user can creates via Duplicate Module
 #   12 Scenario: Actions - Verify user can creates via Remove Module

@@ -392,7 +392,7 @@ And /^List of official following websites should be:$/ do |links|
 end
 
 Then /^From "Add Module" click on submodule "([^"]*)"$/ do |modules|
-  risk_perfomance_page.add_module_submodule_name(modules).click
+  risk_perfomance_page.add_module_submodule_name(modules)
 end
 
 Then /^In "Add Module" overlay click on all items from "ADD MODULE" column$/ do
@@ -402,7 +402,6 @@ Then /^In "Add Module" overlay click on all items from "ADD MODULE" column$/ do
     if i.displayed?
       itemstext.push(i.text)
       i.click
-
     end
   end
   @array1_am =  itemstext
@@ -428,6 +427,7 @@ Then (/^Tap "([^"]*)" button on the "Add Module" overlay$/) do |button_name|
   risk_perfomance_page.addtospace_buttons(button_name)
   sleep 7
 end
+
 Then /^Add click on oll items in add modules column  4 times$/ do
 items  = risk_perfomance_page.am_addmodules
 itemstext = []
@@ -440,8 +440,8 @@ itemstext = []
   end
  end
 queue_list = risk_perfomance_page.am_queue_item_list.sort
-
- if (itemstext*4).sort != queue_list.sort
+itemstext = (itemstext*4).sort
+ if itemstext.sort != queue_list.sort
    fail  "Bug! Something wrong!"
  end
 @am_pref_list = itemstext
@@ -450,12 +450,16 @@ end
 
 Then /^Verify that selected modules from "Add module" were created 4 times$/ do
   pref_displayed = risk_perfomance_page.displyed_modules_list
-  if pref_displayed.sort != @multiadding
-    try @ws_multiadding
+  if pref_displayed.sort != @am_pref_list
+  # try @ws_multiadding
     fail "Bug! Added preferences and displayed preferences are diffrent"
-  else puts pref_displayed.sort
+  elsif
+  pref_displayed.sort != @multiadding
+  fail "Bug! Added preferences and displayed preferences are diffrent"
+  else
+    puts pref_displayed.sort
     puts @multiadding
-    puts (@am_pref_list*4).sort
+    puts @am_pref_list
    end
 end
 Then /^In "Create Space" overlay click all items from "ADD MODULE" column  4 times$/ do
@@ -464,28 +468,28 @@ Then /^In "Create Space" overlay click all items from "ADD MODULE" column  4 tim
   for i in items
     if i.displayed?
       itemstext.push(i.text)
-      4.times  do |x|
+     4.times  do |x|
         x = i.click
         sleep 2
       end
     end
   end
-  queue_list = risk_perfomance_page.queue_item_list.sort
+  queue_list = risk_perfomance_page.queue_item_list
   add_module4_sort = (itemstext*4).sort
-   if add_module4_sort != queue_list
-     puts add_module4_sort
-     puts queue_list
-    fail  "Bug! Something wrong!Check Columns"
-  end
+  # if add_module4_sort != queue_list
+  #   puts add_module4_sort
+  #   puts queue_list
+  #   fail  "Bug! Something wrong!Check Columns"
+  # end
+  @ws_pref_list = add_module4_sort
   @ws_multiadding = queue_list
-
 end
 
 Then /^Verify that all modules from "Create work space" modules were created 4 times$/ do
   pref_displayed_sort = risk_perfomance_page.displyed_modules_list.sort
-  if pref_displayed_sort != @ws_multiadding
+  if pref_displayed_sort != @ws_pref_list
     fail "Bug! Added preferences and displayed preferences are diffrent"
-    putspref_displayed_sort
+    puts  @ws_pref_list
     puts  @ws_multiadding
   else
   puts pref_displayed_sort
@@ -564,13 +568,16 @@ Then /^Verify the same Fund were added to YOUR LIST column$/ do
   added_fund_text.push(i.text)
   end
   puts added_fund_text
-  if selected_fund_text != added_fund_text
+  if selected_fund_text.compact != added_fund_text.compact
+    puts selected_fund_text
+    puts added_fund_text
     fail "Bug"
   else
     puts "Cool"
   end
 end
 Then /^Select 5 funds from SELECT FUNDS column$/ do
+  sleep 3
     funds = risk_perfomance_page.pdf_custom_vehicles
     funds[0].click
     funds[1].click
@@ -578,28 +585,97 @@ Then /^Select 5 funds from SELECT FUNDS column$/ do
     funds[3].click
     funds[4].click
 end
+Then /^Click 1 fund from FUNDS column$/ do
+   funds = risk_perfomance_page.pdf_displayed_funds_list
+    funds[0].click
+end
+# Then /Verify that custom YOUR list  displays selected funds$/ do
+#
+#   selected_funds = risk_perfomance_page.pdf_selected_funds
+#   selected_fund_text = []
+#   for i in  selected_funds
+#     selected_fund_text.push(i.text)
+#   end
+#   puts selected_fund_text
+#   added_fund_text = []
+#   for i in risk_perfomance_page.pdf_custom_added_fund
+#     added_fund_text.push(i.text)
+#   end
+#   puts added_fund_text
+#   if selected_fund_text != added_fund_text
+#
+#     dif = added_fund_text - selected_fund_text
+#     dif.each do |x|
+#       puts x
+#     end
+#     fail "Bug"
+#   else
+#     puts "Cool"
+#   end
+# end
+
 Then /Verify that custom YOUR list  displays selected funds$/ do
-  selected_funds = risk_perfomance_page.pdf_selected_funds
+
+  selected_funds = risk_perfomance_page.pdf_custom_report_selected_funds
   selected_fund_text = []
   for i in  selected_funds
     selected_fund_text.push(i.text)
   end
-  puts selected_fund_text
+  selected_fund_text = selected_fund_text.sort
   added_fund_text = []
   for i in risk_perfomance_page.pdf_custom_added_fund
     added_fund_text.push(i.text)
   end
-  puts added_fund_text
-  if selected_fund_text != added_fund_text
-
-    dif = added_fund_text - selected_fund_text
-    dif.each do |x|
-      puts x
+  added_fund_text = added_fund_text.sort
+   if selected_fund_text != added_fund_text
+      puts "Bug!The selected funds don't match added funds"
+      puts selected_fund_text
+      puts added_fund_text
+    else
+      puts "Cool.The selected funds match added funds"
+      puts selected_fund_text
+      puts added_fund_text
     end
-    fail "Bug"
-  else
-    puts "Cool"
-  end
+ end
+Then /^Remove Funds that selected by default$/ do
+  sleep 5
+  risk_perfomance_page.pdf_remove_funds_from_list
 end
+Then /^Open "([^"]*)" submenu$/ do |submodule_text|
+  sleep 4
+  puts submodule_text
+  risk_perfomance_page.my_profile_submenu(submodule_text).click
 
+end
+Then /^Click "([^"]*)" theme style$/ do |theme|
+theme = risk_perfomance_page.my_profile_theme(theme).click
+end
+And  /Verify Theme has "([^"]*)" style$/ do |theme|
+  sleep 3
+  if risk_perfomance_page.them_style(theme).count > 0
+    puts "Style is  " + theme
+  end
 
+end
+Then /^Open left rail menu$/ do
+  risk_perfomance_page.left_rail.click
+end
+Then /^Close left rail menu$/ do
+  risk_perfomance_page.left_rail.click
+end
+Then /^Verify settings button, funds dropdown, preference menu are visible$/ do
+  sleep 5
+      if risk_perfomance_page.left_rail_embargorailselector.displayed? == false
+        puts "Settings button is not displayed"
+      elsif risk_perfomance_page.left_rail_preferencesmenu.displayed? == false
+        puts "Preferences menu button is not displayed"
+      elsif risk_perfomance_page.left_rail_fund_dropdown.displayed? == false
+        puts "Dropdown funds is not displayed"
+      else
+        puts "Settings button, funds dropdown, preference are displayed"
+      end
+      # elsif
+      # risk_perfomance_page.left_rail_preferencesMenu
+      #
+      # risk_perfomance_page.left_rail_fund_dropdown
+end
