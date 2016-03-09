@@ -679,3 +679,11 @@ Then /^Verify settings button, funds dropdown, preference menu are visible$/ do
       #
       # risk_perfomance_page.left_rail_fund_dropdown
 end
+
+Then /^Verify Left rail was closed$/ do
+  if risk_perfomance_page.left_rail_embargorailselector.displayed? && risk_perfomance_page.left_rail_preferencesmenu.displayed? && risk_perfomance_page.left_rail_fund_dropdown.displayed?
+    puts "Left rail closed"
+  else
+    puts "Settings button, funds dropdown, preference are displayed"
+  end
+end

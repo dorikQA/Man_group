@@ -643,6 +643,12 @@ Scenario: Verify user can open - close left rail - user should see settings butt
   Then Open left rail menu
   Then Verify settings button, funds dropdown, preference menu are visible
   Then Close left rail menu
+  Then Verify Left rail was closed
+  ----------
+
+
+
+
 
 #   2 Scenario: Left Rail > List of fund should be available in dropdown menu (check for present items >0)
 #   3 Scenario: Left Rail > User can select any Fund>  Verify that same Fund bis displayed in dropdown title field and in
