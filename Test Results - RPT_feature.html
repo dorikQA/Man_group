@@ -572,8 +572,8 @@ jQuery.cookie = function(name, value, options) {
 <body>
 <div id="container">
 <div id="header">
-<div class="time">8 ms</div>
-<h1>RPT.feature: <strong><span class="total">286 total, </span><span class="failed">13 failed, </span><span class="ignored">18 ignored, </span><span class="passed">255 passed</span></strong>
+<div class="time">11 ms</div>
+<h1>RPT.feature: <strong><span class="total">286 total, </span><span class="failed">21 failed, </span><span class="ignored">11 ignored, </span><span class="passed">254 passed</span></strong>
 </h1>
 <div id="treecontrol">
 <ul>
@@ -591,7 +591,7 @@ jQuery.cookie = function(name, value, options) {
 <ul id="tree">
 <li xmlns="" class="level top failed open">
 <span><em class="time">
-<div class="time">8 ms</div>
+<div class="time">11 ms</div>
 </em>Feature: Risk &amp; Performance Page</span>
 <ul>
 <li class="level suite open">
@@ -842,9 +842,9 @@ jQuery.cookie = function(name, value, options) {
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level suite failed open">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em>Scenario: My Profile - Change Password contains required links</span>
 <ul>
 <li class="level test">
@@ -852,16 +852,21 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Click "Profile" icon</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Verify Change Password contains links:</span>
+<div class="time">1 ms</div>
+</em><em class="status">failed</em>Then  Verify Change Password contains links:</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError: Click here to reset your pin is not displayed<br/>./features/step_definitions/RPT_page_steps.rb:114:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:111:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:111:in `/^Verify ([^&quot;]*) contains links:$/&#39;<br/>./features/RPT.feature:83:in `Then Verify Change Password contains links:&#39;<br/></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
 </em>Scenario: My Profile - Verify  Language Selector contains required languages</span>
 <ul>
 <li class="level test">
@@ -871,7 +876,7 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Verify Language Selector contains languages:</span>
 </li>
 </ul>
@@ -937,29 +942,39 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em>Scenario: Create New Space overlay - Risk contains required submodules</span>
 <ul>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Tap on "plus" button</span>
-</li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  In "Create a New Space" click on submodule "Risk"</span>
-</li>
 <li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">failed</em>Then  Verify module "Risk" contains submodules:</span>
+</em><em class="status">failed</em>Then  Tap on "plus" button</span>
 <ul>
 <li class="text">
-<span class="stderr">RuntimeError: Exposure is not displayed<br/>./features/step_definitions/RPT_page_steps.rb:174:in `rescue in block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:170:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:167:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:167:in `/^Verify module &quot;([^&quot;]*)&quot; contains submodules:$/&#39;<br/>./features/RPT.feature:130:in `Then Verify module &quot;Risk&quot; contains submodules:&#39;<br/></span>
+<span class="stderr">NoMethodError: undefined method `click&#39; for nil:NilClass<br/>./features/step_definitions/RPT_page_steps.rb:19:in `/^Tap on &quot;plus&quot; button$/&#39;<br/>./features/RPT.feature:128:in `Then Tap on &quot;plus&quot; button&#39;<br/></span>
+</li>
+</ul>
+</li>
+<li class="level test ignored open">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  In "Create a New Space" click on submodule "Risk"</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
+</li>
+<li class="level test ignored open">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  Verify module "Risk" contains submodules:</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="level suite failed open">
+<li class="level suite open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Create New Space overlay - Perfomance contains required submodules</span>
@@ -974,15 +989,10 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  In "Create a New Space" click on submodule "Performance"</span>
 </li>
-<li class="level test failed open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">failed</em>Then  Verify module "Performance" contains submodules:</span>
-<ul>
-<li class="text">
-<span class="stderr">RuntimeError: Benchmark Up/Down is not displayed<br/>./features/step_definitions/RPT_page_steps.rb:174:in `rescue in block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:170:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:167:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:167:in `/^Verify module &quot;([^&quot;]*)&quot; contains submodules:$/&#39;<br/>./features/RPT.feature:143:in `Then Verify module &quot;Performance&quot; contains submodules:&#39;<br/></span>
-</li>
-</ul>
+</em><em class="status">passed</em>Then  Verify module "Performance" contains submodules:</span>
 </li>
 </ul>
 </li>
@@ -1062,7 +1072,7 @@ jQuery.cookie = function(name, value, options) {
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level suite failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Validate Add module MODULE column contains</span>
@@ -1072,16 +1082,21 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Click on 'ADD MODULE' button</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  "MODULE" column should contains submodules:</span>
+</em><em class="status">failed</em>Then  "MODULE" column should contains submodules:</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError:  General is not displayed<br/>./features/step_definitions/RPT_page_steps.rb:233:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:228:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:228:in `/^&quot;([^&quot;]*)&quot; column should contains submodules:$/&#39;<br/>./features/RPT.feature:182:in `Then &quot;MODULE&quot; column should contains submodules:&#39;<br/></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em>Scenario: Validate Add module - MODULE column - General - contains required submodules</span>
 <ul>
 <li class="level test">
@@ -1096,12 +1111,12 @@ jQuery.cookie = function(name, value, options) {
 </li>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Module "General" contains submodules:</span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level suite failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Validate Add module - MODULE - Performance - column contains required submodules</span>
@@ -1116,21 +1131,26 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  In 'ADD MODULE' click on submodule "Performance"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Module "Performance" contains submodules:</span>
+</em><em class="status">failed</em>Then  Module "Performance" contains submodules:</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError:  Performance Decomposition is not displayed<br/>./features/step_definitions/RPT_page_steps.rb:245:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:240:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:240:in `/^Module &quot;([^&quot;]*)&quot; contains submodules:$/&#39;<br/>./features/RPT.feature:202:in `Then Module &quot;Performance&quot; contains submodules:&#39;<br/></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em>Scenario: Validate Add module - MODULE - Risk - column contains required submodules</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Click on 'ADD MODULE' button</span>
 </li>
 <li class="level test">
@@ -1226,7 +1246,7 @@ jQuery.cookie = function(name, value, options) {
 </li>
 </ul>
 </li>
-<li class="level suite failed open">
+<li class="level suite open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Create new space - Perfomance  - add preferences</span>
@@ -1251,39 +1271,24 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Click on all items from "ADD MODULE" column</span>
 </li>
-<li class="level test failed open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">failed</em>Then  Verify all added submodules displayed in YOUR MODULE QUEUE</span>
-<ul>
-<li class="text">
-<span class="stderr">RuntimeError: BUG!!! Not all added  prefrences are displayed in QUEUE<br/>./features/step_definitions/RPT_page_steps.rb:307:in `/^Verify all added submodules displayed in YOUR MODULE QUEUE$/&#39;<br/>./features/RPT.feature:259:in `Then Verify all added submodules displayed in YOUR MODULE QUEUE&#39;<br/></span>
+</em><em class="status">passed</em>Then  Verify all added submodules displayed in YOUR MODULE QUEUE</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Verify that all added modals displayed</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Verify that all added modals displayed</span>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="level suite failed open">
+<li class="level suite open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Create new space - Risk  - add preferences</span>
@@ -1308,35 +1313,20 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Click on all items from "ADD MODULE" column</span>
 </li>
-<li class="level test failed open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">failed</em>Then  Verify all added submodules displayed in YOUR MODULE QUEUE</span>
-<ul>
-<li class="text">
-<span class="stderr">RuntimeError: BUG!!! Not all added  prefrences are displayed in QUEUE<br/>./features/step_definitions/RPT_page_steps.rb:307:in `/^Verify all added submodules displayed in YOUR MODULE QUEUE$/&#39;<br/>./features/RPT.feature:269:in `Then Verify all added submodules displayed in YOUR MODULE QUEUE&#39;<br/></span>
+</em><em class="status">passed</em>Then  Verify all added submodules displayed in YOUR MODULE QUEUE</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Verify that all added modals displayed</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
-</li>
-</ul>
+</em><em class="status">passed</em>Then  Verify that all added modals displayed</span>
 </li>
 </ul>
 </li>
@@ -1414,7 +1404,7 @@ jQuery.cookie = function(name, value, options) {
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level suite failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Add module- Add random preference</span>
@@ -1449,33 +1439,38 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Tap "Add to Space" button on the "Add Module" overlay</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Verify that preference from 'ADD MODULE' displayed</span>
+</em><em class="status">failed</em>Then  Verify that preference from 'ADD MODULE' displayed</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError: BUG<br/>./features/step_definitions/RPT_page_steps.rb:344:in `/^Verify that preference from &#39;ADD MODULE&#39; displayed$/&#39;<br/>./features/RPT.feature:300:in `Then Verify that preference from &#39;ADD MODULE&#39; displayed&#39;<br/></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
 </em>Scenario: Verify Terms &amp; conditions items at the bottom of RP page</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  At the bottom of page list of terms should be displayed</span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level suite failed open">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em>Scenario: Verify content of disclaimers Terms and Conditions</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Click on "Terms and Conditions"</span>
 </li>
 <li class="level test">
@@ -1493,26 +1488,36 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>And  Disclaimer header should be 'Terms and Conditions of Use '</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>And  Disclaimer document should have bullets:</span>
-</li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Close "Terms and Conditions" via "close" button</span>
+</em><em class="status">failed</em>And  Disclaimer document should have bullets:</span>
+<ul>
+<li class="text">
+<span class="stderr">Selenium::WebDriver::Error::TimeOutError: timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class = &#39;disclaimer-content&#39;]/h2[contains(text(),  &#39;4. Monitoring by MSL&#39;)]&quot;})<br/>./features/page_models/risk_perfomance_page.rb:311:in `disclaimer__boolets&#39;<br/>./features/step_definitions/RPT_page_steps.rb:381:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:380:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:380:in `/^Disclaimer document should have bullets:$/&#39;<br/>./features/RPT.feature:315:in `And Disclaimer document should have bullets:&#39;<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level test ignored open">
 <span><em class="time">
 <div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  Close "Terms and Conditions" via "close" button</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level suite failed open">
+<span><em class="time">
+<div class="time">1 ms</div>
 </em>Scenario: Verify content of disclaimers Privacy Policy</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Click on "Privacy Policy"</span>
 </li>
 <li class="level test">
@@ -1525,31 +1530,46 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Click on "Privacy Policy"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>And  Disclaimer header should be '16. Privacy and Data Protection'</span>
+</em><em class="status">failed</em>And  Disclaimer header should be '16. Privacy and Data Protection'</span>
+<ul>
+<li class="text">
+<span class="stderr">Selenium::WebDriver::Error::TimeOutError: timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@class = &#39;disclaimer-content&#39;]/h1[text() = &#39;16. Privacy and Data Protection&#39;]&quot;})<br/>./features/page_models/risk_perfomance_page.rb:304:in `disclaimer_name_content_header&#39;<br/>./features/step_definitions/RPT_page_steps.rb:374:in `/^Disclaimer header should be &#39;([^&quot;]*)&#39;$/&#39;<br/>./features/RPT.feature:338:in `And Disclaimer header should be &#39;16. Privacy and Data Protection&#39;&#39;<br/></span>
 </li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>And  Disclaimer document should have bullets:</span>
+</ul>
 </li>
-<li class="level test">
+<li class="level test ignored open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Tap 'x' to close "Terms and Conditions"</span>
+</em><em class="status">ignored</em>And  Disclaimer document should have bullets:</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
+</li>
+<li class="level test ignored open">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  Tap 'x' to close "Terms and Conditions"</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 <li class="level suite open">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em>Scenario: Verify content of disclaimers Security</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Click on "Security"</span>
 </li>
 <li class="level test">
@@ -1597,7 +1617,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Test2 General Preference" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM General Preference" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -1649,7 +1669,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Test2 Performance Preference" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM Performance Preference" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -1701,7 +1721,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Test2 Risk Preference" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM Risk Preference" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -1753,7 +1773,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Test2 Admin Preference" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM Admin Preference" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -1805,7 +1825,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Multi2 General Preferences" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM General Preferences" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -1822,26 +1842,301 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Add Module" click on submodule "General"</span>
 </li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>And  Add click on oll items in add modules column  4 times</span>
+<li class="level test failed open">
+<span><em class="time"></em><em class="status">failed</em>And  Add click on oll items in add modules column  4 timesMultiselection verification - check the all selected modules on the work space</span>
+<ul>
+<li class="text">
+<span class="stderr">NoMethodError: undefined method `describe_to&#39; for nil:NilClass<br/>C:/Program Files (x86)/JetBrains/RubyMine 7.1.4/rb/testing/patch/bdd/teamcity/cucumber/common.rb:593:in `create_snippet_text&#39;<br/>C:/Program Files (x86)/JetBrains/RubyMine 7.1.4/rb/testing/patch/bdd/teamcity/cucumber/common.rb:585:in `print_undef_step_snippet&#39;<br/>C:/Program Files (x86)/JetBrains/RubyMine 7.1.4/rb/testing/patch/bdd/teamcity/cucumber/common.rb:450:in `log_status_and_test_finished&#39;<br/>C:/Program Files (x86)/JetBrains/RubyMine 7.1.4/rb/testing/patch/bdd/teamcity/cucumber/common.rb:376:in `tc_before_step_result&#39;<br/>C:/Program Files (x86)/JetBrains/RubyMine 7.1.4/rb/testing/patch/bdd/teamcity/cucumber/formatter_03103.rb:123:in `before_step_result&#39;<br/>-e:1:in `load&#39;<br/>-e:1:in `&lt;main&gt;&#39;<br/></span>
 </li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Tap "Add to Space" button on the "Add Module" overlay</span>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
 </li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Verify that selected modules from "Add module" were created 4 times</span>
+<li class="text">
+<span class="stdout">@@addmodulepref<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@addmodulepref<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@addmodulepref<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@createnewspace<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Documents&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Summary&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Fund Ratings&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;, &quot;Commentary&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@createnewspace<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Benchmark Up/Down&quot;, &quot;Benchmark Up/Down&quot;, &quot;Benchmark Up/Down&quot;, &quot;Benchmark Up/Down&quot;, &quot;Monthly Performance Distribution&quot;, &quot;Monthly Performance Distribution&quot;, &quot;Monthly Performance Distribution&quot;, &quot;Monthly Performance Distribution&quot;, &quot;Performance&quot;, &quot;Performance&quot;, &quot;Performance&quot;, &quot;Performance&quot;, &quot;Performance Decomposition&quot;, &quot;Performance Decomposition&quot;, &quot;Performance Decomposition&quot;, &quot;Performance Decomposition&quot;, &quot;Performance Snapshot&quot;, &quot;Performance Snapshot&quot;, &quot;Performance Snapshot&quot;, &quot;Performance Snapshot&quot;, &quot;Statistics&quot;, &quot;Statistics&quot;, &quot;Statistics&quot;, &quot;Statistics&quot;, &quot;Style&quot;, &quot;Style&quot;, &quot;Style&quot;, &quot;Style&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Performance Decomposition&quot;, &quot;Performance Decomposition&quot;, &quot;Performance Decomposition&quot;, &quot;Performance Decomposition&quot;, &quot;Performance&quot;, &quot;Performance&quot;, &quot;Performance&quot;, &quot;Performance&quot;, &quot;Performance Snapshot&quot;, &quot;Performance Snapshot&quot;, &quot;Performance Snapshot&quot;, &quot;Performance Snapshot&quot;, &quot;Statistics&quot;, &quot;Statistics&quot;, &quot;Statistics&quot;, &quot;Statistics&quot;, &quot;Style&quot;, &quot;Style&quot;, &quot;Style&quot;, &quot;Style&quot;, &quot;Benchmark Up/Down&quot;, &quot;Benchmark Up/Down&quot;, &quot;Benchmark Up/Down&quot;, &quot;Benchmark Up/Down&quot;, &quot;Monthly Performance Distribution&quot;, &quot;Monthly Performance Distribution&quot;, &quot;Monthly Performance Distribution&quot;, &quot;Monthly Performance Distribution&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@createnewspace<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@createnewspace<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Data Monitor&quot;, &quot;Data Monitor&quot;, &quot;Data Monitor&quot;, &quot;Data Monitor&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">[&quot;Data Monitor&quot;, &quot;Data Monitor&quot;, &quot;Data Monitor&quot;, &quot;Data Monitor&quot;]<br/></span>
+</li>
+<li class="text">
+<span class="stdout">User was redirected on login page<br/>Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@pdfoverlay<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Tag: <br/></span>
+</li>
+<li class="text">
+<span class="stdout">@@theme<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">Preferences<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">Style is  day<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">Preferences<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">Style is  night<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">Settings button, funds dropdown, preference are displayed<br/></span>
+</li>
+<li class="text">
+<span class="stdout"></span>
+</li>
+<li class="text">
+<span class="stdout">Settings button, funds dropdown, preference are displayed<br/></span>
+</li>
+<li class="text">
+<span class="stdout">62 scenarios (<br/></span>
+</li>
+<li class="text">
+<span class="stdout">21 failed<br/></span>
+</li>
+<li class="text">
+<span class="stdout">, <br/></span>
+</li>
+<li class="text">
+<span class="stdout">41 passed<br/></span>
+</li>
+<li class="text">
+<span class="stdout">)<br/>410 steps (<br/></span>
+</li>
+<li class="text">
+<span class="stdout">20 failed<br/></span>
+</li>
+<li class="text">
+<span class="stdout">, <br/></span>
+</li>
+<li class="text">
+<span class="stdout">11 skipped<br/></span>
+</li>
+<li class="text">
+<span class="stdout">, <br/></span>
+</li>
+<li class="text">
+<span class="stdout">1 undefined<br/></span>
+</li>
+<li class="text">
+<span class="stdout">, <br/></span>
+</li>
+<li class="text">
+<span class="stdout">378 passed<br/></span>
+</li>
+<li class="text">
+<span class="stdout">)<br/>50m54.922s<br/></span>
+</li>
+<li class="text">
+<span class="stdout">Process finished with exit code 1<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite failed open">
+</ul>
+</li>
+<li class="level suite open">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
 </em>Scenario: ADD MODULE- PERFORMANCE - Multiselection verification - check the all selected modules on the work space</span>
 <ul>
 <li class="level test">
@@ -1852,7 +2147,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Multi2 Performace Preferences" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM Performace Preferences" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -1879,15 +2174,10 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Tap "Add to Space" button on the "Add Module" overlay</span>
 </li>
-<li class="level test failed open">
+<li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
-</em><em class="status">failed</em>Then  Verify that selected modules from "Add module" were created 4 times</span>
-<ul>
-<li class="text">
-<span class="stderr">RuntimeError: Bug! Added preferences and displayed preferences are diffrent<br/>./features/step_definitions/RPT_page_steps.rb:455:in `/^Verify that selected modules from &quot;Add module&quot; were created 4 times$/&#39;<br/>./features/RPT.feature:443:in `Then Verify that selected modules from &quot;Add module&quot; were created 4 times&#39;<br/></span>
-</li>
-</ul>
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Then  Verify that selected modules from "Add module" were created 4 times</span>
 </li>
 </ul>
 </li>
@@ -1904,7 +2194,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Multi2 Risk Preferences" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM Risk Preferences" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -1938,7 +2228,7 @@ jQuery.cookie = function(name, value, options) {
 </li>
 </ul>
 </li>
-<li class="level suite failed open">
+<li class="level suite open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: ADD MODULE - Admin - Multiselection verification - check the all selected modules on the work space</span>
@@ -1951,63 +2241,43 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Multi2 Risk Preferences" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "AM Multi Risk Preferences" workspace name</span>
 </li>
-<li class="level test failed open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">failed</em>Then  From "Add Module" click on submodule "Admin"</span>
-<ul>
-<li class="text">
-<span class="stderr">Selenium::WebDriver::Error::ElementNotVisibleError: Element is not currently visible and so may not be interacted with<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-19drwuw/extensions/fxdriver@googlecode.com/components/command-processor.js:9981:in `fxdriver.preconditions.visible&#39;<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-19drwuw/extensions/fxdriver@googlecode.com/components/command-processor.js:12517:in `DelayedCommand.prototype.checkPreconditions_&#39;<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-19drwuw/extensions/fxdriver@googlecode.com/components/command-processor.js:12534:in `DelayedCommand.prototype.executeInternal_/h&#39;<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-19drwuw/extensions/fxdriver@googlecode.com/components/command-processor.js:621:in `fxdriver.Timer.prototype.setTimeout/&lt;.notify&#39;<br/>./features/step_definitions/RPT_page_steps.rb:395:in `/^From &quot;Add Module&quot; click on submodule &quot;([^&quot;]*)&quot;$/&#39;<br/>./features/RPT.feature:472:in `Then From &quot;Add Module&quot; click on submodule &quot;Admin&quot;&#39;<br/></span>
+</em><em class="status">passed</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>And  Add click on oll items in add modules column  4 times</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Click on 'ADD MODULE' button</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Tap "Add to Space" button on the "Add Module" overlay</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  From "Add Module" click on submodule "Admin"</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>And  Add click on oll items in add modules column  4 times</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Verify that selected modules from "Add module" were created 4 times</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Tap "Add to Space" button on the "Add Module" overlay</span>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="level suite failed open">
+<li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Then  Verify that selected modules from "Add module" were created 4 times</span>
+</li>
+</ul>
+</li>
+<li class="level suite open">
+<span><em class="time">
+<div class="time">0 ms</div>
 </em>Scenario: CREATE SPACE - GENERAL  Multiselection verification - check the all selected modules on the work space</span>
 <ul>
 <li class="level test">
@@ -2020,51 +2290,31 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  In "Create a New Space" click on submodule "General"</span>
 </li>
-<li class="level test failed open">
-<span><em class="time">
-<div class="time">1 ms</div>
-</em><em class="status">failed</em>And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times</span>
-<ul>
-<li class="text">
-<span class="stderr">RuntimeError: Bug! Something wrong!Check Columns<br/>./features/step_definitions/RPT_page_steps.rb:478:in `/^In &quot;Create Space&quot; overlay click all items from &quot;ADD MODULE&quot; column  4 times$/&#39;<br/>./features/RPT.feature:484:in `And In &quot;Create Space&quot; overlay click all items from &quot;ADD MODULE&quot; column  4 times&#39;<br/></span>
-</li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Enter "Multi General Preferences" workspace name</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Enter "CS Multi General Preferences" workspace name</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Verify that all modules from "Create work space" modules were created 4 times</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="level suite failed open">
+<li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Then  Verify that all modules from "Create work space" modules were created 4 times</span>
+</li>
+</ul>
+</li>
+<li class="level suite open">
+<span><em class="time">
+<div class="time">0 ms</div>
 </em>Scenario: CREATE SPACE - PERFORMANCE  Multiselection verification - check the all selected modules on the work space</span>
 <ul>
 <li class="level test">
@@ -2077,45 +2327,25 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  In "Create a New Space" click on submodule "Performance"</span>
 </li>
-<li class="level test failed open">
-<span><em class="time">
-<div class="time">1 ms</div>
-</em><em class="status">failed</em>And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times</span>
-<ul>
-<li class="text">
-<span class="stderr">RuntimeError: Bug! Something wrong!Check Columns<br/>./features/step_definitions/RPT_page_steps.rb:478:in `/^In &quot;Create Space&quot; overlay click all items from &quot;ADD MODULE&quot; column  4 times$/&#39;<br/>./features/RPT.feature:497:in `And In &quot;Create Space&quot; overlay click all items from &quot;ADD MODULE&quot; column  4 times&#39;<br/></span>
-</li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Enter "Multi Performance Preferences" workspace name</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Enter "CS Multi Performance Preferences" workspace name</span>
 </li>
-</ul>
-</li>
-<li class="level test ignored open">
+<li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Verify that all modules from "Create work space" modules were created 4 times</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+</em><em class="status">passed</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
 </li>
-</ul>
+<li class="level test">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Then  Verify that all modules from "Create work space" modules were created 4 times</span>
 </li>
 </ul>
 </li>
@@ -2134,43 +2364,28 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  In "Create a New Space" click on submodule "Risk"</span>
 </li>
+<li class="level test">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times</span>
+</li>
+<li class="level test">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Then  Enter "CS Multi Risk Preferences" workspace name</span>
+</li>
+<li class="level test">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
+</li>
 <li class="level test failed open">
 <span><em class="time">
 <div class="time">1 ms</div>
-</em><em class="status">failed</em>And  In "Create Space" overlay click all items from "ADD MODULE" column  4 times</span>
+</em><em class="status">failed</em>Then  Verify that all modules from "Create work space" modules were created 4 times</span>
 <ul>
 <li class="text">
-<span class="stderr">RuntimeError: Bug! Something wrong!Check Columns<br/>./features/step_definitions/RPT_page_steps.rb:478:in `/^In &quot;Create Space&quot; overlay click all items from &quot;ADD MODULE&quot; column  4 times$/&#39;<br/>./features/RPT.feature:512:in `And In &quot;Create Space&quot; overlay click all items from &quot;ADD MODULE&quot; column  4 times&#39;<br/></span>
-</li>
-</ul>
-</li>
-<li class="level test ignored open">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Enter "Multi Risk Preferences" workspace name</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
-</li>
-</ul>
-</li>
-<li class="level test ignored open">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Tap "Create Space" button on the "Create a new space" overlay</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
-</li>
-</ul>
-</li>
-<li class="level test ignored open">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">ignored</em>Then  Verify that all modules from "Create work space" modules were created 4 times</span>
-<ul>
-<li class="text">
-<span class="stdout">Skipped step<br/></span>
+<span class="stderr">RuntimeError: Bug! Added preferences and displayed preferences are diffrent<br/>./features/step_definitions/RPT_page_steps.rb:490:in `/^Verify that all modules from &quot;Create work space&quot; modules were created 4 times$/&#39;<br/>./features/RPT.feature:516:in `Then Verify that all modules from &quot;Create work space&quot; modules were created 4 times&#39;<br/></span>
 </li>
 </ul>
 </li>
@@ -2199,7 +2414,7 @@ jQuery.cookie = function(name, value, options) {
 <li class="level test">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Enter "Multi Admin Preferences" workspace name</span>
+</em><em class="status">passed</em>Then  Enter "CS Admin Preferences" workspace name</span>
 </li>
 <li class="level test">
 <span><em class="time">
@@ -2229,7 +2444,7 @@ jQuery.cookie = function(name, value, options) {
 </em><em class="status">failed</em>Then  Verify that user redirected on the ManGroup site</span>
 <ul>
 <li class="text">
-<span class="stderr">RuntimeError: Bug! Can not fint Man Group title<br/>./features/step_definitions/RPT_page_steps.rb:503:in `/^Verify that user redirected on the ManGroup site$/&#39;<br/>./features/RPT.feature:537:in `Then Verify that user redirected on the ManGroup site&#39;<br/></span>
+<span class="stderr">RuntimeError: Bug! Can not fint Man Group title<br/>./features/step_definitions/RPT_page_steps.rb:506:in `/^Verify that user redirected on the ManGroup site$/&#39;<br/>./features/RPT.feature:538:in `Then Verify that user redirected on the ManGroup site&#39;<br/></span>
 </li>
 </ul>
 </li>
@@ -2257,7 +2472,7 @@ jQuery.cookie = function(name, value, options) {
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level suite failed open">
 <span><em class="time">
 <div class="time">1 ms</div>
 </em>Scenario: Download PDF Report - Standard report- PORTFOLIO/FUNDS - verify list of funds available (Any available)</span>
@@ -2272,21 +2487,26 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Standard Report"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  "Standard Report" should have list of funds</span>
+</em><em class="status">failed</em>Then  "Standard Report" should have list of funds</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError: Standard Report list of funds is empty<br/>./features/step_definitions/RPT_page_steps.rb:524:in `/^&quot;([^&quot;]*)&quot; should have list of funds$/&#39;<br/>./features/RPT.feature:551:in `Then &quot;Standard Report&quot; should have list of funds&#39;<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+</ul>
+</li>
+<li class="level suite failed open">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em>Scenario: Download PDF Report - Basic report- PORTFOLIO/FUNDS - verify list of funds available (Any available)</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Click on 'PDF download' button</span>
 </li>
 <li class="level test">
@@ -2294,21 +2514,26 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Basic Report"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  "Basic Report" should have list of funds</span>
+</em><em class="status">failed</em>Then  "Basic Report" should have list of funds</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError: Basic Report list of funds is empty<br/>./features/step_definitions/RPT_page_steps.rb:524:in `/^&quot;([^&quot;]*)&quot; should have list of funds$/&#39;<br/>./features/RPT.feature:557:in `Then &quot;Basic Report&quot; should have list of funds&#39;<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+</ul>
+</li>
+<li class="level suite failed open">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em>Scenario: Download PDF Report - Standard HPC report -  verify list of funds available (Any available)</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Click on 'PDF download' button</span>
 </li>
 <li class="level test">
@@ -2316,14 +2541,19 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Standard HPC"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  "Standard HPC" should have list of funds</span>
+</em><em class="status">failed</em>Then  "Standard HPC" should have list of funds</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError: Standard HPC list of funds is empty<br/>./features/step_definitions/RPT_page_steps.rb:524:in `/^&quot;([^&quot;]*)&quot; should have list of funds$/&#39;<br/>./features/RPT.feature:563:in `Then &quot;Standard HPC&quot; should have list of funds&#39;<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+</ul>
+</li>
+<li class="level suite failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Download PDF Report - Limit report - verify list of funds available (Any available)</span>
@@ -2338,10 +2568,15 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Limit Report"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  "Limit Report" should have list of funds</span>
+</em><em class="status">failed</em>Then  "Limit Report" should have list of funds</span>
+<ul>
+<li class="text">
+<span class="stderr">RuntimeError: Limit Report list of funds is empty<br/>./features/step_definitions/RPT_page_steps.rb:524:in `/^&quot;([^&quot;]*)&quot; should have list of funds$/&#39;<br/>./features/RPT.feature:569:in `Then &quot;Limit Report&quot; should have list of funds&#39;<br/></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -2366,7 +2601,7 @@ jQuery.cookie = function(name, value, options) {
 </em><em class="status">failed</em>Then  SELECTED FUNDS section should have list of funds</span>
 <ul>
 <li class="text">
-<span class="stderr">RuntimeError: Bug! Selected funds section is empty<br/>./features/step_definitions/RPT_page_steps.rb:529:in `/^SELECTED FUNDS section should have list of funds$/&#39;<br/>./features/RPT.feature:574:in `Then SELECTED FUNDS section should have list of funds&#39;<br/></span>
+<span class="stderr">RuntimeError: Bug! Selected funds section is empty<br/>./features/step_definitions/RPT_page_steps.rb:532:in `/^SELECTED FUNDS section should have list of funds$/&#39;<br/>./features/RPT.feature:575:in `Then SELECTED FUNDS section should have list of funds&#39;<br/></span>
 </li>
 </ul>
 </li>
@@ -2382,31 +2617,36 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Click on 'PDF download' button</span>
 </li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Add random fund from each report</span>
-</li>
 <li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">failed</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+</em><em class="status">failed</em>Then  Add random fund from each report</span>
 <ul>
 <li class="text">
-<span class="stderr">RuntimeError: Bug<br/>./features/step_definitions/RPT_page_steps.rb:570:in `/^Verify the same Fund were added to YOUR LIST column$/&#39;<br/>./features/RPT.feature:581:in `Then Verify the same Fund were added to YOUR LIST column&#39;<br/></span>
+<span class="stderr">NoMethodError: undefined method `click&#39; for nil:NilClass<br/>./features/page_models/risk_perfomance_page.rb:399:in `block in random_click_report_fund&#39;<br/>./features/page_models/risk_perfomance_page.rb:397:in `each&#39;<br/>./features/page_models/risk_perfomance_page.rb:397:in `random_click_report_fund&#39;<br/>./features/step_definitions/RPT_page_steps.rb:539:in `/^Add random fund from each report$/&#39;<br/>./features/RPT.feature:581:in `Then Add random fund from each report&#39;<br/></span>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="level suite open">
+<li class="level test ignored open">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level suite failed open">
+<span><em class="time">
+<div class="time">0 ms</div>
 </em>Scenario: Download PDF Report - Select funds from Standard Report - verify that same funds become displayed  in 03. YOUR LIST</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">1 ms</div>
+<div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Click on 'PDF download' button</span>
 </li>
 <li class="level test">
@@ -2414,19 +2654,29 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Standard Report"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Click on 5 funds from FUNDS column</span>
-</li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+</em><em class="status">failed</em>Then  Click on 5 funds from FUNDS column</span>
+<ul>
+<li class="text">
+<span class="stderr">NoMethodError: undefined method `click&#39; for nil:NilClass<br/>./features/step_definitions/RPT_page_steps.rb:544:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:542:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:542:in `/^Click on 5 funds from FUNDS column$/&#39;<br/>./features/RPT.feature:588:in `Then Click on 5 funds from FUNDS column&#39;<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level test ignored open">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level suite failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Download PDF Report - Select funds from Basic Report - verify that same funds become displayed  in 03. YOUR LIST</span>
@@ -2441,19 +2691,29 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Basic Report"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Click on 5 funds from FUNDS column</span>
-</li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+</em><em class="status">failed</em>Then  Click on 5 funds from FUNDS column</span>
+<ul>
+<li class="text">
+<span class="stderr">NoMethodError: undefined method `click&#39; for nil:NilClass<br/>./features/step_definitions/RPT_page_steps.rb:544:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:542:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:542:in `/^Click on 5 funds from FUNDS column$/&#39;<br/>./features/RPT.feature:595:in `Then Click on 5 funds from FUNDS column&#39;<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level test ignored open">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level suite failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
 </em>Scenario: Download PDF Report - Select funds from Standard Report - verify that same funds become displayed  in 03. YOUR LIST</span>
@@ -2468,26 +2728,36 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Standard HPC"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Click on 5 funds from FUNDS column</span>
-</li>
-<li class="level test">
-<span><em class="time">
-<div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+</em><em class="status">failed</em>Then  Click on 5 funds from FUNDS column</span>
+<ul>
+<li class="text">
+<span class="stderr">NoMethodError: undefined method `click&#39; for nil:NilClass<br/>./features/step_definitions/RPT_page_steps.rb:544:in `block (2 levels) in &lt;top (required)&gt;&#39;<br/>./features/step_definitions/RPT_page_steps.rb:542:in `each&#39;<br/>./features/step_definitions/RPT_page_steps.rb:542:in `/^Click on 5 funds from FUNDS column$/&#39;<br/>./features/RPT.feature:602:in `Then Click on 5 funds from FUNDS column&#39;<br/></span>
 </li>
 </ul>
 </li>
-<li class="level suite open">
+<li class="level test ignored open">
 <span><em class="time">
 <div class="time">0 ms</div>
+</em><em class="status">ignored</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level suite failed open">
+<span><em class="time">
+<div class="time">1 ms</div>
 </em>Scenario: Download PDF Report - Select funds from Limit Report - verify that same funds become displayed  in 03. YOUR LIST</span>
 <ul>
 <li class="level test">
 <span><em class="time">
-<div class="time">0 ms</div>
+<div class="time">1 ms</div>
 </em><em class="status">passed</em>Then  Click on 'PDF download' button</span>
 </li>
 <li class="level test">
@@ -2495,15 +2765,25 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  From "Report type" click on "Limit Report"</span>
 </li>
-<li class="level test">
+<li class="level test failed open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Click 1 fund from FUNDS column</span>
+</em><em class="status">failed</em>Then  Click 1 fund from FUNDS column</span>
+<ul>
+<li class="text">
+<span class="stderr">NoMethodError: undefined method `click&#39; for nil:NilClass<br/>./features/step_definitions/RPT_page_steps.rb:589:in `/^Click 1 fund from FUNDS column$/&#39;<br/>./features/RPT.feature:609:in `Then Click 1 fund from FUNDS column&#39;<br/></span>
 </li>
-<li class="level test">
+</ul>
+</li>
+<li class="level test ignored open">
 <span><em class="time">
 <div class="time">0 ms</div>
-</em><em class="status">passed</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+</em><em class="status">ignored</em>Then  Verify the same Fund were added to YOUR LIST column</span>
+<ul>
+<li class="text">
+<span class="stdout">Skipped step<br/></span>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -2528,7 +2808,7 @@ jQuery.cookie = function(name, value, options) {
 </em><em class="status">failed</em>Then  Select 5 funds from SELECT FUNDS column</span>
 <ul>
 <li class="text">
-<span class="stderr">Selenium::WebDriver::Error::ElementNotVisibleError: Element is not currently visible and so may not be interacted with<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-1h5vdzc/extensions/fxdriver@googlecode.com/components/command-processor.js:9981:in `fxdriver.preconditions.visible&#39;<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-1h5vdzc/extensions/fxdriver@googlecode.com/components/command-processor.js:12517:in `DelayedCommand.prototype.checkPreconditions_&#39;<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-1h5vdzc/extensions/fxdriver@googlecode.com/components/command-processor.js:12534:in `DelayedCommand.prototype.executeInternal_/h&#39;<br/>[remote server] file:///C:/Users/TATSIA~1.MAR/AppData/Local/Temp/webdriver-profile20160308-9760-1h5vdzc/extensions/fxdriver@googlecode.com/components/command-processor.js:621:in `fxdriver.Timer.prototype.setTimeout/&lt;.notify&#39;<br/>./features/step_definitions/RPT_page_steps.rb:578:in `/^Select 5 funds from SELECT FUNDS column$/&#39;<br/>./features/RPT.feature:618:in `Then Select 5 funds from SELECT FUNDS column&#39;<br/></span>
+<span class="stderr">NoMethodError: undefined method `click&#39; for nil:NilClass<br/>./features/step_definitions/RPT_page_steps.rb:581:in `/^Select 5 funds from SELECT FUNDS column$/&#39;<br/>./features/RPT.feature:619:in `Then Select 5 funds from SELECT FUNDS column&#39;<br/></span>
 </li>
 </ul>
 </li>
@@ -2611,6 +2891,11 @@ jQuery.cookie = function(name, value, options) {
 <div class="time">0 ms</div>
 </em><em class="status">passed</em>Then  Close left rail menu</span>
 </li>
+<li class="level test">
+<span><em class="time">
+<div class="time">0 ms</div>
+</em><em class="status">passed</em>Then  Verify Left rail was closed</span>
+</li>
 </ul>
 </li>
 </ul>
@@ -2619,7 +2904,7 @@ jQuery.cookie = function(name, value, options) {
 </div>
 </div>
 <div id="footer">
-<p>Generated by RubyMine on 3/8/16 1:09 PM</p>
+<p>Generated by RubyMine on 3/10/16 11:19 AM</p>
 </div>
 </body>
 </html>
