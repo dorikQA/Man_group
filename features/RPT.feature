@@ -2,7 +2,7 @@
 Feature: Risk & Performance Page
 Background:
     Given Open the Man Group site
-    Given Enter "Testing112123123@gmail.com" password "0ChangeMe0!2" and pin "9876" and click "Login" button
+    Given Enter "pctusertests@gmail.com" password "0ChangeMe0!" and pin "9876" and click "Login" button
 #    Then Click "Profile" icon
 #    Then Tap "Reset" button
 @myportfolio_overlay
@@ -297,7 +297,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Click on 'ADD MODULE' button
     Then In 'ADD MODULE' add random one preference from each module
     Then Tap "Add to Space" button on the "Add Module" overlay
-    Then Verify that preference from 'ADD MODULE' displayed
+    Then Verify that all preference from 'ADD MODULE' displayed
   #32
   @disclaimers
   Scenario: Verify Terms & conditions items at the bottom of RP page
@@ -335,7 +335,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Click on "Privacy Policy"
     Then Close "Terms and Conditions" via "close" button
     Then Click on "Privacy Policy"
-    And Disclaimer header should be '16. Privacy and Data Protection'
+    And Disclaimer header should be 'Privacy and Data Protection'
     And Disclaimer document should have bullets:
      |Data protection|
      |Cookies|
@@ -423,7 +423,7 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Tap "Create Space" button on the "Create a new space" overlay
     Then Click on 'ADD MODULE' button
     Then From "Add Module" click on submodule "General"
-    And  Add click on oll items in add modules column  4 timesMultiselection verification - check the all selected modules on the work space
+    And Add click on oll items in add modules column  4 times
     Then Tap "Add to Space" button on the "Add Module" overlay
     Then Verify that selected modules from "Add module" were created 4 times
 #    |Documents   |
@@ -615,8 +615,8 @@ Scenario: Create New Space overlay - Admin contains required submodules
     Then Click on 'PDF download' button
     Then From "Report type" click on "Custom Report"
     #Then From "Report type" click on "Custom Report"
-    #Then Remove Funds that selected by default
-    Then Select 5 funds from SELECT FUNDS column
+    Then Remove Funds that selected by default
+    Then Select 4 funds from SELECT FUNDS column
     Then Verify that custom YOUR list  displays selected funds
 
 
@@ -644,7 +644,7 @@ Scenario: Verify user can open - close left rail - user should see settings butt
   Then Verify settings button, funds dropdown, preference menu are visible
   Then Close left rail menu
   Then Verify Left rail was closed
-  ----------
+
 
 
 

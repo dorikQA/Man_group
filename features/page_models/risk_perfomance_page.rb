@@ -5,8 +5,7 @@ class RiskPerfomancePage
       $wait.until {$driver.find_element(:xpath, "//span[@id = 'UserProfileButton']")}
     rescue
     Selenium::WebDriver::Error::ElementNotVisibleError
-    puts '* retrying to reach element'
-    retry
+    puts "Can't reach element"
   end
   end
   def reset_button(button)
@@ -14,18 +13,15 @@ class RiskPerfomancePage
     $wait.until {$driver.find_element(:xpath, "//button[@type = 'button' and text() = '#{button}']")}
     rescue
       Selenium::WebDriver::Error::ElementNotVisibleError
-      puts '* retrying to reach element'
-      retry
+      puts "Can't reach element"
     end
   end
   def plus_workspace_button
-    @wait = Selenium::WebDriver::Wait.new(:timeout => 25)
     begin
-      @wait.until {$driver.find_element(:xpath,"//a[@class = 'nav-tab' and text() = '+']")}
+        $wait.until {$driver.find_element(:xpath,"//a[@class = 'nav-tab' and text() = '+']")}
     rescue
       Selenium::WebDriver::Error::ElementNotVisibleError
-      puts 'retrying to reach element'
-      retry
+      puts "Can't find element to reach element"
     end
   end
   def workspace_overlay(create_newspace_overlay)
@@ -56,14 +52,14 @@ class RiskPerfomancePage
     end
   end
   def enter_spacename_field
-    begin
     $wait.until {$driver.find_element(:xpath, "//input[@class = 'workspace-name']")}
-    rescue
-      Selenium::WebDriver::Error::ElementNotVisibleError
-      puts '* retrying to reach element'
-      sleep 3
-      retry
-    end
+    # begin
+    # sleep 3
+    # $wait.until {$driver.find_element(:xpath, "//input[@class = 'workspace-name']")}
+    # rescue
+    #   Selenium::WebDriver::Error::ElementNotVisibleError
+    #   puts "Can't reach element"
+    # end
   end
   def workspace(ws)
    $driver.find_element(:xpath, "//a[@class = 'nav-tab' and text() = '#{ws}']")
@@ -93,7 +89,8 @@ class RiskPerfomancePage
   end
   end
   def my_profile_changepassword(link_name)
-    array = $driver.find_elements(:xpath,"//span[text() = '#{link_name}']")
+  sleep 2
+    array = $driver.find_elements(:xpath,"//span[contains(.,'#{link_name}')]")
      if array.size == 0
       fail "Can't find  #{link_name}"
     else return array[0]
@@ -135,8 +132,7 @@ class RiskPerfomancePage
     $wait.until {$driver.find_element(:id, "AddModuleButton")}
   rescue
     Selenium::WebDriver::Error::ElementNotVisibleError
-    puts '* retrying to reach element'
-    retry
+    puts "Can't reach element"
   end
   end
   def download_pdf_button
@@ -144,8 +140,7 @@ class RiskPerfomancePage
       $wait.until {$driver.find_element(:id, "DownloadPDFButton")}
     rescue
       Selenium::WebDriver::Error::ElementNotVisibleError
-      puts '* retrying to reach element'
-      retry
+      puts "Can't reach element"
     end
   end
   def addmodule_overlay_column_name(column_name)
@@ -192,8 +187,8 @@ class RiskPerfomancePage
       close_buttons = $driver.find_elements(:xpath,"//div[contains(@class, 'ui-dialog-titlebar')]//button[@title = 'close']")
     rescue
       Selenium::WebDriver::Error::ElementNotVisibleError
-      puts '* retrying to reach element'
-      retry
+      puts "Can't reach element"
+
     end
     close_buttons_active = []
     close_buttons.each do |button|
@@ -306,16 +301,24 @@ class RiskPerfomancePage
   end
   def disclaimer_name_content_header(disclaimer_header)
     begin
-      $wait.until {$driver.find_element(:xpath,"//div[@class = 'disclaimer-content']/h1[text() = '#{disclaimer_header}']")}
-    rescue Selenium::WebDriver::Error::NoSuchElementError || Selenium::WebDriver::Error::InvalidSelectorError
+      $wait.until {$driver.find_element(:xpath,"//div[@class = 'disclaimer-content']/h1[contains(., '#{disclaimer_header}')]")}
+    rescue
+      if Selenium::WebDriver::Error::NoSuchElementError || Selenium::WebDriver::Error::InvalidSelectorError
      raise "'#{disclaimer_header}' was not found"
+      elsif Selenium::WebDriver::Error::TimeOutError
+     raise "timed out after 30 seconds.'#{disclaimer_header}' was not found"
+      end
    end
   end
   def disclaimer__boolets(disclaimer_bullets)
     begin
-      $wait.until {$driver.find_element(:xpath,"//div[@class = 'disclaimer-content']/h2[contains(text(),  '#{disclaimer_bullets}')]")}
-    rescue Selenium::WebDriver::Error::NoSuchElementError
-    raise "'#{disclaimer_bullets}' was not found"
+      $wait.until {$driver.find_element(:xpath,"//div[@class = 'disclaimer-content']/h2[contains(text(), '#{disclaimer_bullets}')]")}
+    rescue
+      if Selenium::WebDriver::Error::NoSuchElementError || Selenium::WebDriver::Error::TimeOutError
+        raise "'#{disclaimer_bullets}' was not found"
+      elsif  Selenium::WebDriver::Error::TimeOutError
+        raise "Timed out after 30 seconds.Unable to locate element '#{disclaimer_bullets}'"
+      end
     end
   end
   def disclaimer_link(disclaimer_links)
@@ -334,7 +337,7 @@ class RiskPerfomancePage
       elsif Selenium::WebDriver::Error::ElementNotVisibleError
         raise "Element #{modules} is not displayed"
       end
-      retry
+
     end
   end
   def addtospace_buttons(button_name)
@@ -414,14 +417,16 @@ end
     elements = $driver.find_elements(:xpath,"//div[@id = 'DownloadPDFModal']//li[@class = 'chosen-app']//a")
   end
   def pdf_remove_fund_buttons
-   @buttons = $driver.find_elements(:xpath, "//div[@class = 'custom-pdf-your-list-container']//span[@class = 'touch-click icon icon-white-x']")
+    $driver.find_elements(:xpath, "//div[@class = 'custom-pdf-your-list-container']//span[@class = 'touch-click icon icon-white-x']")
   end
   def pdf_remove_funds_from_list
     buttons = risk_perfomance_page.pdf_remove_fund_buttons
-    for i in buttons
+     for i in buttons
       i.click
-    end
+         sleep 1
+     end
   end
+
 def them_style(theme)
   $driver.find_elements(:xpath, "//body[contains(@class, '#{theme}')]")
 

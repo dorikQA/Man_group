@@ -1,11 +1,10 @@
 Given /^Enter "([^"]*)" password "([^"]*)" and pin "([^"]*)" and click "([^"]*)" button$/ do |emailadress, password, pin, button|
   login_page.homepage
-  login_page.emailfield.send_keys emailadress
-  login_page.passwordfield.send_keys password
-  login_page.pinfield.send_keys pin
-  login_page.loginbutton button
-  sleep 15
-
+  login_page.emailfield.send_keys(emailadress)
+  login_page.passwordfield.send_keys(password)
+  login_page.pinfield.send_keys(pin)
+  login_page.loginbutton(button)
+  sleep 10
 end
 Then /^Click "Profile" icon$/ do
   risk_perfomance_page.profile_icon.click
@@ -50,8 +49,7 @@ end
   risk_perfomance_page.enter_spacename_field.clear
   sleep 3
   risk_perfomance_page.enter_spacename_field.send_keys workspacename
-
-  # sleep 5
+  sleep 5
   # risk_perfomance_page.enter_spacename_field.send_keys "#{workspacename}"
   # # risk_perfomance_page.enter_spacename_field.clear
   # risk_perfomance_page.enter_spacename_field.send_keys "#{workspacename}"
@@ -109,6 +107,7 @@ end
   puts submodule_text
   risk_perfomance_page.my_profile_submenu(submodule_text).click
   array = linkname.raw.flatten
+  sleep 3
   array.each do |link_name|
     puts
     if risk_perfomance_page.my_profile_changepassword(link_name).displayed? == false
@@ -228,6 +227,7 @@ end
   array = module_table.raw.flatten
   array.each do |submodule_name|
       x = risk_perfomance_page.addmodule_modulecolumn_submodule(submodule_name)
+      sleep 3
       if x.displayed?
         $driver.mouse.move_to x
         puts submodule_name
@@ -329,7 +329,7 @@ end
 Then /^Verify that all added modals displayed$/ do
   if risk_perfomance_page.displyed_modules_list != @queuelist
   elsif @array3 !=  @array2
-    puts "Bug"
+    puts "Selected and displayed Funds are not the same"
   else puts "All good"
   end
   puts risk_perfomance_page.displyed_modules_list
@@ -338,9 +338,10 @@ end
 
 Then /^In 'ADD MODULE' add random one preference from each module$/ do
   risk_perfomance_page.am_random_click_preference
+
  @queueamlist =  risk_perfomance_page.am_queue_item_list
 end
-Then /^Verify that preference from 'ADD MODULE' displayed$/ do
+Then /^Verify that all preference from 'ADD MODULE' displayed$/ do
   if risk_perfomance_page.displyed_modules_list != @queueamlist
     fail "BUG"
   end
@@ -516,7 +517,7 @@ Then /^Verify User is on login page$/ do
 end
 Then /^From "Report type" click on "([^"]*)"$/ do |report|
   risk_perfomance_page.pdf_reporttype_name(report).click
-  sleep 3
+  sleep 2
 end
 
 Then /^"([^"]*)" should have list of funds$/ do |reportname|
@@ -576,14 +577,14 @@ Then /^Verify the same Fund were added to YOUR LIST column$/ do
     puts "Cool"
   end
 end
-Then /^Select 5 funds from SELECT FUNDS column$/ do
-  sleep 3
+Then /^Select 4 funds from SELECT FUNDS column$/ do
+  sleep 6
     funds = risk_perfomance_page.pdf_custom_vehicles
     funds[0].click
     funds[1].click
     funds[2].click
     funds[3].click
-    funds[4].click
+
 end
 Then /^Click 1 fund from FUNDS column$/ do
    funds = risk_perfomance_page.pdf_displayed_funds_list
@@ -628,7 +629,7 @@ Then /Verify that custom YOUR list  displays selected funds$/ do
   end
   added_fund_text = added_fund_text.sort
    if selected_fund_text != added_fund_text
-      puts "Bug!The selected funds don't match added funds"
+     fail "Bug!The selected funds don't match added funds"
       puts selected_fund_text
       puts added_fund_text
     else
@@ -640,6 +641,10 @@ Then /Verify that custom YOUR list  displays selected funds$/ do
 Then /^Remove Funds that selected by default$/ do
   sleep 5
   risk_perfomance_page.pdf_remove_funds_from_list
+  if  risk_perfomance_page.pdf_custom_added_fund.count > 0
+    fail "Can't remove selected items"
+  end
+
 end
 Then /^Open "([^"]*)" submenu$/ do |submodule_text|
   sleep 4
