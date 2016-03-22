@@ -179,30 +179,22 @@ end
 
 #18
  Then /^"Company" logo should be displayed$/ do
-  if risk_perfomance_page.company_logo.displayed? == false
-    fail "LOGO is not displayed"
-  end
-end
+    fail "LOGO is not displayed" if risk_perfomance_page.company_logo.displayed? == false
+ end
  Then /^"Plus" button to create new work should be displayed$/ do
-   if risk_perfomance_page.plus_workspace_button.displayed? == false
-     fail "Plus button to create new work space is not displayed"
-   end
+     fail "Plus button to create new work space is not displayed" if risk_perfomance_page.plus_workspace_button.displayed? == false
  end
  Then /^"My Profile" icon should be displayed$/ do
-    if risk_perfomance_page.profile_icon.displayed? == false
-      fail "My Profile icon is not displayed"
-    end
-  end
+    fail "My Profile icon is not displayed" if risk_perfomance_page.profile_icon.displayed? == false
+ end
  Then /^'ADD MODULE' button should be displayed$/ do
   if risk_perfomance_page.add_module_button.displayed? == false
     fail "'ADD MODULE' icon is not displayed"
   end
  end
 
- Then /^'DOWNLOAD PDF' button should be displayed$/ do
-  if risk_perfomance_page.download_pdf_button.displayed? == false
-    fail "'DOWNLOAD PDF' icon is not displayed"
-  end
+Then /^'DOWNLOAD PDF' button should be displayed$/ do
+    fail "'DOWNLOAD PDF' icon is not displayed" if risk_perfomance_page.download_pdf_button.displayed? == false
 end
  Then /^Click on 'ADD MODULE' button$/ do
  risk_perfomance_page.add_module_button.click
@@ -286,7 +278,7 @@ Then /^Click on all items from "ADD MODULE" column$/ do
   itemstext = []
  for i in items
     if i.displayed?
-    itemstext.push(i.text)
+    itemstext << i.text
     i.click
     end
  end
@@ -299,7 +291,7 @@ Then /^Verify all added submodules displayed in YOUR MODULE QUEUE$/ do
   selcteditems= risk_perfomance_page.ws_queue
   selcteditemstext = []
   for i in selcteditems
-    selcteditemstext.push(i.text)
+    selcteditemstext << i.text
   end
   @array2 = selcteditemstext
   # puts @array2
@@ -342,9 +334,7 @@ Then /^In 'ADD MODULE' add random one preference from each module$/ do
  @queueamlist =  risk_perfomance_page.am_queue_item_list
 end
 Then /^Verify that all preference from 'ADD MODULE' displayed$/ do
-  if risk_perfomance_page.displyed_modules_list != @queueamlist
-    fail "BUG"
-  end
+  fail "BUG" if risk_perfomance_page.download_pdf_button.displayed? == false
   puts @queueamlist
   puts risk_perfomance_page.displyed_modules_list
 
@@ -401,7 +391,7 @@ Then /^In "Add Module" overlay click on all items from "ADD MODULE" column$/ do
   itemstext = []
   for i in items
     if i.displayed?
-      itemstext.push(i.text)
+      itemstext << i.text
       i.click
     end
   end
@@ -413,7 +403,7 @@ Then /^Verify in "Add Module" all added submodules displayed in YOUR MODULE QUEU
   selcteditems= risk_perfomance_page.am_queue
   selcteditemstext = []
   for i in selcteditems
-    selcteditemstext.push(i.text)
+    selcteditemstext << i.text
   end
   @array2_am = selcteditemstext
   puts @array2_am
@@ -434,7 +424,7 @@ items  = risk_perfomance_page.am_addmodules
 itemstext = []
  for i in items
   if i.displayed?
-    itemstext.push(i.text)
+    itemstext << i.text
     4.times  do |x|
       x = i.click
     end
@@ -468,7 +458,7 @@ Then /^In "Create Space" overlay click all items from "ADD MODULE" column  4 tim
   itemstext = []
   for i in items
     if i.displayed?
-      itemstext.push(i.text)
+      itemstext << i.text
      4.times  do |x|
         x = i.click
         sleep 2
@@ -560,13 +550,13 @@ Then /^Verify the same Fund were added to YOUR LIST column$/ do
   selected_funds = risk_perfomance_page.pdf_selected_funds
   selected_fund_text = []
   for i in  selected_funds
-    selected_fund_text.push(i.text)
+    selected_fund_text << i.text
   end
   puts selected_fund_text
 
   added_fund_text = []
   for i in risk_perfomance_page.pdf_yourfunds_list
-  added_fund_text.push(i.text)
+  added_fund_text << i.text
   end
   puts added_fund_text
   if selected_fund_text.compact != added_fund_text.compact
@@ -620,12 +610,12 @@ Then /Verify that custom YOUR list  displays selected funds$/ do
   selected_funds = risk_perfomance_page.pdf_custom_report_selected_funds
   selected_fund_text = []
   for i in  selected_funds
-    selected_fund_text.push(i.text)
+    selected_fund_text << i.text
   end
   selected_fund_text = selected_fund_text.sort
   added_fund_text = []
   for i in risk_perfomance_page.pdf_custom_added_fund
-    added_fund_text.push(i.text)
+    added_fund_text << i.text
   end
   added_fund_text = added_fund_text.sort
    if selected_fund_text != added_fund_text

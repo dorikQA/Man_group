@@ -3,8 +3,8 @@ Feature: Risk & Performance Page
 Background:
     Given Open the Man Group site
     Given Enter "pctusertests@gmail.com" password "0ChangeMe0!" and pin "9876" and click "Login" button
-#    Then Click "Profile" icon
-#    Then Tap "Reset" button
+    Then Click "Profile" icon
+    Then Tap "Reset" button
 @myportfolio_overlay
   Scenario:  Reset profile settings
     Then Click "Profile" icon
